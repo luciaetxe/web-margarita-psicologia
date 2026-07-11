@@ -4,267 +4,340 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Margarita Margenat · Psicóloga y Psicoterapeuta</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --sky:       #4a90b8;
-      --sky-deep:  #1a3a5c;
-      --sky-mid:   #2d6a8f;
-      --sand:      #e8d5b7;
-      --sand-lt:   #f5ede0;
-      --sand-dk:   #c9a97a;
-      --white:     #ffffff;
-      --off-white: #f8f6f2;
-      --text:      #2c2c2c;
-      --text-lt:   #6b6b6b;
+      --bone:     #f6f1e9;
+      --bone-2:   #efe7da;
+      --cream:    #fbf8f2;
+      --ink:      #221e1a;
+      --ink-soft: #4c443c;
+      --muted:    #8c8073;
+      --clay:     #b0603f;
+      --clay-dk:  #97482d;
+      --line:     #ddd2c2;
+      --line-dk:  #cabfac;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: var(--bone);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+    }
 
-    /* ── NAV ─────────────────────────────────────────── */
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* ── TYPE HELPERS ─────────────────────────── */
+    .eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--muted); font-weight: 500;
+      display: inline-flex; align-items: center; gap: 0.9rem;
+    }
+    .eyebrow::before {
+      content: ''; width: 28px; height: 1px; background: var(--clay);
+    }
+    .display {
+      font-family: 'Fraunces', serif;
+      font-weight: 380; line-height: 1.04; letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .display em { font-style: italic; font-weight: 340; color: var(--clay); }
+
+    /* ── NAV ─────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 1.4rem 3rem;
       display: flex; justify-content: space-between; align-items: center;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 1px 24px rgba(0,0,0,0.06);
+      padding: 1.6rem 2.5rem;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(246,241,233,0.9);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--line);
+      padding: 1.1rem 2.5rem;
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem; letter-spacing: 0.04em;
-      color: var(--sky-deep); text-decoration: none;
+      font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 460;
+      letter-spacing: 0.01em; color: var(--ink); text-decoration: none;
     }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-logo span { color: var(--muted); font-weight: 400; font-size: 0.82rem; font-family: 'Inter', sans-serif; }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
     .nav-links a {
-      font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
-      font-weight: 500; color: var(--text);
-      text-decoration: none; transition: color 0.2s;
+      font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase;
+      font-weight: 500; color: var(--ink-soft); text-decoration: none;
+      position: relative; transition: color 0.25s;
     }
-    .nav-links a:hover { color: var(--sky); }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1px;
+      background: var(--clay); transition: width 0.28s ease;
+    }
+    .nav-links a:hover { color: var(--clay); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase;
+      font-weight: 500; color: var(--clay); text-decoration: none;
+      border: 1px solid var(--clay); border-radius: 40px; padding: 0.55rem 1.3rem;
+      transition: background 0.25s, color 0.25s;
+    }
+    .nav-cta:hover { background: var(--clay); color: var(--cream); }
 
-    /* ── HERO ─────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-      padding-top: 5rem;
-      background: linear-gradient(140deg, #eef6fa 0%, #f5ede0 70%, #f0e6d4 100%);
+    /* ── HERO ─────────────────────────────────────── */
+    .hero { padding: 11rem 0 6rem; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr 0.95fr;
+      gap: 4.5rem; align-items: center;
     }
-    .hero-content {
-      position: relative; z-index: 2;
-      max-width: 1080px; width: 100%;
-      padding: 2rem 3rem;
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
-      gap: 3.5rem; align-items: center;
+    .hero-eyebrow { margin-bottom: 2rem; }
+    .hero-title { font-size: clamp(2.9rem, 6vw, 5rem); margin-bottom: 2rem; }
+    .hero-lead {
+      font-size: 1.08rem; color: var(--ink-soft); line-height: 1.85;
+      max-width: 30rem; margin-bottom: 2.8rem; font-weight: 300;
     }
-    .hero-pill {
-      display: inline-block;
-      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--sky-mid); font-weight: 600;
-      border: 1px solid rgba(74,144,184,0.35); border-radius: 20px;
-      padding: 0.4rem 1.2rem; margin-bottom: 1.6rem;
-      background: rgba(255,255,255,0.6);
+    .hero-actions { display: flex; align-items: center; gap: 2.2rem; flex-wrap: wrap; }
+    .btn-solid {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      background: var(--ink); color: var(--cream); text-decoration: none;
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+      padding: 1.05rem 2.1rem; border-radius: 40px;
+      transition: background 0.3s, transform 0.3s;
     }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.4rem, 4.8vw, 3.6rem);
-      color: var(--sky-deep); line-height: 1.18;
-      font-weight: 600; margin-bottom: 1.2rem;
+    .btn-solid:hover { background: var(--clay); transform: translateY(-2px); }
+    .link-arrow {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      color: var(--ink); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+      border-bottom: 1px solid var(--line-dk); padding-bottom: 3px;
+      transition: color 0.25s, border-color 0.25s;
     }
-    .hero-title em { font-style: italic; color: var(--sky-mid); }
-    .hero-tagline {
-      font-size: 1.05rem; color: var(--text-lt);
-      line-height: 1.7; margin-bottom: 2.2rem; max-width: 460px;
-    }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.85rem 1.9rem; border-radius: 40px;
-      text-decoration: none; font-size: 0.88rem;
-      font-weight: 600; letter-spacing: 0.03em;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-primary { background: var(--sky-deep); color: white; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(26,58,92,0.28); }
-    .btn-outline { background: transparent; color: var(--sky-deep); border: 1.5px solid var(--sky-deep); }
-    .btn-outline:hover { background: var(--sky-deep); color: white; }
-    .btn svg { width: 17px; height: 17px; }
+    .link-arrow:hover { color: var(--clay); border-color: var(--clay); }
 
-    .hero-photo {
-      position: relative;
-      display: flex; justify-content: center;
+    .hero-figure { position: relative; }
+    .hero-figure img {
+      width: 100%; aspect-ratio: 4/5; object-fit: cover;
+      border-radius: 4px; display: block;
+      filter: grayscale(1) contrast(1.02);
     }
-    .hero-photo img {
-      width: 100%; max-width: 360px; aspect-ratio: 4/5;
-      object-fit: cover; border-radius: 24px;
-      box-shadow: 0 24px 60px rgba(26,58,92,0.18);
+    .hero-figure::after {
+      content: ''; position: absolute; inset: 0;
+      border: 1px solid rgba(255,255,255,0.35); border-radius: 4px;
+      transform: translate(16px, 16px); z-index: -1;
+      background: var(--bone-2);
     }
+    .hero-cap {
+      position: absolute; left: -1px; bottom: 1.4rem;
+      background: var(--cream); padding: 0.7rem 1.2rem;
+      font-family: 'Fraunces', serif; font-style: italic; font-size: 0.95rem;
+      color: var(--ink); box-shadow: 0 8px 30px rgba(60,40,20,0.08);
+    }
+    .hero-cap span { color: var(--clay); font-style: normal; font-family: 'Inter'; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-top: 2px; }
 
-    /* ── SHARED ─────────────────────────────────────────── */
-    section { padding: 6rem 2rem; }
-    .container { max-width: 960px; margin: 0 auto; }
-    .sec-label {
-      font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase;
-      color: var(--sky); font-weight: 600; margin-bottom: 0.6rem;
+    /* ── MARQUEE STRIP ─────────────────────────────── */
+    .strip {
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      padding: 1.4rem 0; overflow: hidden;
     }
-    .sec-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3.6vw, 2.6rem);
-      color: var(--text); line-height: 1.2; margin-bottom: 1.2rem;
+    .strip-inner {
+      display: flex; align-items: center; gap: 2.5rem; white-space: nowrap;
+      font-family: 'Fraunces', serif; font-style: italic;
+      font-size: 1.15rem; color: var(--ink-soft);
+      animation: slide 34s linear infinite;
     }
-    .sec-intro { color: var(--text-lt); line-height: 1.8; font-size: 1rem; max-width: 640px; margin-bottom: 3rem; }
+    .strip-inner span { display: inline-flex; align-items: center; gap: 2.5rem; }
+    .strip-inner .dot { color: var(--clay); font-style: normal; }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── SOBRE MÍ ─────────────────────────────────────────── */
-    .about { background: var(--white); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .about-text p { color: var(--text-lt); line-height: 1.85; font-size: 1.02rem; margin-bottom: 1.2rem; }
+    /* ── SECTION SHELL ─────────────────────────────── */
+    section.block { padding: 7rem 0; }
+    .sec-head { max-width: 40rem; margin-bottom: 3.5rem; }
+    .sec-head .eyebrow { margin-bottom: 1.4rem; }
+    .sec-title { font-size: clamp(2rem, 4.2vw, 3.1rem); margin-bottom: 1.4rem; }
+    .sec-intro { color: var(--ink-soft); font-size: 1.05rem; font-weight: 300; line-height: 1.85; }
+
+    /* ── SOBRE MÍ ─────────────────────────────────── */
+    .about { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 5rem; align-items: start; }
+    .about-side .eyebrow { margin-bottom: 1.6rem; }
+    .about-side h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 2.2rem; line-height: 1.1; }
+    .about-side .about-tags { margin-top: 2.2rem; display: flex; flex-direction: column; gap: 0; }
+    .about-tag {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.9rem 0; border-top: 1px solid var(--line);
+      font-size: 0.82rem; color: var(--ink-soft);
+    }
+    .about-tag:last-child { border-bottom: 1px solid var(--line); }
+    .about-tag b { font-family: 'Fraunces', serif; font-weight: 500; color: var(--clay); font-size: 1rem; }
+    .about-body p { color: var(--ink-soft); font-weight: 300; font-size: 1.06rem; line-height: 1.9; margin-bottom: 1.5rem; }
     .about-quote {
-      font-family: 'Playfair Display', serif; font-style: italic;
-      font-size: 1.15rem; color: var(--sky-deep); line-height: 1.6;
-      border-left: 3px solid var(--sky); padding-left: 1.3rem; margin-top: 1.6rem;
-    }
-    .about-badges { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; }
-    .about-badge {
-      font-size: 0.78rem; color: var(--sky-deep); font-weight: 500;
-      background: var(--off-white); border-radius: 20px; padding: 0.5rem 1.1rem;
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 340;
+      font-size: 1.5rem; line-height: 1.45; color: var(--ink);
+      margin: 2.5rem 0 0; padding-left: 1.6rem; border-left: 2px solid var(--clay);
     }
 
-    /* ── SERVICIOS ─────────────────────────────────────────── */
-    .services { background: var(--off-white); }
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .service-card {
-      background: white; border-radius: 20px; padding: 2.2rem 1.8rem;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    /* ── SERVICIOS (numbered editorial list) ───────── */
+    .services-list { border-top: 1px solid var(--line-dk); }
+    .service {
+      display: grid; grid-template-columns: 5.5rem 1fr auto; gap: 2rem;
+      align-items: baseline; padding: 2.4rem 1rem 2.4rem 0;
+      border-bottom: 1px solid var(--line-dk);
+      text-decoration: none; color: inherit;
+      transition: padding 0.35s ease, background 0.35s ease;
     }
-    .service-icon {
-      width: 50px; height: 50px; border-radius: 14px; background: var(--sand-lt);
-      display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem;
+    .service:hover { padding-left: 1.4rem; background: var(--cream); }
+    .service-num {
+      font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 400;
+      color: var(--muted); transition: color 0.35s;
     }
-    .service-icon svg { width: 24px; height: 24px; }
-    .service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 0.7rem; color: var(--text); }
-    .service-card p { font-size: 0.9rem; color: var(--text-lt); line-height: 1.65; }
+    .service:hover .service-num { color: var(--clay); }
+    .service-main h3 {
+      font-family: 'Fraunces', serif; font-weight: 420; font-size: 1.7rem;
+      line-height: 1.2; margin-bottom: 0.6rem; letter-spacing: -0.01em;
+    }
+    .service-main p { color: var(--ink-soft); font-weight: 300; font-size: 1rem; max-width: 34rem; }
+    .service-meta {
+      font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); white-space: nowrap; padding-top: 0.5rem;
+    }
 
-    /* ── ESPECIALIDADES ─────────────────────────────────────────── */
-    .especialidades { background: var(--white); }
-    .esp-tags { display: flex; flex-wrap: wrap; gap: 0.9rem; }
-    .esp-tag {
-      display: flex; align-items: center; gap: 0.6rem;
-      font-size: 0.9rem; color: var(--text);
-      background: var(--sand-lt); border-radius: 14px; padding: 0.9rem 1.3rem;
+    /* ── ESPECIALIDADES ────────────────────────────── */
+    .esp { background: var(--bone-2); }
+    .esp-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      column-gap: 4rem;
     }
-    .esp-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sky); flex-shrink: 0; }
+    .esp-item {
+      display: flex; align-items: baseline; gap: 1.2rem;
+      padding: 1.25rem 0; border-bottom: 1px solid var(--line-dk);
+      font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 400; color: var(--ink);
+    }
+    .esp-item .n { font-size: 0.72rem; font-family: 'Inter'; color: var(--clay); letter-spacing: 0.1em; }
 
-    /* ── CÓMO TRABAJO ─────────────────────────────────────────── */
-    .process { background: linear-gradient(135deg, var(--sky-deep) 0%, #245b82 60%, #2d6a8f 100%); }
-    .process .sec-label { color: rgba(255,255,255,0.55); }
-    .process .sec-title { color: white; }
-    .process .sec-intro { color: rgba(255,255,255,0.75); }
-    .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; }
-    .process-step {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 18px; padding: 1.9rem 1.6rem; backdrop-filter: blur(8px);
-    }
-    .process-num {
-      font-family: 'Playfair Display', serif; font-size: 2.2rem;
-      color: rgba(255,255,255,0.35); font-weight: 700; margin-bottom: 0.8rem;
-    }
-    .process-step h4 { color: white; font-size: 1.02rem; margin-bottom: 0.5rem; }
-    .process-step p { color: rgba(255,255,255,0.7); font-size: 0.86rem; line-height: 1.6; }
+    /* ── PROCESO (dark block) ──────────────────────── */
+    .process { background: var(--ink); color: var(--cream); }
+    .process .eyebrow { color: rgba(255,255,255,0.55); }
+    .process .eyebrow::before { background: var(--clay); }
+    .process .sec-title { color: var(--cream); }
+    .process .sec-intro { color: rgba(255,255,255,0.65); }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 1rem; }
+    .step { padding: 2.5rem 2rem 2.5rem 0; border-top: 1px solid rgba(255,255,255,0.16); }
+    .step:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.12); padding-right: 2.5rem; }
+    .step:not(:first-child) { padding-left: 2.5rem; }
+    .step-num { font-family: 'Fraunces', serif; font-style: italic; font-size: 2.6rem; color: var(--clay); font-weight: 340; margin-bottom: 1.1rem; line-height: 1; }
+    .step h4 { font-family: 'Fraunces', serif; font-weight: 440; font-size: 1.25rem; margin-bottom: 0.7rem; }
+    .step p { color: rgba(255,255,255,0.62); font-weight: 300; font-size: 0.95rem; line-height: 1.75; }
 
-    /* ── MODALIDAD ─────────────────────────────────────────── */
-    .modalidad { background: var(--sand-lt); }
-    .modalidad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .modalidad-card { background: white; border-radius: 20px; padding: 2.2rem; text-align: center; }
-    .modalidad-card svg { width: 32px; height: 32px; margin-bottom: 1rem; }
-    .modalidad-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.6rem; }
-    .modalidad-card p { font-size: 0.9rem; color: var(--text-lt); line-height: 1.65; }
+    /* ── MODALIDAD ─────────────────────────────────── */
+    .mode { background: var(--cream); }
+    .mode-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .mode-col { padding: 0 3rem; }
+    .mode-col:first-child { padding-left: 0; border-right: 1px solid var(--line-dk); }
+    .mode-col:last-child { padding-right: 0; }
+    .mode-col .m-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; }
+    .mode-col h3 { font-family: 'Fraunces', serif; font-weight: 420; font-size: 1.9rem; margin-bottom: 1rem; }
+    .mode-col p { color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.8; }
 
-    /* ── FAQ ─────────────────────────────────────────── */
-    .faq { background: var(--white); }
-    .faq-list { display: flex; flex-direction: column; gap: 0.9rem; }
-    .faq-item { border: 1px solid #ece5d8; border-radius: 14px; padding: 1.4rem 1.7rem; }
-    .faq-item summary {
-      cursor: pointer; font-weight: 600; font-size: 0.98rem; color: var(--text);
-      list-style: none; display: flex; justify-content: space-between; align-items: center;
+    /* ── FAQ ───────────────────────────────────────── */
+    .faq-list { border-top: 1px solid var(--line-dk); }
+    details.faq {
+      border-bottom: 1px solid var(--line-dk); padding: 0.4rem 0;
     }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; font-size: 1.3rem; color: var(--sky); font-weight: 400; }
-    .faq-item[open] summary::after { content: '–'; }
-    .faq-item p { font-size: 0.9rem; color: var(--text-lt); line-height: 1.7; margin-top: 0.9rem; }
+    details.faq summary {
+      cursor: pointer; list-style: none; padding: 1.6rem 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+      font-family: 'Fraunces', serif; font-weight: 440; font-size: 1.2rem; color: var(--ink);
+    }
+    details.faq summary::-webkit-details-marker { display: none; }
+    details.faq .sign {
+      flex-shrink: 0; width: 22px; height: 22px; position: relative;
+      transition: transform 0.3s ease;
+    }
+    details.faq .sign::before, details.faq .sign::after {
+      content: ''; position: absolute; background: var(--clay); top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    details.faq .sign::before { width: 14px; height: 1.5px; }
+    details.faq .sign::after { width: 1.5px; height: 14px; transition: transform 0.3s ease; }
+    details.faq[open] .sign::after { transform: translate(-50%,-50%) scaleY(0); }
+    details.faq p { color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.85; padding: 0 0 1.7rem; max-width: 44rem; }
 
-    /* ── CONTACTO ─────────────────────────────────────────── */
-    .contact { background: var(--off-white); }
-    .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; }
-    .contact-desc { color: var(--text-lt); font-size: 1rem; line-height: 1.8; margin-bottom: 2rem; }
-    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-info-item { display: flex; align-items: center; gap: 0.9rem; font-size: 0.92rem; color: var(--text); }
-    .contact-info-item svg { width: 19px; height: 19px; color: var(--sky); flex-shrink: 0; }
-    .contact-links { display: flex; gap: 1rem; margin-top: 1.8rem; flex-wrap: wrap; }
-    .contact-btn {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 0.9rem 1.8rem; border-radius: 50px;
-      text-decoration: none; font-weight: 600; font-size: 0.88rem;
-      transition: transform 0.2s, box-shadow 0.2s; color: white;
+    /* ── CONTACTO ──────────────────────────────────── */
+    .contact { background: var(--ink); color: var(--cream); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact .eyebrow { color: rgba(255,255,255,0.55); margin-bottom: 1.4rem; }
+    .contact-title { font-family: 'Fraunces', serif; font-weight: 380; font-size: clamp(2rem,3.6vw,2.8rem); line-height: 1.1; margin-bottom: 1.6rem; }
+    .contact-title em { font-style: italic; color: var(--clay); }
+    .contact-lead { color: rgba(255,255,255,0.68); font-weight: 300; line-height: 1.85; margin-bottom: 2.4rem; max-width: 26rem; }
+    .contact-meta { display: flex; flex-direction: column; gap: 0; }
+    .cmeta { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+    .cmeta:last-child { border-bottom: 1px solid rgba(255,255,255,0.14); }
+    .cmeta .k { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); width: 5.5rem; flex-shrink: 0; }
+    .wa {
+      display: inline-flex; align-items: center; gap: 0.7rem; margin-top: 2.2rem;
+      background: var(--clay); color: var(--cream); text-decoration: none;
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+      padding: 1rem 2rem; border-radius: 40px; transition: background 0.3s, transform 0.3s;
     }
-    .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.15); }
-    .btn-whatsapp { background: #25d366; }
-    .contact-btn svg { width: 18px; height: 18px; }
+    .wa:hover { background: var(--clay-dk); transform: translateY(-2px); }
+    .wa svg { width: 18px; height: 18px; }
 
-    .contact-form {
-      background: white; border-radius: 22px; padding: 2.4rem;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+    /* underline-style form */
+    form .fg { margin-bottom: 1.8rem; }
+    form label { display: block; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.7rem; }
+    form input, form textarea {
+      width: 100%; background: transparent; border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      color: var(--cream); font-family: 'Inter', sans-serif; font-size: 1rem;
+      padding: 0.6rem 0; transition: border-color 0.3s;
     }
-    .form-group { margin-bottom: 1.2rem; }
-    .form-group label { display: block; font-size: 0.82rem; font-weight: 500; margin-bottom: 0.4rem; color: var(--text); }
-    .form-group input, .form-group textarea {
-      width: 100%; border: 1.5px solid #e5ddd0; border-radius: 10px;
-      padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem;
-      color: var(--text); background: var(--off-white);
+    form input::placeholder, form textarea::placeholder { color: rgba(255,255,255,0.3); }
+    form input:focus, form textarea:focus { outline: none; border-color: var(--clay); }
+    form textarea { resize: vertical; min-height: 90px; }
+    form button {
+      margin-top: 0.6rem; width: 100%; cursor: pointer; border: none;
+      background: var(--cream); color: var(--ink);
+      font-family: 'Inter', sans-serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+      padding: 1.05rem; border-radius: 40px; transition: background 0.3s, color 0.3s;
     }
-    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--sky); }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-submit {
-      width: 100%; border: none; cursor: pointer;
-      background: var(--sky-deep); color: white;
-      padding: 0.9rem; border-radius: 10px;
-      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.92rem;
-      transition: background 0.2s;
-    }
-    .form-submit:hover { background: var(--sky-mid); }
+    form button:hover { background: var(--clay); color: var(--cream); }
 
-    /* ── FOOTER ─────────────────────────────────────────── */
-    footer {
-      background: var(--sky-deep); color: rgba(255,255,255,0.45);
-      text-align: center; padding: 2.2rem 1rem; font-size: 0.8rem; line-height: 1.9;
-    }
-    footer strong { color: rgba(255,255,255,0.8); }
-    footer a { color: rgba(255,255,255,0.6); }
+    /* ── FOOTER ────────────────────────────────────── */
+    footer { background: var(--ink); color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.1); }
+    .footer-in { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2.4rem 0; font-size: 0.8rem; }
+    .footer-in .fname { font-family: 'Fraunces', serif; font-size: 1rem; color: rgba(255,255,255,0.75); }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    footer a:hover { color: var(--clay); }
 
-    /* ── FADE IN ─────────────────────────────────────────── */
-    .fade { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    /* ── FADE IN ───────────────────────────────────── */
+    .fade { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
     .fade.in { opacity: 1; transform: translateY(0); }
 
-    /* ── RESPONSIVE ─────────────────────────────────────────── */
-    @media (max-width: 800px) {
-      nav { padding: 1.1rem 1.4rem; }
-      .nav-links { display: none; }
-      .hero-content { grid-template-columns: 1fr; text-align: center; padding: 1rem 1.5rem; }
-      .hero-photo { order: -1; }
-      .hero-ctas { justify-content: center; }
-      .hero-tagline { margin-left: auto; margin-right: auto; }
+    /* ── RESPONSIVE ────────────────────────────────── */
+    @media (max-width: 860px) {
+      .wrap { padding: 0 1.5rem; }
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hero { padding: 8rem 0 4rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-figure { order: -1; max-width: 340px; }
       .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: 1fr; }
-      .modalidad-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .esp-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .step, .step:not(:last-child), .step:not(:first-child) { padding: 2rem 0; border-right: none; }
+      .mode-grid { grid-template-columns: 1fr; }
+      .mode-col, .mode-col:first-child, .mode-col:last-child { padding: 2.5rem 0; border-right: none; border-top: 1px solid var(--line-dk); }
+      .mode-col:first-child { border-top: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .service { grid-template-columns: 3rem 1fr; }
+      .service-meta { display: none; }
     }
     @media (max-width: 500px) {
-      section { padding: 4rem 1.2rem; }
-      .hero-photo img { max-width: 280px; }
+      section.block { padding: 4.5rem 0; }
+      .service:hover { padding-left: 0.4rem; }
     }
   </style>
 </head>
@@ -272,255 +345,272 @@
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo">Margarita Margenat</a>
+  <a href="#top" class="nav-logo">Margarita Margenat <span>· Psicóloga</span></a>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre mí</a></li>
     <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#modalidad">Modalidad</a></li>
+    <li><a href="#proceso">Cómo trabajo</a></li>
     <li><a href="#faq">Preguntas</a></li>
-    <li><a href="#contacto">Contacto</a></li>
   </ul>
+  <a href="#contacto" class="nav-cta">Pedir sesión</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
     <div>
-      <div class="hero-pill">Psicóloga · Psicoterapeuta</div>
-      <h1 class="hero-title">Un espacio para <em>escucharte</em><br>y acompañarte</h1>
-      <p class="hero-tagline">Terapia individual para adultos desde un enfoque cercano e integrador, con sesiones presenciales y online. Un lugar seguro para entenderte mejor y avanzar a tu ritmo.</p>
-      <div class="hero-ctas">
-        <a href="#contacto" class="btn btn-primary">Pide tu primera sesión</a>
-        <a href="#sobre" class="btn btn-outline">Conóceme</a>
+      <p class="eyebrow hero-eyebrow">Psicóloga · Psicoterapeuta</p>
+      <h1 class="display hero-title">Un espacio<br>para <em>escucharte</em><br>y acompañarte</h1>
+      <p class="hero-lead">Terapia individual para adultos desde un enfoque cercano e integrador. Sesiones presenciales y online, a tu ritmo, en un lugar seguro para entenderte mejor.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-solid">Pide tu primera sesión</a>
+        <a href="#sobre" class="link-arrow">Conóceme
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
     </div>
-    <div class="hero-photo">
+    <figure class="hero-figure">
       <img src="margarita.jpeg" alt="Margarita Margenat, psicóloga">
-    </div>
+      <figcaption class="hero-cap">Margarita Margenat<span>Col. nº [XXXX]</span></figcaption>
+    </figure>
   </div>
-</section>
+</header>
+
+<!-- MARQUEE -->
+<div class="strip">
+  <div class="strip-inner">
+    <span>
+      Ansiedad <b class="dot">·</b> Duelo <b class="dot">·</b> Autoestima <b class="dot">·</b> Gestión emocional <b class="dot">·</b> Relaciones <b class="dot">·</b> Cambios vitales <b class="dot">·</b> Autoconocimiento <b class="dot">·</b>
+    </span>
+    <span aria-hidden="true">
+      Ansiedad <b class="dot">·</b> Duelo <b class="dot">·</b> Autoestima <b class="dot">·</b> Gestión emocional <b class="dot">·</b> Relaciones <b class="dot">·</b> Cambios vitales <b class="dot">·</b> Autoconocimiento <b class="dot">·</b>
+    </span>
+  </div>
+</div>
 
 <!-- SOBRE MÍ -->
-<section class="about" id="sobre">
-  <div class="container about-grid fade">
-    <div class="about-text">
-      <p class="sec-label">Sobre mí</p>
-      <h2 class="sec-title">Margarita Margenat</h2>
-      <p>Soy psicóloga y psicoterapeuta [Nº de colegiada]. Tras varios años de experiencia trabajando en [nombre de centro/institución anterior], hoy acompaño procesos terapéuticos de forma independiente, con la misma cercanía y rigor de siempre.</p>
-      <p>Creo en una terapia sin juicios, donde cada persona marca su propio ritmo. Mi enfoque combina herramientas de [enfoque terapéutico, p. ej. terapia humanista e integradora] con una escucha activa y honesta, para entender no solo el síntoma, sino la historia que hay detrás.</p>
-      <p class="about-quote">"Cada proceso terapéutico es único: mi papel es acompañarte a encontrar tus propias respuestas, no a dártelas hechas."</p>
-      <div class="about-badges">
-        <span class="about-badge">Colegiada nº [XXXX]</span>
-        <span class="about-badge">+[X] años de experiencia</span>
-        <span class="about-badge">Formación en [especialidad]</span>
+<section class="block about" id="sobre">
+  <div class="wrap about-grid fade">
+    <div class="about-side">
+      <p class="eyebrow">Sobre mí</p>
+      <h2>Acompaño procesos, no doy respuestas hechas.</h2>
+      <div class="about-tags">
+        <div class="about-tag"><span>Colegiada</span><b>nº [XXXX]</b></div>
+        <div class="about-tag"><span>Experiencia</span><b>+[X] años</b></div>
+        <div class="about-tag"><span>Formación</span><b>[Especialidad]</b></div>
       </div>
+    </div>
+    <div class="about-body">
+      <p>Soy Margarita Margenat, psicóloga y psicoterapeuta. Tras varios años trabajando en [nombre de centro/institución], hoy acompaño procesos terapéuticos de forma independiente, con la misma cercanía y rigor de siempre.</p>
+      <p>Creo en una terapia sin juicios, donde cada persona marca su propio ritmo. Mi enfoque combina herramientas de [enfoque terapéutico] con una escucha activa y honesta, para entender no solo el síntoma, sino la historia que hay detrás.</p>
+      <blockquote class="about-quote">Cada proceso es único. Mi papel es acompañarte a encontrar tus propias respuestas.</blockquote>
     </div>
   </div>
 </section>
 
 <!-- SERVICIOS -->
-<section class="services" id="servicios">
-  <div class="container">
-    <p class="sec-label fade">Qué ofrezco</p>
-    <h2 class="sec-title fade">Servicios</h2>
-    <p class="sec-intro fade">Terapia adaptada a lo que necesitas en cada momento, con la flexibilidad de elegir formato presencial u online.</p>
-    <div class="services-grid fade">
-      <div class="service-card">
-        <div class="service-icon" style="background:#e8f4fb;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#4a90b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-          </svg>
+<section class="block" id="servicios">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <p class="eyebrow">Qué ofrezco</p>
+      <h2 class="sec-title display">Servicios</h2>
+      <p class="sec-intro">Terapia adaptada a lo que necesitas en cada momento, con la flexibilidad de elegir formato presencial u online.</p>
+    </div>
+    <div class="services-list fade">
+      <a href="#contacto" class="service">
+        <span class="service-num">01</span>
+        <div class="service-main">
+          <h3>Terapia individual</h3>
+          <p>Un espacio de acompañamiento personal para trabajar ansiedad, autoestima, duelo o momentos de cambio vital.</p>
         </div>
-        <h3>Terapia individual</h3>
-        <p>Espacio de acompañamiento personal para trabajar ansiedad, autoestima, duelo o momentos de cambio vital.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon" style="background:#f0eaf8;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#9b6bab" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
-          </svg>
+        <span class="service-meta">Presencial · Online</span>
+      </a>
+      <a href="#contacto" class="service">
+        <span class="service-num">02</span>
+        <div class="service-main">
+          <h3>Terapia de pareja</h3>
+          <p>Sesiones para mejorar la comunicación, resolver conflictos y fortalecer el vínculo desde el respeto mutuo.</p>
         </div>
-        <h3>Terapia de pareja</h3>
-        <p>Sesiones para mejorar la comunicación, resolver conflictos y fortalecer el vínculo desde el respeto mutuo.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon" style="background:#e8f4e8;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#6bab6e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-            <line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
-          </svg>
+        <span class="service-meta">Presencial · Online</span>
+      </a>
+      <a href="#contacto" class="service">
+        <span class="service-num">03</span>
+        <div class="service-main">
+          <h3>Acompañamiento y crecimiento personal</h3>
+          <p>Para quienes buscan autoconocimiento y desarrollo personal, aunque no atraviesen una crisis concreta.</p>
         </div>
-        <h3>Acompañamiento y crecimiento personal</h3>
-        <p>Sesiones de desarrollo personal para quienes buscan autoconocimiento, aunque no atraviesen una crisis concreta.</p>
-      </div>
+        <span class="service-meta">Presencial · Online</span>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ESPECIALIDADES -->
-<section class="especialidades" id="especialidades">
-  <div class="container">
-    <p class="sec-label fade">Áreas de trabajo</p>
-    <h2 class="sec-title fade">Especialidades</h2>
-    <p class="sec-intro fade">Estos son algunos de los motivos más frecuentes por los que las personas acuden a consulta.</p>
-    <div class="esp-tags fade">
-      <div class="esp-tag"><span class="dot"></span>Ansiedad y estrés</div>
-      <div class="esp-tag"><span class="dot"></span>Duelo y pérdidas</div>
-      <div class="esp-tag"><span class="dot"></span>Autoestima</div>
-      <div class="esp-tag"><span class="dot"></span>Gestión emocional</div>
-      <div class="esp-tag"><span class="dot"></span>Relaciones de pareja</div>
-      <div class="esp-tag"><span class="dot"></span>Cambios y transiciones vitales</div>
-      <div class="esp-tag"><span class="dot"></span>Autoconocimiento</div>
+<section class="block esp" id="especialidades">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <p class="eyebrow">Áreas de trabajo</p>
+      <h2 class="sec-title display">En qué puedo acompañarte</h2>
+      <p class="sec-intro">Algunos de los motivos más frecuentes por los que las personas acuden a consulta.</p>
+    </div>
+    <div class="esp-grid fade">
+      <div class="esp-item"><span class="n">01</span>Ansiedad y estrés</div>
+      <div class="esp-item"><span class="n">02</span>Duelo y pérdidas</div>
+      <div class="esp-item"><span class="n">03</span>Autoestima</div>
+      <div class="esp-item"><span class="n">04</span>Gestión emocional</div>
+      <div class="esp-item"><span class="n">05</span>Relaciones de pareja</div>
+      <div class="esp-item"><span class="n">06</span>Cambios y transiciones vitales</div>
+      <div class="esp-item"><span class="n">07</span>Autoconocimiento</div>
+      <div class="esp-item"><span class="n">08</span>Momentos de bloqueo</div>
     </div>
   </div>
 </section>
 
-<!-- CÓMO TRABAJO -->
-<section class="process" id="proceso">
-  <div class="container">
-    <p class="sec-label fade">El proceso</p>
-    <h2 class="sec-title fade">Cómo trabajo</h2>
-    <p class="sec-intro fade">Dar el primer paso puede costar. Así es como funciona empezar a trabajar juntas.</p>
-    <div class="process-steps fade">
-      <div class="process-step">
-        <div class="process-num">01</div>
+<!-- PROCESO -->
+<section class="block process" id="proceso">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <p class="eyebrow">El proceso</p>
+      <h2 class="sec-title display">Cómo trabajo</h2>
+      <p class="sec-intro">Dar el primer paso puede costar. Así es como empezamos a trabajar juntas.</p>
+    </div>
+    <div class="steps fade">
+      <div class="step">
+        <div class="step-num">01</div>
         <h4>Primer contacto</h4>
-        <p>Me escribes por WhatsApp o el formulario y agendamos una primera sesión para conocernos.</p>
+        <p>Me escribes por WhatsApp o el formulario y agendamos una primera sesión para conocernos, sin compromiso.</p>
       </div>
-      <div class="process-step">
-        <div class="process-num">02</div>
+      <div class="step">
+        <div class="step-num">02</div>
         <h4>Primera sesión</h4>
-        <p>Hablamos de lo que te trae a consulta y definimos juntas los objetivos del proceso.</p>
+        <p>Hablamos de lo que te trae a consulta y definimos juntas los objetivos del proceso terapéutico.</p>
       </div>
-      <div class="process-step">
-        <div class="process-num">03</div>
+      <div class="step">
+        <div class="step-num">03</div>
         <h4>Seguimiento</h4>
-        <p>Sesiones periódicas (habitualmente semanales o quincenales) adaptadas a tu ritmo y necesidades.</p>
+        <p>Sesiones periódicas, habitualmente semanales o quincenales, adaptadas a tu ritmo y necesidades.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- MODALIDAD -->
-<section class="modalidad" id="modalidad">
-  <div class="container">
-    <p class="sec-label fade">Formato</p>
-    <h2 class="sec-title fade">Modalidad</h2>
-    <div class="modalidad-grid fade">
-      <div class="modalidad-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#4a90b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
-        </svg>
+<section class="block mode" id="modalidad">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <p class="eyebrow">Formato</p>
+      <h2 class="sec-title display">Presencial y online</h2>
+    </div>
+    <div class="mode-grid fade">
+      <div class="mode-col">
+        <p class="m-label">En consulta</p>
         <h3>Presencial</h3>
-        <p>Consulta en [Ciudad / dirección]. Sesiones de 50 minutos en un espacio tranquilo y confidencial.</p>
+        <p>Consulta en [Ciudad / dirección]. Sesiones de 50 minutos en un espacio tranquilo, cuidado y confidencial.</p>
       </div>
-      <div class="modalidad-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#4a90b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="4" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/>
-        </svg>
+      <div class="mode-col">
+        <p class="m-label">Desde donde estés</p>
         <h3>Online</h3>
-        <p>Videollamada por videoconferencia desde donde te encuentres. Misma calidad y confidencialidad que en consulta.</p>
+        <p>Sesiones por videollamada con la misma privacidad y eficacia que en consulta. Continuidad estés donde estés.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="container">
-    <p class="sec-label fade">Dudas frecuentes</p>
-    <h2 class="sec-title fade">Preguntas frecuentes</h2>
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="sec-head fade">
+      <p class="eyebrow">Dudas frecuentes</p>
+      <h2 class="sec-title display">Preguntas frecuentes</h2>
+    </div>
     <div class="faq-list fade">
-      <details class="faq-item">
-        <summary>¿Cuánto dura cada sesión y con qué frecuencia son?</summary>
-        <p>Las sesiones duran 50 minutos. La frecuencia habitual es semanal, aunque puede ajustarse según el proceso y el momento de cada persona.</p>
+      <details class="faq">
+        <summary>¿Cuánto dura cada sesión y con qué frecuencia son?<span class="sign"></span></summary>
+        <p>Las sesiones duran 50 minutos. La frecuencia habitual es semanal, aunque se ajusta según el proceso y el momento de cada persona.</p>
       </details>
-      <details class="faq-item">
-        <summary>¿Cuál es el precio de la sesión?</summary>
+      <details class="faq">
+        <summary>¿Cuál es el precio de la sesión?<span class="sign"></span></summary>
         <p>El precio por sesión es de [XX] €. Escríbeme si tienes dudas sobre tarifas o bonos de sesiones.</p>
       </details>
-      <details class="faq-item">
-        <summary>¿La terapia online funciona igual que la presencial?</summary>
-        <p>Sí. La videollamada mantiene la misma privacidad, estructura y eficacia que una sesión presencial, y te permite tener continuidad estés donde estés.</p>
+      <details class="faq">
+        <summary>¿La terapia online funciona igual que la presencial?<span class="sign"></span></summary>
+        <p>Sí. La videollamada mantiene la misma privacidad, estructura y eficacia que una sesión presencial, y te permite continuidad estés donde estés.</p>
       </details>
-      <details class="faq-item">
-        <summary>¿Es confidencial lo que hablamos en consulta?</summary>
+      <details class="faq">
+        <summary>¿Es confidencial lo que hablamos en consulta?<span class="sign"></span></summary>
         <p>Totalmente. Todo lo que compartas está protegido por el secreto profesional, como marca el código deontológico de la profesión.</p>
       </details>
-      <details class="faq-item">
-        <summary>¿Cómo sé si necesito terapia?</summary>
-        <p>No hace falta estar atravesando una crisis para acudir a terapia. Si sientes que algo te pesa, te bloquea o quieres conocerte mejor, ya es un buen motivo para empezar.</p>
+      <details class="faq">
+        <summary>¿Cómo sé si necesito terapia?<span class="sign"></span></summary>
+        <p>No hace falta atravesar una crisis para acudir a terapia. Si sientes que algo te pesa, te bloquea o quieres conocerte mejor, ya es un buen motivo para empezar.</p>
       </details>
     </div>
   </div>
 </section>
 
 <!-- CONTACTO -->
-<section class="contact" id="contacto">
-  <div class="container contact-grid fade">
+<section class="block contact" id="contacto">
+  <div class="wrap contact-grid fade">
     <div>
-      <p class="sec-label">Empecemos</p>
-      <h2 class="sec-title">Pide tu primera sesión</h2>
-      <p class="contact-desc">Escríbeme por WhatsApp o rellena el formulario y te responderé en menos de 48h para agendar una primera sesión.</p>
-      <div class="contact-info">
-        <div class="contact-info-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
-          <span>[email@margaritamargenat.com]</span>
-        </div>
-        <div class="contact-info-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          <span>[Ciudad] · Presencial y online</span>
-        </div>
+      <p class="eyebrow">Empecemos</p>
+      <h2 class="contact-title">Pide tu <em>primera sesión</em></h2>
+      <p class="contact-lead">Escríbeme por WhatsApp o rellena el formulario. Te responderé en menos de 48h para agendar una primera sesión.</p>
+      <div class="contact-meta">
+        <div class="cmeta"><span class="k">Email</span>[email@margaritamargenat.com]</div>
+        <div class="cmeta"><span class="k">Consulta</span>[Ciudad] · Presencial y online</div>
+        <div class="cmeta"><span class="k">Instagram</span>@margaritapsicologia</div>
       </div>
-      <div class="contact-links">
-        <a href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener" class="contact-btn btn-whatsapp">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.9.529 3.678 1.446 5.19L2 22l4.943-1.416A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.32-1.267l-.31-.184-3.211.918.905-3.302-.202-.322A7.96 7.96 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
-          WhatsApp
-        </a>
-      </div>
+      <a href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener" class="wa">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.9.529 3.678 1.446 5.19L2 22l4.943-1.416A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.32-1.267l-.31-.184-3.211.918.905-3.302-.202-.322A7.96 7.96 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+        Escribir por WhatsApp
+      </a>
     </div>
-
-    <form class="contact-form" id="contactForm">
-      <div class="form-group">
+    <form id="contactForm">
+      <div class="fg">
         <label for="name">Nombre</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" placeholder="Tu nombre" required>
       </div>
-      <div class="form-group">
+      <div class="fg">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
       </div>
-      <div class="form-group">
-        <label for="message">Cuéntame brevemente qué te trae por aquí</label>
-        <textarea id="message" name="message" required></textarea>
+      <div class="fg">
+        <label for="message">¿Qué te trae por aquí?</label>
+        <textarea id="message" name="message" placeholder="Cuéntame brevemente..." required></textarea>
       </div>
-      <button type="submit" class="form-submit">Enviar mensaje</button>
+      <button type="submit">Enviar mensaje</button>
     </form>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p><strong>Margarita Margenat</strong> · Psicóloga y Psicoterapeuta · Colegiada nº [XXXX]</p>
-  <p>@margaritapsicologia · [email@margaritamargenat.com]</p>
+  <div class="wrap footer-in">
+    <span class="fname">Margarita Margenat</span>
+    <span>Psicóloga y Psicoterapeuta · Col. nº [XXXX]</span>
+    <span><a href="https://instagram.com/margaritapsicologia" target="_blank" rel="noopener">@margaritapsicologia</a></span>
+  </div>
 </footer>
 
 <script>
-  // Fade-in on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
   const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade').forEach(el => observer.observe(el));
 
-  // Contact form -> mailto fallback (sin backend)
   document.getElementById('contactForm').addEventListener('submit', function (e) {
     e.preventDefault();
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
     const subject = encodeURIComponent('Contacto desde la web - ' + name);
-    const body = encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\n${message}`);
-    window.location.href = `mailto:REPLACE_WITH_EMAIL?subject=${subject}&body=${body}`;
+    const body = encodeURIComponent('Nombre: ' + name + '\nEmail: ' + email + '\n\n' + message);
+    window.location.href = 'mailto:REPLACE_WITH_EMAIL?subject=' + subject + '&body=' + body;
   });
 </script>
 </body>
