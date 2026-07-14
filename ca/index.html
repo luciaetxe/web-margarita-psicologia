@@ -55,6 +55,8 @@
     "description": "Psicòloga i psicoterapeuta a Barcelona. Teràpia per a adults, famílies i infants, presencial i online.",
     "image": "https://www.margaritamargenat.com/margarita.jpeg",
     "url": "https://www.margaritamargenat.com/ca/",
+    "email": "margaritamp99@gmail.com",
+    "telephone": "+34639664982",
     "priceRange": "€€",
     "inLanguage": "ca",
     "knowsLanguage": ["es", "ca", "en"],
@@ -74,47 +76,60 @@
 <!-- NAV -->
 <nav id="nav">
   <a href="#top" class="nav-logo">Margarita Margenat <span>· Psicòloga</span></a>
+  <button class="nav-toggle" aria-label="Obrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#sobre">Sobre mi</a></li>
       <li><a href="#servicios">Serveis</a></li>
       <li><a href="#proceso">Com treballo</a></li>
       <li><a href="#precios">Preus</a></li>
+      <li><a href="#contacto">Contacte</a></li>
     </ul>
     <div class="nav-lang">
       <a href="/">ES</a><span class="sep">·</span>
       <a href="/ca/" class="active" aria-current="page">CA</a><span class="sep">·</span>
       <a href="/en/">EN</a>
     </div>
-    <a href="#contacto" class="nav-cta">Contacta'm</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
+  <div class="hero-botanical" aria-hidden="true">
+    <svg viewBox="0 0 300 400" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M150 400 C150 300 150 200 150 40"/>
+      <path d="M150 300 C110 285 80 250 72 205 C118 210 148 250 150 300Z"/>
+      <path d="M150 260 C190 245 220 210 228 165 C182 170 152 210 150 260Z"/>
+      <path d="M150 205 C110 190 82 158 74 116 C118 121 148 158 150 205Z"/>
+      <path d="M150 155 C190 140 218 108 226 68 C182 73 152 108 150 155Z"/>
+      <path d="M150 108 C116 96 92 68 86 34 C122 39 148 68 150 108Z"/>
+      <path d="M150 70 C180 58 202 34 208 4 C176 9 152 34 150 70Z"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
       <p class="eyebrow hero-eyebrow">Psicòloga · Psicoterapeuta · Barcelona</p>
       <h1 class="display hero-title">Un espai<br>per <em>escoltar-te</em><br>i acompanyar-te</h1>
       <p class="hero-lead">Teràpia per a adults, famílies i infants a Barcelona, des d'un enfocament honest, proper i profund. Sessions presencials i online, al teu ritme.</p>
       <div class="hero-actions">
         <a href="#contacto" class="btn-solid">Reserva una trucada gratuïta</a>
       </div>
-      <p class="hero-reassure">Ens coneixem i decidim juntes, sense compromís, si et puc ajudar.</p>
+      <p class="hero-reassure">Ens coneixem i decidim, sense compromís, si et puc ajudar.</p>
     </div>
-    <figure class="hero-figure">
-      <img src="/margarita.jpeg" alt="Margarita Margenat, psicòloga a Barcelona" width="440" height="550" loading="eager">
-      <figcaption class="hero-cap">Margarita Margenat<span>Psicòloga · Psicoterapeuta</span></figcaption>
-    </figure>
   </div>
 </header>
 
 <!-- SOBRE MI -->
 <section class="block about" id="sobre">
   <div class="wrap">
-    <div class="about-head fade">
-      <p class="eyebrow">Sobre mi</p>
-      <p class="about-intro">Vius en pilot automàtic, exigint-te sempre més? Dorms malament, sobrepenses per no sentir i et costa parar. Estàs tan pendent dels altres que has perdut de vista el que tu necessites, i sents que no et queda temps ni aire per gaudir.</p>
+    <div class="about-top fade">
+      <div class="about-portrait">
+        <img src="/margarita.jpeg" alt="Margarita Margenat, psicòloga a Barcelona" width="440" height="550" loading="lazy">
+      </div>
+      <div class="about-head">
+        <p class="eyebrow">Sobre mi</p>
+        <p class="about-intro">Vius en pilot automàtic, exigint-te sempre més? Dorms malament, sobrepenses per no sentir i et costa parar. Estàs tan pendent dels altres que has perdut de vista el que tu necessites, i sents que no et queda temps ni aire per gaudir.</p>
+      </div>
     </div>
 
     <div class="about-statement fade">
@@ -185,7 +200,7 @@
     <div class="sec-head fade">
       <p class="eyebrow">El procés</p>
       <h2 class="sec-title display">Com treballo</h2>
-      <p class="sec-intro">Fer el primer pas pot costar. Així és com comencem a treballar juntes.</p>
+      <p class="sec-intro">Fer el primer pas pot costar. Així és com comencem a treballar amb tu.</p>
     </div>
     <div class="steps fade">
       <div class="step">
@@ -197,7 +212,7 @@
       <div class="step">
         <div class="step-num">02</div>
         <h4>Primera sessió</h4>
-        <p>Parlem del que et porta a consulta i definim juntes els objectius del procés.</p>
+        <p>Parlem del que et porta a consulta i definim amb tu els objectius del procés.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
@@ -273,13 +288,13 @@
     <div>
       <p class="eyebrow">Comencem</p>
       <h2 class="contact-title">Reserva la teva <em>trucada gratuïta</em></h2>
-      <p class="contact-lead">Ens coneixem i decidim juntes, sense compromís, si et puc ajudar. Escriu-me per WhatsApp o omple el formulari i et respondré en menys de 48h.</p>
+      <p class="contact-lead">Ens coneixem i decidim, sense compromís, si et puc ajudar. Escriu-me per WhatsApp o omple el formulari i et respondré en menys de 48h.</p>
       <div class="contact-meta">
-        <div class="cmeta"><span class="k">Email</span>[email@margaritamargenat.com]</div>
+        <div class="cmeta"><span class="k">Email</span>margaritamp99@gmail.com</div>
         <div class="cmeta"><span class="k">Consulta</span>Barcelona · Presencial i online</div>
         <div class="cmeta"><span class="k">Instagram</span>@margaritapsicologia</div>
       </div>
-      <a href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener" class="wa">
+      <a href="https://wa.me/34639664982" target="_blank" rel="noopener" class="wa">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.9.529 3.678 1.446 5.19L2 22l4.943-1.416A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.32-1.267l-.31-.184-3.211.918.905-3.302-.202-.322A7.96 7.96 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
         Escriu-me per WhatsApp
       </a>
