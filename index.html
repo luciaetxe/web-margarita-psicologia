@@ -8,10 +8,13 @@
   <meta name="keywords" content="psicóloga Barcelona, psicoterapeuta Barcelona, terapia individual, terapia infantil, terapia familiar, psicóloga online, terapia Barcelona">
   <meta name="author" content="Margarita Margenat">
   <meta name="robots" content="index, follow">
-  <meta name="language" content="Spanish">
 
-  <!-- IMPORTANTE: sustituir por el dominio final cuando lo tengáis -->
+  <!-- IMPORTANTE: sustituir margaritamargenat.com por el dominio final cuando lo tengáis -->
   <link rel="canonical" href="https://www.margaritamargenat.com/">
+  <link rel="alternate" hreflang="es" href="https://www.margaritamargenat.com/">
+  <link rel="alternate" hreflang="ca" href="https://www.margaritamargenat.com/ca/">
+  <link rel="alternate" hreflang="en" href="https://www.margaritamargenat.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://www.margaritamargenat.com/">
 
   <!-- SEO local -->
   <meta name="geo.region" content="ES-CT">
@@ -27,6 +30,8 @@
   <meta property="og:image" content="https://www.margaritamargenat.com/margarita.jpeg">
   <meta property="og:url" content="https://www.margaritamargenat.com/">
   <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="ca_ES">
+  <meta property="og:locale:alternate" content="en_US">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -40,6 +45,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
 
   <script type="application/ld+json">
   {
@@ -50,16 +56,10 @@
     "image": "https://www.margaritamargenat.com/margarita.jpeg",
     "url": "https://www.margaritamargenat.com/",
     "priceRange": "€€",
+    "inLanguage": "es",
     "knowsLanguage": ["es", "ca", "en"],
-    "areaServed": [
-      { "@type": "City", "name": "Barcelona" }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Barcelona",
-      "addressRegion": "Barcelona",
-      "addressCountry": "ES"
-    },
+    "areaServed": [{ "@type": "City", "name": "Barcelona" }],
+    "address": { "@type": "PostalAddress", "addressLocality": "Barcelona", "addressRegion": "Barcelona", "addressCountry": "ES" },
     "sameAs": ["https://instagram.com/margaritapsicologia"],
     "makesOffer": [
       { "@type": "Offer", "price": "120", "priceCurrency": "EUR", "itemOffered": { "@type": "Service", "name": "Terapia individual para adultos" } },
@@ -68,312 +68,26 @@
     ]
   }
   </script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bone:     #f6f1e9;
-      --bone-2:   #efe7da;
-      --cream:    #fbf8f2;
-      --ink:      #221e1a;
-      --ink-soft: #4c443c;
-      --muted:    #8c8073;
-      --clay:     #5f7d6b;
-      --clay-dk:  #4c6857;
-      --clay-tint:#e3ede6;
-      --line:     #ddd2c2;
-      --line-dk:  #cabfac;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--ink);
-      background: var(--bone);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.7;
-    }
-
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 2.5rem; }
-
-    /* ── TYPE HELPERS ─────────────────────────── */
-    .eyebrow {
-      font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--muted); font-weight: 500;
-      display: inline-flex; align-items: center; gap: 0.9rem;
-    }
-    .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--clay); }
-    .display {
-      font-family: 'Fraunces', serif;
-      font-weight: 380; line-height: 1.04; letter-spacing: -0.02em; color: var(--ink);
-    }
-    .display em { font-style: italic; font-weight: 340; color: var(--clay); }
-
-    /* ── NAV ─────────────────────────────────────── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.6rem 2.5rem;
-      transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(246,241,233,0.9); backdrop-filter: blur(14px);
-      box-shadow: 0 1px 0 var(--line); padding: 1.1rem 2.5rem;
-    }
-    .nav-logo {
-      font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 460;
-      letter-spacing: 0.01em; color: var(--ink); text-decoration: none;
-    }
-    .nav-logo span { color: var(--muted); font-weight: 400; font-size: 0.82rem; font-family: 'Inter', sans-serif; }
-    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase;
-      font-weight: 500; color: var(--ink-soft); text-decoration: none;
-      position: relative; transition: color 0.25s;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1px;
-      background: var(--clay); transition: width 0.28s ease;
-    }
-    .nav-links a:hover { color: var(--clay); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-cta {
-      font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase;
-      font-weight: 500; color: var(--clay); text-decoration: none;
-      border: 1px solid var(--clay); border-radius: 40px; padding: 0.55rem 1.3rem;
-      transition: background 0.25s, color 0.25s;
-    }
-    .nav-cta:hover { background: var(--clay); color: var(--cream); }
-
-    /* ── HERO ─────────────────────────────────────── */
-    .hero { padding: 11rem 0 6rem; }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 4.5rem; align-items: center; }
-    .hero-eyebrow { margin-bottom: 2rem; }
-    .hero-title { font-size: clamp(2.9rem, 6vw, 5rem); margin-bottom: 2rem; }
-    .hero-lead {
-      font-size: 1.08rem; color: var(--ink-soft); line-height: 1.85;
-      max-width: 30rem; margin-bottom: 2.6rem; font-weight: 300;
-    }
-    .hero-actions { display: flex; align-items: center; gap: 2.2rem; flex-wrap: wrap; }
-    .btn-solid {
-      display: inline-flex; align-items: center; gap: 0.7rem;
-      background: var(--ink); color: var(--cream); text-decoration: none;
-      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
-      padding: 1.05rem 2.1rem; border-radius: 40px; transition: background 0.3s, transform 0.3s;
-    }
-    .btn-solid:hover { background: var(--clay); transform: translateY(-2px); }
-    .hero-reassure { font-size: 0.86rem; color: var(--muted); margin-top: 1.2rem; font-style: italic; font-family: 'Fraunces', serif; }
-
-    .hero-figure { position: relative; }
-    .hero-figure img {
-      width: 100%; aspect-ratio: 4/5; object-fit: cover;
-      border-radius: 4px; display: block; filter: grayscale(1) contrast(1.02);
-    }
-    .hero-figure::after {
-      content: ''; position: absolute; inset: 0;
-      border: 1px solid rgba(255,255,255,0.35); border-radius: 4px;
-      transform: translate(16px, 16px); z-index: -1; background: var(--bone-2);
-    }
-    .hero-cap {
-      position: absolute; left: -1px; bottom: 1.4rem;
-      background: var(--cream); padding: 0.7rem 1.2rem;
-      font-family: 'Fraunces', serif; font-style: italic; font-size: 0.95rem; color: var(--ink);
-      box-shadow: 0 8px 30px rgba(60,40,20,0.08);
-    }
-    .hero-cap span { color: var(--clay); font-style: normal; font-family: 'Inter'; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-top: 2px; }
-
-    /* ── SECTION SHELL ─────────────────────────────── */
-    section.block { padding: 7rem 0; }
-    .sec-head { max-width: 40rem; margin-bottom: 3.5rem; }
-    .sec-head .eyebrow { margin-bottom: 1.4rem; }
-    .sec-title { font-size: clamp(2rem, 4.2vw, 3.1rem); margin-bottom: 1.4rem; }
-    .sec-intro { color: var(--ink-soft); font-size: 1.05rem; font-weight: 300; line-height: 1.85; }
-
-    /* ── SOBRE MÍ ─────────────────────────────────── */
-    .about { background: var(--cream); }
-    .about-head { max-width: 44rem; }
-    .about-head .eyebrow { margin-bottom: 1.8rem; }
-    .about-intro {
-      font-family: 'Fraunces', serif; font-weight: 340; font-size: clamp(1.35rem, 2.4vw, 1.7rem);
-      line-height: 1.5; color: var(--ink-soft);
-    }
-    .about-statement {
-      text-align: center; max-width: 52rem; margin: 5rem auto; padding: 0 1rem;
-    }
-    .about-statement .line1 {
-      font-family: 'Fraunces', serif; font-weight: 380; font-size: clamp(1.9rem, 4vw, 3rem);
-      line-height: 1.2; letter-spacing: -0.01em; color: var(--ink);
-    }
-    .about-arrow { color: var(--clay); font-size: 1.8rem; line-height: 1; margin: 1.4rem 0; }
-    .about-statement .line2 {
-      font-family: 'Fraunces', serif; font-style: italic; font-weight: 340; font-size: clamp(1.4rem, 2.8vw, 2.1rem);
-      line-height: 1.3; color: var(--clay);
-    }
-    .about-close { max-width: 44rem; }
-    .about-close p { color: var(--ink-soft); font-weight: 300; font-size: 1.1rem; line-height: 1.85; margin-bottom: 2rem; }
-    .about-affirm { display: flex; flex-wrap: wrap; gap: 1rem 2.2rem; margin-bottom: 2.2rem; }
-    .about-affirm span {
-      font-family: 'Fraunces', serif; font-size: 1.15rem; color: var(--ink);
-      display: inline-flex; align-items: center; gap: 0.7rem;
-    }
-    .about-affirm span::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--clay); }
-    .about-enfoque { font-size: 1rem; color: var(--ink-soft); }
-    .about-enfoque b { color: var(--ink); font-weight: 500; }
-
-    /* ── SERVICIOS (numbered editorial list) ───────── */
-    .services-list { border-top: 1px solid var(--line-dk); }
-    .service {
-      display: grid; grid-template-columns: 5.5rem 1fr auto; gap: 2rem;
-      align-items: baseline; padding: 2.4rem 1rem 2.4rem 0;
-      border-bottom: 1px solid var(--line-dk); text-decoration: none; color: inherit;
-      transition: padding 0.35s ease, background 0.35s ease;
-    }
-    .service:hover { padding-left: 1.4rem; background: var(--cream); }
-    .service-num { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 400; color: var(--muted); transition: color 0.35s; }
-    .service:hover .service-num { color: var(--clay); }
-    .service-main h3 { font-family: 'Fraunces', serif; font-weight: 420; font-size: 1.7rem; line-height: 1.2; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
-    .service-main p { color: var(--ink-soft); font-weight: 300; font-size: 1rem; max-width: 38rem; }
-    .service-main ul { list-style: none; margin-top: 0.7rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
-    .service-main li { font-size: 0.92rem; color: var(--ink-soft); font-weight: 300; display: inline-flex; align-items: center; gap: 0.5rem; }
-    .service-main li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--clay); }
-    .service-meta { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); white-space: nowrap; padding-top: 0.5rem; }
-
-    /* ── PROCESO (dark block) ──────────────────────── */
-    .process { background: var(--ink); color: var(--cream); }
-    .process .eyebrow { color: rgba(255,255,255,0.55); }
-    .process .eyebrow::before { background: var(--clay); }
-    .process .sec-title { color: var(--cream); }
-    .process .sec-intro { color: rgba(255,255,255,0.65); }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 1rem; }
-    .step { padding: 2.5rem 2rem 2.5rem 0; border-top: 1px solid rgba(255,255,255,0.16); }
-    .step:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.12); padding-right: 2.5rem; }
-    .step:not(:first-child) { padding-left: 2.5rem; }
-    .step-num { font-family: 'Fraunces', serif; font-style: italic; font-size: 2.6rem; color: var(--clay); font-weight: 340; margin-bottom: 1.1rem; line-height: 1; }
-    .step h4 { font-family: 'Fraunces', serif; font-weight: 440; font-size: 1.25rem; margin-bottom: 0.7rem; }
-    .step p { color: rgba(255,255,255,0.62); font-weight: 300; font-size: 0.95rem; line-height: 1.75; }
-    .step .tag { display: inline-block; margin-top: 0.9rem; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--clay); border: 1px solid rgba(176,96,63,0.5); border-radius: 30px; padding: 0.3rem 0.8rem; }
-
-    /* ── FORMATO ───────────────────────────────────── */
-    .mode { background: var(--cream); }
-    .mode-grid { display: grid; grid-template-columns: 1fr 1fr; }
-    .mode-col { padding: 0 3rem; }
-    .mode-col:first-child { padding-left: 0; border-right: 1px solid var(--line-dk); }
-    .mode-col:last-child { padding-right: 0; }
-    .mode-col .m-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.7rem; }
-    .m-rec { background: var(--clay); color: var(--cream); border-radius: 30px; padding: 0.2rem 0.7rem; letter-spacing: 0.1em; }
-    .mode-col h3 { font-family: 'Fraunces', serif; font-weight: 420; font-size: 1.9rem; margin-bottom: 1rem; }
-    .mode-col p { color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.8; }
-
-    /* ── PRECIOS ───────────────────────────────────── */
-    .prices { background: var(--bone-2); }
-    .price-list { border-top: 1px solid var(--line-dk); }
-    .price-row {
-      display: grid; grid-template-columns: 1fr auto auto; gap: 2rem; align-items: baseline;
-      padding: 1.9rem 0; border-bottom: 1px solid var(--line-dk);
-    }
-    .price-row h3 { font-family: 'Fraunces', serif; font-weight: 440; font-size: 1.5rem; }
-    .price-dur { font-size: 0.9rem; color: var(--muted); letter-spacing: 0.02em; }
-    .price-amt { font-family: 'Fraunces', serif; font-size: 1.6rem; color: var(--clay); font-weight: 400; white-space: nowrap; }
-    .price-amt.soft { font-size: 1rem; font-style: italic; color: var(--ink-soft); }
-
-    .value {
-      margin-top: 2.8rem; background: var(--cream); border-left: 3px solid var(--clay);
-      border-radius: 0 8px 8px 0; padding: 2rem 2.2rem;
-      display: flex; gap: 1.4rem; align-items: flex-start;
-    }
-    .value svg { width: 26px; height: 26px; color: var(--clay); flex-shrink: 0; margin-top: 2px; }
-    .value .v-label { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.5rem; }
-    .value h4 { font-family: 'Fraunces', serif; font-weight: 440; font-size: 1.25rem; margin-bottom: 0.5rem; }
-    .value p { color: var(--ink-soft); font-weight: 300; font-size: 0.98rem; line-height: 1.8; max-width: 46rem; }
-
-    /* ── CONTACTO ──────────────────────────────────── */
-    .contact { background: var(--ink); color: var(--cream); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    .contact .eyebrow { color: rgba(255,255,255,0.55); margin-bottom: 1.4rem; }
-    .contact-title { font-family: 'Fraunces', serif; font-weight: 380; font-size: clamp(2rem,3.6vw,2.8rem); line-height: 1.1; margin-bottom: 1.6rem; }
-    .contact-title em { font-style: italic; color: var(--clay); }
-    .contact-lead { color: rgba(255,255,255,0.68); font-weight: 300; line-height: 1.85; margin-bottom: 2.4rem; max-width: 26rem; }
-    .contact-meta { display: flex; flex-direction: column; gap: 0; }
-    .cmeta { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,0.14); font-size: 0.95rem; color: rgba(255,255,255,0.85); }
-    .cmeta:last-child { border-bottom: 1px solid rgba(255,255,255,0.14); }
-    .cmeta .k { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); width: 5.5rem; flex-shrink: 0; }
-    .wa {
-      display: inline-flex; align-items: center; gap: 0.7rem; margin-top: 2.2rem;
-      background: var(--clay); color: var(--cream); text-decoration: none;
-      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
-      padding: 1rem 2rem; border-radius: 40px; transition: background 0.3s, transform 0.3s;
-    }
-    .wa:hover { background: var(--clay-dk); transform: translateY(-2px); }
-    .wa svg { width: 18px; height: 18px; }
-
-    form .fg { margin-bottom: 1.8rem; }
-    form label { display: block; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.7rem; }
-    form input, form textarea {
-      width: 100%; background: transparent; border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.25);
-      color: var(--cream); font-family: 'Inter', sans-serif; font-size: 1rem;
-      padding: 0.6rem 0; transition: border-color 0.3s;
-    }
-    form input::placeholder, form textarea::placeholder { color: rgba(255,255,255,0.3); }
-    form input:focus, form textarea:focus { outline: none; border-color: var(--clay); }
-    form textarea { resize: vertical; min-height: 90px; }
-    form button {
-      margin-top: 0.6rem; width: 100%; cursor: pointer; border: none;
-      background: var(--cream); color: var(--ink);
-      font-family: 'Inter', sans-serif; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
-      padding: 1.05rem; border-radius: 40px; transition: background 0.3s, color 0.3s;
-    }
-    form button:hover { background: var(--clay); color: var(--cream); }
-
-    /* ── FOOTER ────────────────────────────────────── */
-    footer { background: var(--ink); color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.1); }
-    .footer-in { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2.4rem 0; font-size: 0.8rem; }
-    .footer-in .fname { font-family: 'Fraunces', serif; font-size: 1rem; color: rgba(255,255,255,0.75); }
-    footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
-    footer a:hover { color: var(--clay); }
-
-    /* ── FADE IN ───────────────────────────────────── */
-    .fade { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease, transform 0.9s ease; }
-    .fade.in { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ────────────────────────────────── */
-    @media (max-width: 860px) {
-      .wrap { padding: 0 1.5rem; }
-      nav { padding: 1.2rem 1.5rem; }
-      .nav-links, .nav-cta { display: none; }
-      .hero { padding: 8rem 0 4rem; }
-      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .hero-figure { order: -1; max-width: 340px; }
-      .about-statement { margin: 3.5rem auto; }
-      .steps { grid-template-columns: 1fr; }
-      .step, .step:not(:last-child), .step:not(:first-child) { padding: 2rem 0; border-right: none; }
-      .mode-grid { grid-template-columns: 1fr; }
-      .mode-col, .mode-col:first-child, .mode-col:last-child { padding: 2.5rem 0; border-right: none; border-top: 1px solid var(--line-dk); }
-      .mode-col:first-child { border-top: none; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .service { grid-template-columns: 3rem 1fr; }
-      .service-meta { display: none; }
-      .price-row { grid-template-columns: 1fr auto; row-gap: 0.4rem; }
-      .price-dur { grid-column: 1 / -1; order: 3; }
-    }
-    @media (max-width: 500px) {
-      section.block { padding: 4.5rem 0; }
-      .service:hover { padding-left: 0.4rem; }
-    }
-  </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="nav">
   <a href="#top" class="nav-logo">Margarita Margenat <span>· Psicóloga</span></a>
-  <ul class="nav-links">
-    <li><a href="#sobre">Sobre mí</a></li>
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#proceso">Cómo trabajo</a></li>
-    <li><a href="#precios">Precios</a></li>
-  </ul>
-  <a href="#contacto" class="nav-cta">Contáctame</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Cómo trabajo</a></li>
+      <li><a href="#precios">Precios</a></li>
+    </ul>
+    <div class="nav-lang">
+      <a href="/" class="active" aria-current="page">ES</a><span class="sep">·</span>
+      <a href="/ca/">CA</a><span class="sep">·</span>
+      <a href="/en/">EN</a>
+    </div>
+    <a href="#contacto" class="nav-cta">Contáctame</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -389,7 +103,7 @@
       <p class="hero-reassure">Nos conocemos y decidimos juntas, sin compromiso, si puedo ayudarte.</p>
     </div>
     <figure class="hero-figure">
-      <img src="margarita.jpeg" alt="Margarita Margenat, psicóloga en Barcelona" width="440" height="550" loading="eager">
+      <img src="/margarita.jpeg" alt="Margarita Margenat, psicóloga en Barcelona" width="440" height="550" loading="eager">
       <figcaption class="hero-cap">Margarita Margenat<span>Psicóloga · Psicoterapeuta</span></figcaption>
     </figure>
   </div>
@@ -597,26 +311,6 @@
   </div>
 </footer>
 
-<script>
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
-
-  document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    const subject = encodeURIComponent('Contacto desde la web - ' + name);
-    const body = encodeURIComponent('Nombre: ' + name + '\nEmail: ' + email + '\n\n' + message);
-    window.location.href = 'mailto:REPLACE_WITH_EMAIL?subject=' + subject + '&body=' + body;
-  });
-</script>
+<script src="/main.js"></script>
 </body>
 </html>
