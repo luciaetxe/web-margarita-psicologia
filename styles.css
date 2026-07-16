@@ -123,7 +123,7 @@ section.block { padding: 7rem 0; }
 /* ── SOBRE MÍ ─────────────────────────────────── */
 .about { background: var(--cream); }
 .about-top { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 4rem; align-items: center; margin-bottom: 3.5rem; }
-.about-portrait img { width: 100%; max-width: 360px; aspect-ratio: 4/5; object-fit: cover; border-radius: 4px; filter: grayscale(1) contrast(1.02); display: block; }
+.about-portrait img { width: 100%; max-width: 360px; height: auto; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; filter: grayscale(1) contrast(1.02); display: block; }
 .about-head { max-width: 44rem; }
 .about-head .eyebrow { margin-bottom: 1.8rem; }
 .about-intro {
