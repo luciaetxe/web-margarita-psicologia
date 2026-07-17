@@ -262,6 +262,12 @@ form button {
   padding: 1.05rem; border-radius: 40px; transition: background 0.3s, color 0.3s;
 }
 form button:hover { background: var(--clay); color: var(--cream); }
+.form-wa { display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 1rem; width: 100%; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); color: var(--cream); font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; padding: 1rem; border-radius: 40px; transition: background 0.3s, border-color 0.3s; }
+.form-wa:hover { background: var(--clay); border-color: var(--clay); }
+.form-wa svg { width: 18px; height: 18px; }
+.about-cta { margin-top: 2.6rem; }
+.footer-contact { display: inline-flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+.footer-contact .dot { color: rgba(255,255,255,0.3); }
 
 /* ── FOOTER ────────────────────────────────────── */
 footer { background: var(--ink); color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.1); }
