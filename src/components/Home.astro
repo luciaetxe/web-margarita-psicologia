@@ -1,0 +1,146 @@
+---
+import { getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import { base, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
+import precios from '../data/precios.json';
+import retiros from '../data/retiros.json';
+import heroWide from '../assets/hero-wide.jpg';
+import heroTall from '../assets/hero-tall.jpg';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = dicts[lang];
+
+// Hero con dirección de arte: recorte apaisado en escritorio, vertical en móvil.
+const wideAvif = await getImage({ src: heroWide, format: 'avif', widths: [1200, 1800, 2600], sizes: '100vw' });
+const wideWebp = await getImage({ src: heroWide, format: 'webp', widths: [1200, 1800, 2600], sizes: '100vw' });
+const wideJpg  = await getImage({ src: heroWide, format: 'jpg', width: 1800 });
+const tallAvif = await getImage({ src: heroTall, format: 'avif', widths: [600, 900, 1200], sizes: '100vw' });
+const tallWebp = await getImage({ src: heroTall, format: 'webp', widths: [600, 900, 1200], sizes: '100vw' });
+const site = Astro.site!.toString().replace(/\/$/, '');
+const wa = waLink(t.wa.msg);
+const nextRetiro = retiros.find((r) => r.upcoming);
+const eur = (n: number) => (lang === 'en' ? `€${n}` : `${n} €`);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Psychologist',
+  name: 'Margarita Margenat',
+  description: t.meta.description,
+  image: `${site}/margarita.jpeg`,
+  url: `${site}${base(lang)}`,
+  email: EMAIL,
+  telephone: '+34639664982',
+  priceRange: '€€',
+  areaServed: { '@type': 'Country', name: 'España' },
+  availableLanguage: ['es', 'ca', 'en'],
+  knowsAbout: ['ansiedad', 'autoestima', 'autoexigencia', 'relaciones', 'terapia online'],
+  sameAs: [`https://instagram.com/${INSTAGRAM}`],
+  makesOffer: precios.flatMap((p) =>
+    p.variants.filter((v) => v.price).map((v) => ({
+      '@type': 'Offer', price: String(v.price), priceCurrency: 'EUR',
+      itemOffered: { '@type': 'Service', name: `${p.name.es} · ${v.dur.es}`, serviceType: 'Terapia online' },
+    }))
+  ),
+};
+---
+<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} jsonLd={jsonLd}>
+
+  <!-- 1 · Cartel -->
+  <section class="hero" id="inicio">
+    <div class="hero-media" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 900px)" type="image/avif" srcset={tallAvif.srcSet.attribute} sizes="100vw" />
+        <source media="(max-width: 900px)" type="image/webp" srcset={tallWebp.srcSet.attribute} sizes="100vw" />
+        <source type="image/avif" srcset={wideAvif.srcSet.attribute} sizes="100vw" />
+        <source type="image/webp" srcset={wideWebp.srcSet.attribute} sizes="100vw" />
+        <img src={wideJpg.src} width={wideJpg.attributes.width} height={wideJpg.attributes.height} alt="" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
+    </div>
+    <div class="wrap hero-inner">
+      <span class="caps hero-kicker">{t.hero.kicker}</span>
+      <h1 class="hero-title">{t.hero.t1}<em>{t.hero.em}</em>{t.hero.t2}</h1>
+      <p class="hero-sub">{t.hero.sub}</p>
+      <div class="hero-actions">
+        <a href={wa} target="_blank" rel="noopener" class="btn btn-light">{t.hero.cta}</a>
+        <a href="#empezamos" class="link link-light">{t.hero.cta2}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · ¿Te reconoces? -->
+  <section class="block" id="reconoces">
+    <div class="wrap narrow">
+      <h2 class="title">{t.reconoces.title}</h2>
+      <ul class="lines fade">
+        {t.reconoces.items.map((it) => (
+          <li><span class="caps">{it.tag}</span><p>{it.text}</p></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 · La frase -->
+  <section class="block sky statement" id="enfoque">
+    <div class="wrap narrow fade">
+      <p class="big">{t.statement.big}</p>
+      <p class="em">{t.statement.em}</p>
+      <p class="close">{t.statement.close}</p>
+      <a href={wa} target="_blank" rel="noopener" class="btn btn-primary">{t.statement.cta}</a>
+    </div>
+  </section>
+
+  <!-- 4 · Cómo empezamos + tarifas -->
+  <section class="block" id="empezamos">
+    <div class="wrap narrow">
+      <h2 class="title">{t.empezamos.title}</h2>
+      <ul class="lines fade">
+        {t.empezamos.steps.map((s) => <li><p>{s}</p></li>)}
+      </ul>
+      <h3 class="subtitle">{t.empezamos.tarifas}</h3>
+      <dl class="prices fade">
+        {precios.flatMap((p) => p.variants.map((v) => (
+          <div>
+            <dt>{p.name[lang]} <span>· {v.dur[lang]}</span></dt>
+            <dd>{v.price ? eur(v.price) : <em>{t.empezamos.consult}</em>}</dd>
+          </div>
+        )))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- 5 · Margarita -->
+  <section class="block sand" id="margarita">
+    <div class="wrap narrow about fade">
+      <img src="/margarita.jpeg" alt={t.sobremi.alt} width="776" height="776" loading="lazy" />
+      <div>
+        <h2 class="title">{t.sobremi.title}</h2>
+        <p>{t.sobremi.p1}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Próximo retiro -->
+  {nextRetiro && (
+    <section class="block sky retiro" id="retiro">
+      <div class="wrap narrow fade">
+        <span class="caps">{t.retiro.label} · {nextRetiro.kind[lang]}</span>
+        <h2 class="title">{nextRetiro.name}</h2>
+        <p class="date">{nextRetiro.date[lang]}</p>
+        <p class="notes">{nextRetiro.notes[lang]}</p>
+        <a href={nextRetiro.url} target="_blank" rel="noopener" class="btn btn-primary">{t.retiro.cta}</a>
+      </div>
+    </section>
+  )}
+
+  <!-- Cierre -->
+  <section class="block sea cierre" id="contacto">
+    <div class="wrap narrow">
+      <h2 class="title">{t.cierre.title}</h2>
+      <p>{t.cierre.sub}</p>
+      <a href={wa} target="_blank" rel="noopener" class="btn btn-light"><WhatsAppIcon /> {t.cierre.cta}</a>
+    </div>
+  </section>
+
+</Base>
