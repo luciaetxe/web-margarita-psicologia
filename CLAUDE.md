@@ -31,8 +31,10 @@ Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica n
 }
 ```
 - Display: Instrument Serif (o Fraunces); títulos grandes, interlineado ajustado, una palabra en cursiva en color mar. Texto: Inter 400/500. `font-display: swap` + preconnect.
-- Hero: retrato b/n de Margarita a gran tamaño. Sin vídeo.
-- Layout: mucho aire, ancho de lectura 65-72 caracteres, secciones alternando arena y cielo, numeración editorial 01/02…
+- Hero: foto de cielo/mar de la Costa Brava hecha por Margarita (`src/assets/ocell.jpg`, gaviota) con el titular encima. **Su retrato NO va en el hero**: solo en "Sobre mí". Sin vídeo. `costa.jpg` reservada para retiros.
+- Layout: mucho aire, ancho de lectura 65-72 caracteres, secciones alternando arena, cielo y arena-cartel.
+- **Menos es más (feedback de Lucía, sept 2026):** nada de numeración de secciones (01, 02…), nada de etiquetas de sección, nada de párrafos de intro bajo cada título, nada de enumeraciones largas. Cada bloque cabe en una pantalla y tiene un solo trabajo. Si falta información (formación, testimonios), el bloque no se muestra: no se ponen placeholders visibles.
+- Home = cinco bloques: cartel · ¿Te reconoces? · la frase ("No eres tú…") · cómo empezamos + tarifas · Margarita (foto) — y un cierre con botón.
 - Nada de botones píldora, tarjetas en cuadrícula ni cajas decorativas. Contraste AA mínimo.
 
 ## Datos fijos
