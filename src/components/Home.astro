@@ -1,15 +1,23 @@
 ---
-import { Picture } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import WhatsAppIcon from './WhatsAppIcon.astro';
 import { base, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
 import precios from '../data/precios.json';
 import retiros from '../data/retiros.json';
-import ocell from '../assets/ocell.jpg';
+import heroWide from '../assets/hero-wide.jpg';
+import heroTall from '../assets/hero-tall.jpg';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = dicts[lang];
+
+// Hero con dirección de arte: recorte apaisado en escritorio, vertical en móvil.
+const wideAvif = await getImage({ src: heroWide, format: 'avif', widths: [1200, 1800, 2600], sizes: '100vw' });
+const wideWebp = await getImage({ src: heroWide, format: 'webp', widths: [1200, 1800, 2600], sizes: '100vw' });
+const wideJpg  = await getImage({ src: heroWide, format: 'jpg', width: 1800 });
+const tallAvif = await getImage({ src: heroTall, format: 'avif', widths: [600, 900, 1200], sizes: '100vw' });
+const tallWebp = await getImage({ src: heroTall, format: 'webp', widths: [600, 900, 1200], sizes: '100vw' });
 const site = Astro.site!.toString().replace(/\/$/, '');
 const wa = waLink(t.wa.msg);
 const nextRetiro = retiros.find((r) => r.upcoming);
@@ -42,7 +50,13 @@ const jsonLd = {
   <!-- 1 · Cartel -->
   <section class="hero" id="inicio">
     <div class="hero-media" aria-hidden="true">
-      <Picture src={ocell} widths={[720, 1200, 1800]} sizes="100vw" formats={['avif', 'webp']} alt="" loading="eager" fetchpriority="high" />
+      <picture>
+        <source media="(max-width: 900px)" type="image/avif" srcset={tallAvif.srcSet.attribute} sizes="100vw" />
+        <source media="(max-width: 900px)" type="image/webp" srcset={tallWebp.srcSet.attribute} sizes="100vw" />
+        <source type="image/avif" srcset={wideAvif.srcSet.attribute} sizes="100vw" />
+        <source type="image/webp" srcset={wideWebp.srcSet.attribute} sizes="100vw" />
+        <img src={wideJpg.src} width={wideJpg.attributes.width} height={wideJpg.attributes.height} alt="" loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
     </div>
     <div class="wrap hero-inner">
       <span class="caps hero-kicker">{t.hero.kicker}</span>
