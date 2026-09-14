@@ -73,7 +73,7 @@
   }
   </script>
 </head>
-<body>
+<body class="has-video-hero">
 
 <!-- NAV -->
 <nav id="nav">
@@ -85,7 +85,7 @@
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#proceso">Cómo trabajo</a></li>
       <li><a href="#precios">Precios</a></li>
-      <li><a href="#recursos">Recursos</a></li>
+      <li><a href="/recursos/">Recursos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="nav-lang">
@@ -98,6 +98,12 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
+  <div class="hero-media" aria-hidden="true">
+    <video autoplay muted loop playsinline poster="/hero-poster.jpg">
+      <source src="/hero.webm" type="video/webm">
+      <source src="/hero.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="wrap">
     <span class="caps hero-kicker">Psicóloga y psicoterapeuta · Sesiones online desde Barcelona</span>
     <h1 class="hero-title">Un espacio para <em>escucharte</em> y acompañarte</h1>
@@ -210,17 +216,14 @@
   <div class="wrap sec-grid">
     <span class="caps sec-label"><span class="num">04</span>Precios</span>
     <div>
-      <h2 class="sec-title">Tarifas claras</h2>
+      <h2 class="sec-title">Tarifas</h2>
       <div class="prices-table fade">
-        <div class="price">
+        <div class="price price-adults">
           <span class="price-name">Adultos</span>
-          <span class="price-dur">1 h 30 min</span>
-          <span class="price-amt">120 €</span>
-        </div>
-        <div class="price">
-          <span class="price-name">Adultos</span>
-          <span class="price-dur">1 h</span>
-          <span class="price-amt">80 €</span>
+          <div class="price-variants">
+            <span class="price-dur">1 h 30 min</span><span class="price-amt">120 €</span>
+            <span class="price-dur">1 h</span><span class="price-amt">80 €</span>
+          </div>
         </div>
         <div class="price">
           <span class="price-name">Infantil</span>
@@ -241,21 +244,10 @@
   </div>
 </section>
 
-<!-- RECURSOS -->
-<section class="sec recursos" id="recursos">
-  <div class="wrap sec-grid">
-    <span class="caps sec-label"><span class="num">05</span>Recursos</span>
-    <div>
-      <h2 class="sec-title">Recursos terapéuticos</h2>
-      <p>Ejercicios de respiración, consejos y herramientas sencillas para el día a día. Muy pronto.</p>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACTO -->
 <section class="sec" id="contacto">
   <div class="wrap sec-grid">
-    <span class="caps sec-label"><span class="num">06</span>Contacto</span>
+    <span class="caps sec-label"><span class="num">05</span>Contacto</span>
     <div class="contact-grid">
       <div>
         <h2 class="sec-title">Agenda tu <em>llamada gratuita</em></h2>

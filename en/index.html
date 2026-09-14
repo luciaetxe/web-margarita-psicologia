@@ -73,7 +73,7 @@
   }
   </script>
 </head>
-<body>
+<body class="has-video-hero">
 
 <!-- NAV -->
 <nav id="nav">
@@ -85,7 +85,7 @@
       <li><a href="#servicios">Services</a></li>
       <li><a href="#proceso">How I work</a></li>
       <li><a href="#precios">Pricing</a></li>
-      <li><a href="#recursos">Resources</a></li>
+      <li><a href="/recursos/">Resources</a></li>
       <li><a href="#contacto">Contact</a></li>
     </ul>
     <div class="nav-lang">
@@ -98,6 +98,12 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
+  <div class="hero-media" aria-hidden="true">
+    <video autoplay muted loop playsinline poster="/hero-poster.jpg">
+      <source src="/hero.webm" type="video/webm">
+      <source src="/hero.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="wrap">
     <span class="caps hero-kicker">Psychologist &amp; psychotherapist · Online sessions from Barcelona</span>
     <h1 class="hero-title">A space to <em>listen</em> and support you</h1>
@@ -210,17 +216,14 @@
   <div class="wrap sec-grid">
     <span class="caps sec-label"><span class="num">04</span>Pricing</span>
     <div>
-      <h2 class="sec-title">Clear pricing</h2>
+      <h2 class="sec-title">Pricing</h2>
       <div class="prices-table fade">
-        <div class="price">
+        <div class="price price-adults">
           <span class="price-name">Adults</span>
-          <span class="price-dur">1 hr 30 min</span>
-          <span class="price-amt">€120</span>
-        </div>
-        <div class="price">
-          <span class="price-name">Adults</span>
-          <span class="price-dur">1 hr</span>
-          <span class="price-amt">€80</span>
+          <div class="price-variants">
+            <span class="price-dur">1 hr 30 min</span><span class="price-amt">€120</span>
+            <span class="price-dur">1 hr</span><span class="price-amt">€80</span>
+          </div>
         </div>
         <div class="price">
           <span class="price-name">Children</span>
@@ -241,21 +244,10 @@
   </div>
 </section>
 
-<!-- RESOURCES -->
-<section class="sec recursos" id="recursos">
-  <div class="wrap sec-grid">
-    <span class="caps sec-label"><span class="num">05</span>Resources</span>
-    <div>
-      <h2 class="sec-title">Therapeutic resources</h2>
-      <p>Breathing exercises, tips and simple tools for everyday life. Coming soon.</p>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section class="sec" id="contacto">
   <div class="wrap sec-grid">
-    <span class="caps sec-label"><span class="num">06</span>Contact</span>
+    <span class="caps sec-label"><span class="num">05</span>Contact</span>
     <div class="contact-grid">
       <div>
         <h2 class="sec-title">Book your <em>free call</em></h2>

@@ -3,6 +3,12 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
+const heroVideo = document.querySelector('.hero-media video');
+if (heroVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  heroVideo.removeAttribute('autoplay');
+  heroVideo.pause();
+}
+
 const toggle = nav.querySelector('.nav-toggle');
 if (toggle) {
   toggle.addEventListener('click', () => {
