@@ -10,9 +10,9 @@ export const es = {
   wa: { msg: 'Hola Margarita, me gustaría reservar la llamada de valoración gratuita.', float: 'Escribir por WhatsApp' },
   hero: {
     kicker: '¿Te exiges demasiado?',
-    t1: 'Dejar de ser tu peor ',
+    t1: 'Deja de ser tu peor ',
     em: 'enemiga',
-    t2: ' y volver a confiar en ti',
+    t2: ' y vuelve a confiar en ti',
     sub: 'Psicóloga online. Ansiedad, autoestima y relaciones.',
     cta: 'Reservar llamada gratuita',
     cta2: 'Cómo empezamos',
@@ -45,10 +45,9 @@ export const es = {
   sobremi: {
     title: 'Soy Margarita',
     p1: 'Psicóloga y psicoterapeuta. Trabajo online con personas que se exigen demasiado y viven pendientes de los demás. Sé lo que es, y sé que se puede vivir de otra manera.',
-    retiros: 'También organizo retiros de mujeres.',
-    next: 'Próximo',
     alt: 'Margarita Margenat',
   },
+  retiro: { label: 'Próximo retiro', cta: 'Ver el retiro' },
   cierre: { title: '¿Empezamos?', sub: 'Una llamada gratuita, sin compromiso.', cta: 'Reservar por WhatsApp' },
   footer: { role: 'Psicóloga y psicoterapeuta · Online' },
 };

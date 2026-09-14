@@ -11,9 +11,9 @@ export const ca: Dict = {
   wa: { msg: "Hola Margarita, m'agradaria reservar la trucada de valoració gratuïta.", float: 'Escriure per WhatsApp' },
   hero: {
     kicker: "T'exigeixes massa?",
-    t1: 'Deixar de ser la teva pitjor ',
+    t1: 'Deixa de ser la teva pitjor ',
     em: 'enemiga',
-    t2: ' i tornar a confiar en tu',
+    t2: ' i torna a confiar en tu',
     sub: 'Psicòloga online. Ansietat, autoestima i relacions.',
     cta: 'Reservar trucada gratuïta',
     cta2: 'Com comencem',
@@ -46,10 +46,9 @@ export const ca: Dict = {
   sobremi: {
     title: 'Soc la Margarita',
     p1: "Psicòloga i psicoterapeuta. Treballo online amb persones que s'exigeixen massa i viuen pendents dels altres. Sé què és, i sé que es pot viure d'una altra manera.",
-    retiros: 'També organitzo retirs de dones.',
-    next: 'Proper',
     alt: 'Margarita Margenat',
   },
+  retiro: { label: 'Proper retir', cta: 'Veure el retir' },
   cierre: { title: 'Comencem?', sub: 'Una trucada gratuïta, sense compromís.', cta: 'Reservar per WhatsApp' },
   footer: { role: 'Psicòloga i psicoterapeuta · Online' },
 };

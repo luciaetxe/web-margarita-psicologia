@@ -46,10 +46,9 @@ export const en: Dict = {
   sobremi: {
     title: "I'm Margarita",
     p1: "Psychologist and psychotherapist. I work online with people who demand too much of themselves and live focused on everyone else. I know what that's like, and I know it's possible to live differently.",
-    retiros: "I also run women's retreats.",
-    next: 'Next',
     alt: 'Margarita Margenat',
   },
+  retiro: { label: 'Next retreat', cta: 'See the retreat' },
   cierre: { title: 'Shall we start?', sub: 'A free call, no obligation.', cta: 'Book on WhatsApp' },
   footer: { role: 'Psychologist and psychotherapist · Online' },
 };

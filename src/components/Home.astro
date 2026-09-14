@@ -98,19 +98,27 @@ const jsonLd = {
 
   <!-- 5 · Margarita -->
   <section class="block sand" id="margarita">
-    <div class="wrap about fade">
+    <div class="wrap narrow about fade">
       <img src="/margarita.jpeg" alt={t.sobremi.alt} width="776" height="776" loading="lazy" />
       <div>
         <h2 class="title">{t.sobremi.title}</h2>
         <p>{t.sobremi.p1}</p>
-        {nextRetiro && (
-          <p class="retiros">
-            {t.sobremi.retiros} {t.sobremi.next}: <a href={nextRetiro.url} target="_blank" rel="noopener" class="link">{nextRetiro.name}</a>, {nextRetiro.date[lang]}.
-          </p>
-        )}
       </div>
     </div>
   </section>
+
+  <!-- 6 · Próximo retiro -->
+  {nextRetiro && (
+    <section class="block sky retiro" id="retiro">
+      <div class="wrap narrow fade">
+        <span class="caps">{t.retiro.label} · {nextRetiro.kind[lang]}</span>
+        <h2 class="title">{nextRetiro.name}</h2>
+        <p class="date">{nextRetiro.date[lang]}</p>
+        <p class="notes">{nextRetiro.notes[lang]}</p>
+        <a href={nextRetiro.url} target="_blank" rel="noopener" class="btn btn-primary">{t.retiro.cta}</a>
+      </div>
+    </section>
+  )}
 
   <!-- Cierre -->
   <section class="block sea cierre" id="contacto">
