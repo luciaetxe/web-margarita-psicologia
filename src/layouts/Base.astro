@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppIcon from '../components/WhatsAppIcon.astro';
+import { base, langs, ogLocale, waLink, type Lang, type Dict } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  t: Dict;
+  title: string;
+  description: string;
+  /** Ruta relativa sin prefijo de idioma, p. ej. "" (home) o "sobre-mi/". */
+  path?: string;
+  jsonLd?: object;
+}
+const { lang, t, title, description, path = '', jsonLd } = Astro.props;
+const site = Astro.site!.toString().replace(/\/$/, '');
+const url = (l: Lang) => `${site}${base(l)}${path}`;
+const canonical = url(lang);
+const ogImage = `${site}/margarita.jpeg`;
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Margarita Margenat" />
+    <link rel="canonical" href={canonical} />
+    {langs.map((l) => <link rel="alternate" hreflang={l} href={url(l)} />)}
+    <link rel="alternate" hreflang="x-default" href={url('es')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Margarita Margenat" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale[lang]} />
+    {langs.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ogLocale[l]} />)}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="theme-color" content="#2F5F78" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <Header lang={lang} t={t} />
+    <slot />
+    <Footer t={t} />
+    <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="wa-float" id="wa-float" aria-label={t.wa.float}>
+      <WhatsAppIcon />
+    </a>
+    <script>
+      const header = document.getElementById('site-header')!;
+      const toggle = header.querySelector<HTMLButtonElement>('.nav-toggle')!;
+      const wa = document.getElementById('wa-float')!;
+      const hero = document.querySelector<HTMLElement>('.hero');
+      const onScroll = () => {
+        header.classList.toggle('scrolled', window.scrollY > 40);
+        const past = hero ? window.scrollY > hero.offsetTop + hero.offsetHeight - 80 : window.scrollY > 300;
+        wa.classList.toggle('show', past);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      toggle.addEventListener('click', () => {
+        const open = header.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      header.querySelectorAll('.nav-right a').forEach((a) =>
+        a.addEventListener('click', () => { header.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); })
+      );
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

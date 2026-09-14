@@ -1,0 +1,48 @@
+# Web de Margarita Margenat — contexto para cada sesión
+
+Brief completo: `Downloads/BRIEF-web-margarita-psicologia.md` (Lucía). Este archivo resume lo que no puede olvidarse. Lucía desarrolla; Margarita valida copy, imágenes y posicionamiento. **No hacer cambios grandes sin mostrar antes plan o captura.**
+
+## Posicionamiento (opción C, híbrido jerarquizado)
+- Público principal: mujeres adultas (~25-45) que se exigen mucho, viven pendientes de los demás, sienten ansiedad y culpa al priorizarse. Buscan una terapeuta cercana, no clínica-fría.
+- Mensaje, hero y SEO apuntan a: **ansiedad · autoestima y autoexigencia · relaciones**. Coherente con Instagram @margaritapsicologia ("¿Te exiges demasiado? Te acompaño a dejar de ser tu peor enemiga y confiar en ti").
+- Terapia infantil y acompañamiento a familias existen como servicios secundarios con página propia, sin protagonismo en la home.
+- Solo online (videollamada). Geografía: "psicóloga online (España)", Barcelona como base, Catalunya como lugar de los retiros. No competir por "psicóloga Barcelona" presencial.
+- Retiros y talleres son lo diferencial: bloque destacado en la home y página permanente `/retiros`.
+
+## Voz
+Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica ni frases de taza. Evitar "espacio seguro", "sanar", "viaje", "empoderar" salvo que Margarita las use. Lenguaje neutro en género cuando se habla a quien lee (nada de "juntas").
+
+## Sistema de diseño (del feed de Instagram, no de plantilla)
+**Mar y Costa Brava.** Granate y fucsia son de la web del retiro (tribuconecta.site): aquí NO. Tampoco verde salvia ni lavanda. Sí otros colores de naturaleza que salen en el feed (arena, madera, atardecer), con moderación.
+```css
+:root {
+  --color-bg:        #F3EEE6;  /* arena clara: fondo principal */
+  --color-surface:   #FBF8F3;  /* blanco roto */
+  --color-ink:       #1B2430;  /* tinta azulada: texto */
+  --color-ink-soft:  #5C5750;  /* texto secundario */
+  --color-sea:       #2F5F78;  /* mar profundo: marca, títulos destacados, botones, cursivas */
+  --color-sea-deep:  #1E4457;  /* hover del mar */
+  --color-sky:       #C9D8E0;  /* cielo sobre el mar: secciones alternas */
+  --color-sky-hi:    #7FA9CF;  /* azul del cartel de trekking: subrayados, hover, detalles */
+  --color-sand:      #D9CBB8;  /* arena de cartel: bloques tipo póster con tipografía */
+  --color-wood:      #A9743F;  /* madera: detalle muy puntual */
+  --color-dusk:      #E6C3BC;  /* rosa atardecer: rarísimo, nunca fondo grande */
+  --color-line:      #E1D9CC;  /* separadores */
+}
+```
+- Display: Instrument Serif (o Fraunces); títulos grandes, interlineado ajustado, una palabra en cursiva en color mar. Texto: Inter 400/500. `font-display: swap` + preconnect.
+- Hero: retrato b/n de Margarita a gran tamaño. Sin vídeo.
+- Layout: mucho aire, ancho de lectura 65-72 caracteres, secciones alternando arena y cielo, numeración editorial 01/02…
+- Nada de botones píldora, tarjetas en cuadrícula ni cajas decorativas. Contraste AA mínimo.
+
+## Datos fijos
+- Email margaritamp99@gmail.com · WhatsApp +34 639 66 49 82 (`https://wa.me/34639664982`) · Instagram @margaritapsicologia.
+- Precios: adultos 1 h 80 € / 1 h 30 120 €; infantil 45 min 60 €; familias a concretar en la llamada. Seguimiento por WhatsApp entre sesiones incluido. Llamada de valoración gratuita, 15-20 min.
+- Margarita **no está colegiada ni quiere estarlo**: no pedir ni mostrar número de colegiada. (Formación: [MARGARITA APORTA].)
+- Dominio propio pendiente; hasta entonces canonical/hreflang apuntan a `https://www.margaritamargenat.com/` como placeholder — cambiar en cuanto exista.
+
+## Qué NO hacer
+- No inventar testimonios, formación, fotos "reales" ni datos de colegiatura.
+- No usar verde salvia, lavanda, flores/velas/piedras, vídeo de fondo.
+- Nada de pop-ups, chatbots, cookies de terceros, tono gurú.
+- Todo cambio de texto va a los tres idiomas (ES raíz, `/ca/`, `/en/`) con `hreflang`.

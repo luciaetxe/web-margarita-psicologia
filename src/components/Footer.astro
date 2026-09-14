@@ -1,0 +1,16 @@
+---
+import { EMAIL, INSTAGRAM, type Dict } from '../i18n';
+interface Props { t: Dict }
+const { t } = Astro.props;
+---
+<footer class="site-footer">
+  <div class="wrap footer-in">
+    <span class="fname">Margarita Margenat</span>
+    <span>{t.footer.role}</span>
+    <span class="footer-contact">
+      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      <span class="dot">·</span>
+      <a href={`https://instagram.com/${INSTAGRAM}`} target="_blank" rel="noopener">@{INSTAGRAM}</a>
+    </span>
+  </div>
+</footer>

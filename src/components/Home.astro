@@ -1,0 +1,220 @@
+---
+import Base from '../layouts/Base.astro';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import { base, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
+import precios from '../data/precios.json';
+import retiros from '../data/retiros.json';
+import testimonios from '../data/testimonios.json';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = dicts[lang];
+const site = Astro.site!.toString().replace(/\/$/, '');
+const wa = waLink(t.wa.msg);
+const nextRetiro = retiros.find((r) => r.upcoming);
+const quotes = (testimonios as { text: string; author: string; lang: Lang }[]).filter((q) => q.lang === lang);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Psychologist',
+  name: 'Margarita Margenat',
+  description: t.meta.description,
+  image: `${site}/margarita.jpeg`,
+  url: `${site}${base(lang)}`,
+  email: EMAIL,
+  telephone: '+34639664982',
+  priceRange: '€€',
+  areaServed: { '@type': 'Country', name: 'España' },
+  availableLanguage: ['es', 'ca', 'en'],
+  knowsAbout: ['ansiedad', 'autoestima', 'autoexigencia', 'relaciones', 'terapia online'],
+  sameAs: [`https://instagram.com/${INSTAGRAM}`],
+  makesOffer: precios.flatMap((p) =>
+    p.variants.filter((v) => v.price).map((v) => ({
+      '@type': 'Offer', price: String(v.price), priceCurrency: 'EUR',
+      itemOffered: { '@type': 'Service', name: `${p.name.es} · ${v.dur.es}`, serviceType: 'Terapia online' },
+    }))
+  ),
+};
+let n = 0;
+const num = () => String(++n).padStart(2, '0');
+---
+<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} jsonLd={jsonLd}>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="caps hero-kicker">{t.hero.kicker}</span>
+        <h1 class="hero-title">{t.hero.t1}<em>{t.hero.em}</em>{t.hero.t2}</h1>
+        <p class="hero-sub">{t.hero.sub}</p>
+        <div class="hero-actions">
+          <a href={wa} target="_blank" rel="noopener" class="btn btn-primary">{t.hero.cta}</a>
+          <a href="#proceso" class="link">{t.hero.cta2}</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="/margarita.jpeg" alt={t.hero.alt} width="776" height="776" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <!-- RECONOCIMIENTO -->
+  <section class="recon" id="enfoque">
+    <div class="wrap">
+      <div class="recon-lead fade">
+        <p>{t.recon.p1}</p>
+        <p>{t.recon.p2}</p>
+      </div>
+      <div class="statement fade">
+        <div class="l1">{t.recon.big1}</div>
+        <div class="arrow" aria-hidden="true">↓</div>
+        <div class="l2">{t.recon.big2}</div>
+        <p class="close">{t.recon.close}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="sec" id="servicios">
+    <div class="wrap sec-grid">
+      <span class="caps sec-label"><span class="num">{num()}</span>{t.servicios.label}</span>
+      <div>
+        <h2 class="sec-title">{t.servicios.title}</h2>
+        <p class="sec-intro">{t.servicios.intro}</p>
+        <div class="services fade">
+          {t.servicios.items.map((s, i) => (
+            <div class="service">
+              <div class="num">{String(i + 1).padStart(2, '0')}</div>
+              <h3>{s.name}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))}
+        </div>
+        <p class="also">{t.servicios.also}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RETIROS -->
+  <section class="sec sky" id="retiros">
+    <div class="wrap sec-grid">
+      <span class="caps sec-label"><span class="num">{num()}</span>{t.retiros.label}</span>
+      <div>
+        <h2 class="sec-title">{t.retiros.title}</h2>
+        <p class="sec-intro">{t.retiros.intro}</p>
+        {nextRetiro && (
+          <div class="retiro fade">
+            <div>
+              <span class="caps kind">{t.retiros.next} · {nextRetiro.kind[lang]}</span>
+              <h3>{nextRetiro.name}</h3>
+              <p class="date">{nextRetiro.date[lang]}</p>
+              <p class="notes">{nextRetiro.notes[lang]}</p>
+            </div>
+            <a href={nextRetiro.url} target="_blank" rel="noopener" class="btn">{t.retiros.cta}</a>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJO -->
+  <section class="sec" id="proceso">
+    <div class="wrap sec-grid">
+      <span class="caps sec-label"><span class="num">{num()}</span>{t.proceso.label}</span>
+      <div>
+        <h2 class="sec-title">{t.proceso.t1}<em>{t.proceso.em}</em></h2>
+        <p class="sec-intro">{t.proceso.intro}</p>
+        <div class="steps fade">
+          {t.proceso.steps.map((s, i) => (
+            <div class="step">
+              <div class="step-num">{String(i + 1).padStart(2, '0')}</div>
+              <span class="caps">{s.tag}</span>
+              <h3>{s.name}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section class="sec sand about" id="sobremi">
+    <div class="wrap sec-grid">
+      <span class="caps sec-label"><span class="num">{num()}</span>{t.sobremi.label}</span>
+      <div class="fade">
+        <h2 class="sec-title">{t.sobremi.title}</h2>
+        <p>{t.sobremi.p1}</p>
+        <p>{t.sobremi.p2}</p>
+        <p class="placeholder">{t.sobremi.formacion}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS (solo si hay) -->
+  {quotes.length > 0 && (
+    <section class="sec" id="testimonios">
+      <div class="wrap sec-grid">
+        <span class="caps sec-label"><span class="num">{num()}</span>{t.testimonios.label}</span>
+        <div>
+          <h2 class="sec-title">{t.testimonios.title}</h2>
+          <div class="quotes fade">
+            {quotes.map((q) => <blockquote class="quote"><p>“{q.text}”</p><cite>{q.author}</cite></blockquote>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- PRECIOS -->
+  <section class="sec" id="precios">
+    <div class="wrap sec-grid">
+      <span class="caps sec-label"><span class="num">{num()}</span>{t.precios.label}</span>
+      <div>
+        <h2 class="sec-title">{t.precios.title}</h2>
+        <div class="prices-table fade">
+          {precios.map((p) => (
+            <div class="price">
+              <span class="price-name">{p.name[lang]}</span>
+              <div class="price-variants">
+                {p.variants.map((v) => (
+                  <>
+                    <span class="price-dur">{v.dur[lang]}</span>
+                    {v.price
+                      ? <span class="price-amt">{lang === 'en' ? `€${v.price}` : `${v.price} €`}</span>
+                      : <span class="price-amt soft">{t.precios.consult}</span>}
+                  </>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="price-notes fade">
+          <p><strong>{t.precios.note1a}</strong>{t.precios.note1b}</p>
+          <p><strong>{t.precios.note2a}</strong>{t.precios.note2b}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec sky" id="contacto">
+    <div class="wrap sec-grid">
+      <span class="caps sec-label"><span class="num">{num()}</span>{t.contacto.label}</span>
+      <div class="fade">
+        <h2 class="sec-title">{t.contacto.t1}<em>{t.contacto.em}</em></h2>
+        <p class="contact-lead">{t.contacto.lead}</p>
+        <a href={wa} target="_blank" rel="noopener" class="btn btn-primary"><WhatsAppIcon /> {t.contacto.cta}</a>
+        <div class="contact-meta">
+          <div class="cmeta"><span class="caps k">{t.contacto.email}</span><a href={`mailto:${EMAIL}`}>{EMAIL}</a></div>
+          <div class="cmeta"><span class="caps k">{t.contacto.insta}</span><a href={`https://instagram.com/${INSTAGRAM}`} target="_blank" rel="noopener">@{INSTAGRAM}</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .btn :global(svg) { width: 16px; height: 16px; }
+</style>

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "adultos",
+    "name": { "es": "Adultos", "ca": "Adults", "en": "Adults" },
+    "variants": [
+      { "dur": { "es": "1 h 30 min", "ca": "1 h 30 min", "en": "1 hr 30 min" }, "price": 120 },
+      { "dur": { "es": "1 h", "ca": "1 h", "en": "1 hr" }, "price": 80 }
+    ]
+  },
+  {
+    "id": "infantil",
+    "name": { "es": "Infantil", "ca": "Infantil", "en": "Children" },
+    "variants": [
+      { "dur": { "es": "45 min", "ca": "45 min", "en": "45 min" }, "price": 60 }
+    ]
+  },
+  {
+    "id": "familias",
+    "name": { "es": "Familias", "ca": "Famílies", "en": "Families" },
+    "variants": [
+      { "dur": { "es": "Según necesidades", "ca": "Segons necessitats", "en": "Based on needs" }, "price": null }
+    ]
+  }
+]

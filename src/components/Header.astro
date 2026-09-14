@@ -1,0 +1,28 @@
+---
+import { base, langs, waLink, type Lang, type Dict } from '../i18n';
+interface Props { lang: Lang; t: Dict }
+const { lang, t } = Astro.props;
+const home = base(lang);
+const items = [
+  ['servicios', t.nav.servicios], ['retiros', t.nav.retiros], ['proceso', t.nav.proceso],
+  ['sobremi', t.nav.sobremi], ['precios', t.nav.precios],
+] as const;
+---
+<header class="site-header" id="site-header">
+  <a href={home} class="logo">Margarita Margenat</a>
+  <button class="nav-toggle" aria-label={t.nav.menu} aria-expanded="false" aria-controls="nav-right"><span></span><span></span><span></span></button>
+  <div class="nav-right" id="nav-right">
+    <ul class="nav-links">
+      {items.map(([id, label]) => <li><a href={`${home}#${id}`}>{label}</a></li>)}
+    </ul>
+    <div class="nav-lang" aria-label="Idioma">
+      {langs.map((l, i) => (
+        <>
+          {i > 0 && <span class="sep">·</span>}
+          <a href={base(l)} aria-current={l === lang ? 'page' : undefined} lang={l}>{l.toUpperCase()}</a>
+        </>
+      ))}
+    </div>
+    <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="btn btn-primary nav-cta">{t.nav.cta}</a>
+  </div>
+</header>
