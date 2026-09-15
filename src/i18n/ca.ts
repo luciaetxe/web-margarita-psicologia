@@ -45,10 +45,16 @@ export const ca: Dict = {
   },
   sobremi: {
     title: 'Soc la Margarita',
-    p1: "Psicòloga i psicoterapeuta. Treballo online amb persones que s'exigeixen massa i viuen pendents dels altres. Sé què és, i sé que es pot viure d'una altra manera.",
+    p1: "Psicòloga i terapeuta de formació humanista. Treballo oferint sessions de teràpia online amb persones que volen viure més en pau amb si mateixes i millorar les seves relacions.",
     alt: 'Margarita Margenat',
   },
   retiro: { label: 'Proper retir', cta: 'Veure el retir' },
+  respiro: {
+    title: 'Un respir',
+    text: 'Tres minuts de respiració guiada, gravats per la Margarita, per parar un moment i tornar a tu. En castellà.',
+    more: 'Desar aquest exercici',
+    audioTitle: 'Respira en paz · respiració guiada de tres minuts',
+  },
   cierre: { title: 'Comencem?', sub: 'Una trucada gratuïta, sense compromís.', cta: 'Reservar per WhatsApp' },
   footer: { role: 'Psicòloga i psicoterapeuta · Online' },
 };

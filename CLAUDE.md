@@ -13,7 +13,7 @@ Brief completo: `Downloads/BRIEF-web-margarita-psicologia.md` (Lucía). Este arc
 Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica ni frases de taza. Evitar "espacio seguro", "sanar", "viaje", "empoderar" salvo que Margarita las use. Lenguaje neutro en género cuando se habla a quien lee (nada de "juntas").
 
 ## Sistema de diseño (del feed de Instagram, no de plantilla)
-**Mar y Costa Brava.** Granate y fucsia son de la web del retiro (tribuconecta.site): aquí NO. Tampoco verde salvia ni lavanda. Sí otros colores de naturaleza que salen en el feed (arena, madera, atardecer), con moderación.
+**Mar y Costa Brava.** Granate y fucsia son de la web del retiro (tribuconecta.site): aquí solo un **acento rosa pequeño y únicamente en el bloque del retiro** (`--color-rose #D62E7F`: etiqueta y botón), decidido con Margarita el 15-09-2026. Tampoco verde salvia ni lavanda. Sí otros colores de naturaleza que salen en el feed (arena, madera, atardecer), con moderación.
 ```css
 :root {
   --color-bg:        #F3EEE6;  /* arena clara: fondo principal */

@@ -44,10 +44,16 @@ export const es = {
   },
   sobremi: {
     title: 'Soy Margarita',
-    p1: 'Psicóloga y psicoterapeuta. Trabajo online con personas que se exigen demasiado y viven pendientes de los demás. Sé lo que es, y sé que se puede vivir de otra manera.',
+    p1: 'Psicóloga y terapeuta de formación humanista. Trabajo ofreciendo sesiones de terapia online con personas que quieren vivir más en paz consigo mismas y mejorar sus relaciones.',
     alt: 'Margarita Margenat',
   },
   retiro: { label: 'Próximo retiro', cta: 'Ver el retiro' },
+  respiro: {
+    title: 'Un respiro',
+    text: 'Tres minutos de respiración guiada, grabados por Margarita, para parar un momento y volver a ti.',
+    more: 'Guardar este ejercicio',
+    audioTitle: 'Respira en paz · respiración guiada de tres minutos',
+  },
   cierre: { title: '¿Empezamos?', sub: 'Una llamada gratuita, sin compromiso.', cta: 'Reservar por WhatsApp' },
   footer: { role: 'Psicóloga y psicoterapeuta · Online' },
 };

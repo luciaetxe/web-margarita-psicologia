@@ -103,7 +103,7 @@ const jsonLd = {
         {precios.flatMap((p) => p.variants.map((v) => (
           <div>
             <dt>{p.name[lang]} <span>· {v.dur[lang]}</span></dt>
-            <dd>{v.price ? eur(v.price) : <em>{t.empezamos.consult}</em>}</dd>
+            <dd>{v.price ? <>{'was' in v && v.was && <s>{eur(v.was)}</s>}{eur(v.price)}</> : <em>{t.empezamos.consult}</em>}</dd>
           </div>
         )))}
       </dl>
@@ -129,10 +129,20 @@ const jsonLd = {
         <h2 class="title">{nextRetiro.name}</h2>
         <p class="date">{nextRetiro.date[lang]}</p>
         <p class="notes">{nextRetiro.notes[lang]}</p>
-        <a href={nextRetiro.url} target="_blank" rel="noopener" class="btn btn-primary">{t.retiro.cta}</a>
+        <a href={nextRetiro.url} target="_blank" rel="noopener" class="btn btn-rose">{t.retiro.cta}</a>
       </div>
     </section>
   )}
+
+  <!-- 7 · Un respiro (audio) -->
+  <section class="block respiro" id="respiro">
+    <div class="wrap narrow fade">
+      <h2 class="title">{t.respiro.title}</h2>
+      <p>{t.respiro.text}</p>
+      <audio controls preload="none" src="/audio/respira-en-paz.mp3" title={t.respiro.audioTitle}></audio>
+      <a href="/recursos/respira-en-paz/" class="link">{t.respiro.more}</a>
+    </div>
+  </section>
 
   <!-- Cierre -->
   <section class="block sea cierre" id="contacto">
