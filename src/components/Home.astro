@@ -40,7 +40,7 @@ const jsonLd = {
   makesOffer: precios.flatMap((p) =>
     p.variants.filter((v) => v.price).map((v) => ({
       '@type': 'Offer', price: String(v.price), priceCurrency: 'EUR',
-      itemOffered: { '@type': 'Service', name: `${p.name.es} · ${v.dur.es}`, serviceType: 'Terapia online' },
+      itemOffered: { '@type': 'Service', name: `Sesión de terapia online · ${v.dur.es}`, serviceType: 'Terapia online' },
     }))
   ),
 };
@@ -102,7 +102,7 @@ const jsonLd = {
       <dl class="prices fade">
         {precios.flatMap((p) => p.variants.map((v) => (
           <div>
-            <dt>{p.name[lang]} <span>· {v.dur[lang]}</span></dt>
+            <dt>{p.name[lang] ? <>{p.name[lang]} <span>· {v.dur[lang]}</span></> : v.dur[lang]}</dt>
             <dd>{v.price ? <>{'was' in v && v.was && <s>{eur(v.was)}</s>}{eur(v.price)}</> : <em>{t.empezamos.consult}</em>}</dd>
           </div>
         )))}
