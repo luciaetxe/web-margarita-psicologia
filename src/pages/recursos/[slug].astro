@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { dicts, waLink, base } from '../../i18n';
+
+export async function getStaticPaths() {
+  const items = await getCollection('recursos');
+  return items.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const lang = d.lang;
+const t = dicts[lang];
+const site = Astro.site!.toString().replace(/\/$/, '');
+const home = base(lang);
+const path = `recursos/${entry.id}/`;
+const url = `${site}${home}${path}`;
+const title = `${d.title} · ${d.kind[lang]} · Margarita Margenat`;
+const description = d.summary[lang];
+
+const jsonLd = [
+  d.audio && {
+    '@context': 'https://schema.org',
+    '@type': 'AudioObject',
+    name: d.title,
+    description,
+    contentUrl: `${site}${d.audio}`,
+    encodingFormat: 'audio/mpeg',
+    duration: d.durationISO,
+    inLanguage: lang,
+    url,
+    author: { '@type': 'Person', name: 'Margarita Margenat', url: `${site}${home}` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Margarita Margenat', item: `${site}${home}` },
+      { '@type': 'ListItem', position: 2, name: t.recursos.title, item: `${site}${home}recursos/` },
+      { '@type': 'ListItem', position: 3, name: d.title, item: url },
+    ],
+  },
+].filter(Boolean);
+---
+<Base lang={lang} t={t} title={title} description={description} path={path} single jsonLd={jsonLd}>
+  <main class="wrap narrow resource">
+    <nav class="crumbs" aria-label="Estás en">
+      <a href={home}>Inicio</a><span>›</span><a href={`${home}recursos/`}>{t.recursos.title}</a><span>›</span><span aria-current="page">{d.title}</span>
+    </nav>
+    <span class="caps kicker">{d.kind[lang]} · {d.duration}</span>
+    <h1>{d.title}</h1>
+    <p class="lede">{description}</p>
+    {d.audio && <audio controls preload="metadata" src={d.audio} title={d.title}></audio>}
+    <Content />
+    <div class="actions">
+      <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="btn btn-primary">{t.hero.cta}</a>
+      <a href={`${home}recursos/`} class="link">{t.recursos.all}</a>
+    </div>
+  </main>
+</Base>

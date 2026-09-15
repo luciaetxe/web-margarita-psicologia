@@ -9,7 +9,7 @@ export const en: Dict = {
     shareTitle: 'Margarita Margenat · Online psychologist',
     shareDescription: 'Do you demand too much of yourself? Anxiety, self-esteem and relationships. We start with a free call, no obligation.',
   },
-  nav: { empezamos: 'How we start', sobremi: 'About me', cta: 'Book a call', menu: 'Open menu' },
+  nav: { empezamos: 'How we start', sobremi: 'About me', recursos: 'Resources', cta: 'Book a call', menu: 'Open menu' },
   wa: { msg: 'Hi Margarita, I would like to book the free assessment call.', float: 'Message on WhatsApp' },
   hero: {
     kicker: 'Do you demand too much of yourself?',
@@ -53,9 +53,15 @@ export const en: Dict = {
   retiro: { label: 'Next retreat', cta: 'See the retreat' },
   recursos: {
     title: 'Resources',
-    items: [
-      { name: 'Respira en paz', text: 'I recorded this breathing session to help you regain your focus and relax.', cta: 'Listen · 3 min · in Spanish', href: '/recursos/respira-en-paz/' },
-    ],
+    intro: 'Simple exercises and tools to use in your everyday life, at your own pace.',
+    listen: 'Listen',
+    all: 'See all resources',
+    inLang: 'in Spanish',
+  },
+  notfound: {
+    title: "This page doesn't exist",
+    text: 'The link may be misspelled or the page may have moved.',
+    home: 'Go to the home page',
   },
   cierre: { title: 'Shall we start?', sub: 'A free call, no obligation.', cta: 'Book on WhatsApp' },
   footer: { role: 'Psychologist and psychotherapist · Online' },

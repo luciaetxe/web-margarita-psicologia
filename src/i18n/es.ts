@@ -8,7 +8,7 @@ export const es = {
     shareTitle: 'Margarita Margenat · Psicóloga online',
     shareDescription: '¿Te exiges demasiado? Ansiedad, autoestima y relaciones. Empezamos con una llamada gratuita, sin compromiso.',
   },
-  nav: { empezamos: 'Cómo empezamos', sobremi: 'Sobre mí', cta: 'Reservar llamada', menu: 'Abrir menú' },
+  nav: { empezamos: 'Cómo empezamos', sobremi: 'Sobre mí', recursos: 'Recursos', cta: 'Reservar llamada', menu: 'Abrir menú' },
   wa: { msg: 'Hola Margarita, me gustaría reservar la llamada de valoración gratuita.', float: 'Escribir por WhatsApp' },
   hero: {
     kicker: '¿Te exiges demasiado?',
@@ -52,9 +52,15 @@ export const es = {
   retiro: { label: 'Próximo retiro', cta: 'Ver el retiro' },
   recursos: {
     title: 'Recursos',
-    items: [
-      { name: 'Respira en paz', text: 'He grabado esta sesión de respiración para ayudarte a recuperar tu foco y relajarte.', cta: 'Escuchar · 3 min', href: '/recursos/respira-en-paz/' },
-    ],
+    intro: 'Ejercicios y herramientas sencillas para usar en tu día a día, a tu ritmo.',
+    listen: 'Escuchar',
+    all: 'Ver todos los recursos',
+    inLang: '',
+  },
+  notfound: {
+    title: 'Esta página no existe',
+    text: 'Puede que el enlace esté mal escrito o que la página haya cambiado de sitio.',
+    home: 'Ir al inicio',
   },
   cierre: { title: '¿Empezamos?', sub: 'Una llamada gratuita, sin compromiso.', cta: 'Reservar por WhatsApp' },
   footer: { role: 'Psicóloga y psicoterapeuta · Online' },

@@ -17,9 +17,11 @@ interface Props {
   /** Título y descripción para WhatsApp / redes (si difieren de los de SEO). */
   shareTitle?: string;
   shareDescription?: string;
-  jsonLd?: object;
+  /** La página abre con el hero de foto (cabecera transparente y clara). */
+  hero?: boolean;
+  jsonLd?: object | object[];
 }
-const { lang, t, title, description, path = '', single = false, shareTitle, shareDescription, jsonLd } = Astro.props;
+const { lang, t, title, description, path = '', single = false, shareTitle, shareDescription, hero = false, jsonLd } = Astro.props;
 const site = Astro.site!.toString().replace(/\/$/, '');
 const url = (l: Lang) => `${site}${base(l)}${path}`;
 const canonical = url(lang);
@@ -64,7 +66,7 @@ const ogDesc = shareDescription ?? description;
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
-    <Header lang={lang} t={t} />
+    <Header lang={lang} t={t} hero={hero} />
     <slot />
     <Footer t={t} />
     <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="wa-float" id="wa-float" aria-label={t.wa.float}>
