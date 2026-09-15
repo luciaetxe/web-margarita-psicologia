@@ -27,7 +27,7 @@ body {
 img, picture { max-width: 100%; display: block; }
 a { color: inherit; }
 :focus-visible { outline: 2px solid var(--color-sky-hi); outline-offset: 3px; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 2.5rem; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: 2.5rem; padding-right: 2.5rem; }
 .wrap.narrow { max-width: 46rem; }
 
 /* ── Tipo ─────────────────────────────────────── */
@@ -124,6 +124,11 @@ a { color: inherit; }
 .prices dd { font-family: var(--serif); font-size: 1.6rem; color: var(--color-sea); white-space: nowrap; }
 .prices dd em { font-size: 1.05rem; color: var(--color-ink-soft); }
 .prices dd s { color: var(--color-ink-soft); font-size: 1.1rem; margin-right: 0.6rem; text-decoration-thickness: 1px; }
+.prices > div.group { border-bottom: 0; padding-bottom: 0.2rem; }
+.prices > div.sub { padding: 0.7rem 0 0.7rem 1.4rem; border-bottom: 0; }
+.prices > div.sub dt { font-family: var(--sans); font-size: 0.95rem; color: var(--color-ink-soft); }
+.prices > div.sub + div:not(.sub) { border-top: 1px solid var(--color-line); }
+.prices > div.group + .sub { padding-top: 0.2rem; }
 
 /* 5 · Margarita */
 .about { text-align: center; }
@@ -155,7 +160,7 @@ a { color: inherit; }
 #recursos .more { margin-top: 1.4rem; }
 
 /* Páginas interiores (índice de recursos, 404) */
-.page-head { padding: 9rem 0 6rem; }
+.page-head { padding-top: 9rem; padding-bottom: 6rem; }
 .page-head .intro { max-width: 34rem; font-size: 1.08rem; line-height: 1.8; color: var(--color-ink-soft); margin: -0.6rem 0 2.4rem; }
 .page-head .kicker { display: block; margin-bottom: 1.2rem; }
 .page-head .actions { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; margin-top: 2.2rem; }
@@ -165,7 +170,7 @@ a { color: inherit; }
 .crumbs span[aria-current] { color: var(--color-ink); }
 
 /* Página de recurso */
-.resource { padding: 8rem 0 6rem; }
+.resource { padding-top: 8rem; padding-bottom: 6rem; }
 .resource .kicker { display: block; margin-bottom: 1.4rem; }
 .resource h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1.02; letter-spacing: -0.01em; margin: 0 0 1rem; }
 .resource .lede { font-family: var(--serif); font-size: 1.5rem; line-height: 1.35; color: var(--color-ink-soft); margin: 0 0 2rem; }
@@ -191,7 +196,7 @@ a { color: inherit; }
 
 /* Footer */
 .site-footer { background: var(--color-ink); color: rgba(251,248,243,0.5); }
-.footer-in { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem 2rem; padding: 2.2rem 0; font-size: 0.8rem; }
+.footer-in { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem 2rem; padding-top: 2.4rem; padding-bottom: 2.4rem; font-size: 0.8rem; }
 .footer-in .fname { font-family: var(--serif); font-size: 1.25rem; color: rgba(251,248,243,0.85); }
 .site-footer a { color: rgba(251,248,243,0.65); text-decoration: none; }
 .site-footer a:hover { color: var(--color-sky-hi); }
@@ -205,7 +210,7 @@ a { color: inherit; }
 
 /* ── Responsive ───────────────────────────────── */
 @media (max-width: 900px) {
-  .wrap { padding: 0 1.5rem; }
+  .wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
   .site-header { padding: 1.1rem 1.5rem; }
   .nav-toggle { display: flex; }
   .nav-right {
@@ -221,8 +226,8 @@ a { color: inherit; }
   .nav-links a { font-size: 0.95rem; letter-spacing: 0.04em; text-transform: none; opacity: 1; }
   .nav-lang a { opacity: 0.7; }
   .site-header:not(.scrolled):not(.solid) .nav-cta { background: var(--color-sea); border-color: var(--color-sea); color: var(--color-surface); }
-  .page-head { padding: 7rem 0 4rem; }
-  .resource { padding: 7rem 0 4rem; }
+  .page-head { padding-top: 7rem; padding-bottom: 4rem; }
+  .resource { padding-top: 7rem; padding-bottom: 4rem; }
   .hero { padding: 6rem 0 2.6rem; align-items: flex-end; }
   .hero-title { font-size: clamp(2.6rem, 11vw, 3rem); margin-bottom: 1.2rem; }
   .hero-sub { font-size: 1rem; margin-bottom: 1.6rem; }
