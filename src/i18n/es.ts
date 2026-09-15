@@ -5,6 +5,8 @@ export const es = {
     title: 'Psicóloga online · Ansiedad y autoexigencia · Margarita Margenat',
     description:
       'Psicóloga online para personas que se exigen demasiado. Ansiedad, autoestima y relaciones. Empezamos con una llamada gratuita, sin compromiso.',
+    shareTitle: 'Margarita Margenat · Psicóloga online',
+    shareDescription: '¿Te exiges demasiado? Ansiedad, autoestima y relaciones. Empezamos con una llamada gratuita, sin compromiso.',
   },
   nav: { empezamos: 'Cómo empezamos', sobremi: 'Sobre mí', cta: 'Reservar llamada', menu: 'Abrir menú' },
   wa: { msg: 'Hola Margarita, me gustaría reservar la llamada de valoración gratuita.', float: 'Escribir por WhatsApp' },
@@ -48,11 +50,11 @@ export const es = {
     alt: 'Margarita Margenat',
   },
   retiro: { label: 'Próximo retiro', cta: 'Ver el retiro' },
-  respiro: {
-    title: 'Un respiro',
-    text: 'Tres minutos de respiración guiada, grabados por Margarita, para parar un momento y volver a ti.',
-    more: 'Guardar este ejercicio',
-    audioTitle: 'Respira en paz · respiración guiada de tres minutos',
+  recursos: {
+    title: 'Recursos',
+    items: [
+      { name: 'Respira en paz', text: 'He grabado esta sesión de respiración para ayudarte a recuperar tu foco y relajarte.', cta: 'Escuchar · 3 min', href: '/recursos/respira-en-paz/' },
+    ],
   },
   cierre: { title: '¿Empezamos?', sub: 'Una llamada gratuita, sin compromiso.', cta: 'Reservar por WhatsApp' },
   footer: { role: 'Psicóloga y psicoterapeuta · Online' },
