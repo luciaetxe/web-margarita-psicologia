@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// IMPORTANTE: sustituir por el dominio final cuando exista (afecta a canonical, hreflang y sitemap).
-export const SITE = 'https://www.margaritamargenat.com';
+// Dominio de producción (Vercel sirve www como principal; el apex redirige).
+export const SITE = 'https://www.margaritapsicologia.com';
 
 export default defineConfig({
   site: SITE,
