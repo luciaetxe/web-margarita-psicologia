@@ -45,7 +45,7 @@ const jsonLd = {
   ),
 };
 ---
-<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} jsonLd={jsonLd}>
+<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} shareTitle={t.meta.shareTitle} shareDescription={t.meta.shareDescription} jsonLd={jsonLd}>
 
   <!-- 1 · Cartel -->
   <section class="hero" id="inicio">
@@ -134,13 +134,19 @@ const jsonLd = {
     </section>
   )}
 
-  <!-- 7 · Un respiro (audio) -->
-  <section class="block respiro" id="respiro">
+  <!-- 7 · Recursos -->
+  <section class="block" id="recursos">
     <div class="wrap narrow fade">
-      <h2 class="title">{t.respiro.title}</h2>
-      <p>{t.respiro.text}</p>
-      <audio controls preload="none" src="/audio/respira-en-paz.mp3" title={t.respiro.audioTitle}></audio>
-      <a href="/recursos/respira-en-paz/" class="link">{t.respiro.more}</a>
+      <h2 class="title">{t.recursos.title}</h2>
+      <ul class="resources">
+        {t.recursos.items.map((r) => (
+          <li>
+            <h3><a href={r.href}>{r.name}</a></h3>
+            <p>{r.text}</p>
+            <a href={r.href} class="link">{r.cta}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 

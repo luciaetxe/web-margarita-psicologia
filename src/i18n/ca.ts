@@ -6,6 +6,8 @@ export const ca: Dict = {
     title: 'Psicòloga online · Ansietat i autoexigència · Margarita Margenat',
     description:
       "Psicòloga online per a persones que s'exigeixen massa. Ansietat, autoestima i relacions. Comencem amb una trucada gratuïta, sense compromís.",
+    shareTitle: 'Margarita Margenat · Psicòloga online',
+    shareDescription: "T'exigeixes massa? Ansietat, autoestima i relacions. Comencem amb una trucada gratuïta, sense compromís.",
   },
   nav: { empezamos: 'Com comencem', sobremi: 'Sobre mi', cta: 'Reservar trucada', menu: 'Obrir menú' },
   wa: { msg: "Hola Margarita, m'agradaria reservar la trucada de valoració gratuïta.", float: 'Escriure per WhatsApp' },
@@ -49,11 +51,11 @@ export const ca: Dict = {
     alt: 'Margarita Margenat',
   },
   retiro: { label: 'Proper retir', cta: 'Veure el retir' },
-  respiro: {
-    title: 'Un respir',
-    text: 'Tres minuts de respiració guiada, gravats per la Margarita, per parar un moment i tornar a tu. En castellà.',
-    more: 'Desar aquest exercici',
-    audioTitle: 'Respira en paz · respiració guiada de tres minuts',
+  recursos: {
+    title: 'Recursos',
+    items: [
+      { name: 'Respira en paz', text: "He gravat aquesta sessió de respiració per ajudar-te a recuperar el focus i relaxar-te.", cta: 'Escoltar · 3 min · en castellà', href: '/recursos/respira-en-paz/' },
+    ],
   },
   cierre: { title: 'Comencem?', sub: 'Una trucada gratuïta, sense compromís.', cta: 'Reservar per WhatsApp' },
   footer: { role: 'Psicòloga i psicoterapeuta · Online' },
