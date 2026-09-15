@@ -1,16 +1,17 @@
 ---
 import { base, langs, waLink, type Lang, type Dict } from '../i18n';
-interface Props { lang: Lang; t: Dict }
-const { lang, t } = Astro.props;
+interface Props { lang: Lang; t: Dict; hero?: boolean }
+const { lang, t, hero = false } = Astro.props;
 const home = base(lang);
 ---
-<header class="site-header" id="site-header">
+<header class:list={['site-header', { solid: !hero }]} id="site-header">
   <a href={home} class="logo">Margarita Margenat</a>
   <button class="nav-toggle" aria-label={t.nav.menu} aria-expanded="false" aria-controls="nav-right"><span></span><span></span><span></span></button>
   <div class="nav-right" id="nav-right">
     <ul class="nav-links">
       <li><a href={`${home}#empezamos`}>{t.nav.empezamos}</a></li>
       <li><a href={`${home}#margarita`}>{t.nav.sobremi}</a></li>
+      <li><a href={`${home}recursos/`}>{t.nav.recursos}</a></li>
     </ul>
     <div class="nav-lang" aria-label="Idioma">
       {langs.map((l, i) => (

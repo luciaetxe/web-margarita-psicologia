@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { dicts } from '../i18n';
+const t = dicts.es;
+---
+<Base lang="es" t={t} title="Página no encontrada · Margarita Margenat" description={t.notfound.text} path="404/" single>
+  <main class="wrap narrow page-head notfound">
+    <span class="caps kicker">404</span>
+    <h1 class="title">{t.notfound.title}</h1>
+    <p class="intro">{t.notfound.text}</p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">{t.notfound.home}</a>
+      <a href="/recursos/" class="link">{t.recursos.title}</a>
+    </div>
+  </main>
+</Base>

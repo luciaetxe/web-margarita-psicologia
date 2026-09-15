@@ -7,10 +7,13 @@ import precios from '../data/precios.json';
 import retiros from '../data/retiros.json';
 import heroWide from '../assets/hero-wide.jpg';
 import heroTall from '../assets/hero-tall.jpg';
+import { getCollection } from 'astro:content';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = dicts[lang];
+const home = base(lang);
+const recursos = (await getCollection('recursos')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
 
 // Hero con dirección de arte: recorte apaisado en escritorio, vertical en móvil.
 const wideAvif = await getImage({ src: heroWide, format: 'avif', widths: [1200, 1800, 2600], sizes: '100vw' });
@@ -45,7 +48,7 @@ const jsonLd = {
   ),
 };
 ---
-<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} shareTitle={t.meta.shareTitle} shareDescription={t.meta.shareDescription} jsonLd={jsonLd}>
+<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} shareTitle={t.meta.shareTitle} shareDescription={t.meta.shareDescription} hero jsonLd={jsonLd}>
 
   <!-- 1 · Cartel -->
   <section class="hero" id="inicio">
@@ -139,14 +142,16 @@ const jsonLd = {
     <div class="wrap narrow fade">
       <h2 class="title">{t.recursos.title}</h2>
       <ul class="resources">
-        {t.recursos.items.map((r) => (
+        {recursos.map((r) => (
           <li>
-            <h3><a href={r.href}>{r.name}</a></h3>
-            <p>{r.text}</p>
-            <a href={r.href} class="link">{r.cta}</a>
+            <span class="caps">{r.data.kind[lang]} · {r.data.duration}{r.data.lang !== lang && t.recursos.inLang ? ` · ${t.recursos.inLang}` : ''}</span>
+            <h3><a href={`${base(r.data.lang)}recursos/${r.id}/`}>{r.data.title}</a></h3>
+            <p>{r.data.summary[lang]}</p>
+            <a href={`${base(r.data.lang)}recursos/${r.id}/`} class="link">{t.recursos.listen}</a>
           </li>
         ))}
       </ul>
+      <p class="more"><a href={`${home}recursos/`} class="link">{t.recursos.all}</a></p>
     </div>
   </section>
 
