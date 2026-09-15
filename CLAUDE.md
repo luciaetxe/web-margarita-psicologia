@@ -43,6 +43,11 @@ Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica n
 - Margarita **no está colegiada ni quiere estarlo**: no pedir ni mostrar número de colegiada. (Formación: [MARGARITA APORTA].)
 - Dominio: **https://www.margaritapsicologia.com** (Namecheap, comprado 15-09-2026; Vercel sirve `www` como principal y redirige el apex). Está en `astro.config.mjs` (`SITE`) y en `public/robots.txt`. Pendiente: Search Console + enviar sitemap.
 
+## Cómo añadir un recurso
+1. Crear `src/content/recursos/<slug>.md` con el frontmatter del que ya existe (`respira-en-paz.md`): `title`, `summary` (es/ca/en), `kind` (es/ca/en), `duration`, `durationISO`, `audio`, `lang`, `date`; el cuerpo es el texto de la página.
+2. Si lleva audio, convertir a MP3 mono 96 kbps y guardarlo en `public/audio/`.
+3. Nada más: la página `/recursos/<slug>/`, el índice `/recursos/` (3 idiomas), el bloque "Recursos" de la home (3 últimos) y el sitemap se generan solos.
+
 ## Qué NO hacer
 - No inventar testimonios, formación, fotos "reales" ni datos de colegiatura.
 - No usar verde salvia, lavanda, flores/velas/piedras, vídeo de fondo.
