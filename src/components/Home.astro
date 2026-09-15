@@ -114,12 +114,23 @@ const jsonLd = {
       </ul>
       <h3 class="subtitle">{t.empezamos.tarifas}</h3>
       <dl class="prices fade">
-        {precios.flatMap((p) => p.variants.map((v) => (
-          <div>
-            <dt>{p.name[lang] ? <>{p.name[lang]} <span>· {v.dur[lang]}</span></> : v.dur[lang]}</dt>
-            <dd>{v.price ? <>{'was' in v && v.was && <s>{eur(v.was)}</s>}{eur(v.price)}</> : <em>{t.empezamos.consult}</em>}</dd>
-          </div>
-        )))}
+        {precios.flatMap((p) => p.variants.length > 1
+          ? [
+              <div class="group"><dt>{p.name[lang]}</dt></div>,
+              ...p.variants.map((v) => (
+                <div class="sub">
+                  <dt>{v.dur[lang]}</dt>
+                  <dd>{v.price ? <>{'was' in v && v.was && <s>{eur(v.was)}</s>}{eur(v.price)}</> : <em>{t.empezamos.consult}</em>}</dd>
+                </div>
+              )),
+            ]
+          : p.variants.map((v) => (
+              <div>
+                <dt>{p.name[lang]} <span>· {v.dur[lang]}</span></dt>
+                <dd>{v.price ? eur(v.price) : <em>{t.empezamos.consult}</em>}</dd>
+              </div>
+            ))
+        )}
       </dl>
     </div>
   </section>

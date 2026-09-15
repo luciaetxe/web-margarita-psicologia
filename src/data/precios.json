@@ -1,7 +1,7 @@
 [
   {
-    "id": "sesion",
-    "name": { "es": "", "ca": "", "en": "" },
+    "id": "adultos",
+    "name": { "es": "Adultos", "ca": "Adults", "en": "Adults" },
     "variants": [
       { "dur": { "es": "1 h 30 min", "ca": "1 h 30 min", "en": "1 hr 30 min" }, "price": 100, "was": 120 },
       { "dur": { "es": "1 h", "ca": "1 h", "en": "1 hr" }, "price": 80 }
