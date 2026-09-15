@@ -41,7 +41,7 @@ Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica n
 - Email margaritamp99@gmail.com · WhatsApp +34 639 66 49 82 (`https://wa.me/34639664982`) · Instagram @margaritapsicologia.
 - Precios: adultos 1 h 80 € / 1 h 30 120 €; infantil 45 min 60 €; familias a concretar en la llamada. Seguimiento por WhatsApp entre sesiones incluido. Llamada de valoración gratuita, 15-20 min.
 - Margarita **no está colegiada ni quiere estarlo**: no pedir ni mostrar número de colegiada. (Formación: [MARGARITA APORTA].)
-- Dominio propio pendiente; hasta entonces canonical/hreflang apuntan a `https://www.margaritamargenat.com/` como placeholder — cambiar en cuanto exista.
+- Dominio: **https://www.margaritapsicologia.com** (Namecheap, comprado 15-09-2026; Vercel sirve `www` como principal y redirige el apex). Está en `astro.config.mjs` (`SITE`) y en `public/robots.txt`. Pendiente: Search Console + enviar sitemap.
 
 ## Qué NO hacer
 - No inventar testimonios, formación, fotos "reales" ni datos de colegiatura.
