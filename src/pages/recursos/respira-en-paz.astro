@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dicts, waLink } from '../../i18n';
+
+const t = dicts.es;
+const site = Astro.site!.toString().replace(/\/$/, '');
+const url = `${site}/recursos/respira-en-paz/`;
+const title = 'Respira en paz · Respiración guiada de 3 minutos · Margarita Margenat';
+const description = 'Tres minutos de respiración guiada, grabados por Margarita Margenat, psicóloga online, para parar un momento, soltar y volver a ti.';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AudioObject',
+  name: 'Respira en paz',
+  description,
+  contentUrl: `${site}/audio/respira-en-paz.mp3`,
+  encodingFormat: 'audio/mpeg',
+  duration: 'PT3M13S',
+  inLanguage: 'es',
+  url,
+  author: { '@type': 'Person', name: 'Margarita Margenat', url: `${site}/` },
+};
+---
+<Base lang="es" t={t} title={title} description={description} path="recursos/respira-en-paz/" single jsonLd={jsonLd}>
+  <main class="wrap narrow resource">
+    <span class="caps kicker">Recurso · Respiración · 3 min</span>
+    <h1>Respira en paz</h1>
+    <p class="lede">Tres minutos de respiración guiada para parar, soltar y volver a ti.</p>
+    <audio controls preload="metadata" src="/audio/respira-en-paz.mp3" title="Respira en paz · respiración guiada de tres minutos"></audio>
+    <p>Busca un sitio tranquilo, siéntate y deja que la voz te guíe. Vale para cuando notas que la cabeza no para, antes de dormir, o simplemente para hacer una pausa en el día. Puedes usarla cada día o solo cuando lo necesites.</p>
+    <div class="actions">
+      <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="btn btn-primary">{t.hero.cta}</a>
+      <a href="/" class="link">Volver al inicio</a>
+    </div>
+  </main>
+</Base>
