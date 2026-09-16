@@ -17,10 +17,10 @@ const title = `${t.recursos.title} · Margarita Margenat`;
     <ul class="resources">
       {items.map((r) => (
         <li>
-          <span class="caps">{r.data.kind[lang]} · {r.data.duration}{r.data.lang !== lang && t.recursos.inLang ? ` · ${t.recursos.inLang}` : ''}</span>
+          <span class="caps">{r.data.kind[lang]}{r.data.duration ? ` · ${r.data.duration}` : ''}{r.data.lang !== lang && t.recursos.inLang ? ` · ${t.recursos.inLang}` : ''}</span>
           <h2><a href={`${base(r.data.lang)}recursos/${r.id}/`}>{r.data.title}</a></h2>
           <p>{r.data.summary[lang]}</p>
-          <a href={`${base(r.data.lang)}recursos/${r.id}/`} class="link">{t.recursos.listen}</a>
+          <a href={`${base(r.data.lang)}recursos/${r.id}/`} class="link">{r.data.audio ? t.recursos.listen : t.recursos.read}</a>
         </li>
       ))}
     </ul>

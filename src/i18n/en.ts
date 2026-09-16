@@ -53,8 +53,10 @@ export const en: Dict = {
   retiro: { label: 'Next retreat', cta: 'See the retreat' },
   recursos: {
     title: 'Resources',
-    intro: 'Simple exercises and tools to use in your everyday life, at your own pace.',
+    intro: "I've put together these resources for you: to look inward, let go of emotions that weigh on you, change thoughts that no longer serve you and give yourself a moment of self-care. If one of them speaks to you, go for it: your intuition knows what you need. And if you'd like to tell me where you are right now, write to me. We'll talk it through, free of charge.",
     listen: 'Listen',
+    read: 'Read',
+    download: 'Download as PDF',
     all: 'See all resources',
     inLang: 'in Spanish',
   },

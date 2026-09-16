@@ -44,8 +44,8 @@ Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica n
 - Dominio: **https://www.margaritapsicologia.com** (Namecheap, comprado 15-09-2026; Vercel sirve `www` como principal y redirige el apex). Está en `astro.config.mjs` (`SITE`) y en `public/robots.txt`. Pendiente: Search Console + enviar sitemap.
 
 ## Cómo añadir un recurso
-1. Crear `src/content/recursos/<slug>.md` con el frontmatter del que ya existe (`respira-en-paz.md`): `title`, `summary` (es/ca/en), `kind` (es/ca/en), `duration`, `durationISO`, `audio`, `lang`, `date`; el cuerpo es el texto de la página.
-2. Si lleva audio, convertir a MP3 mono 96 kbps y guardarlo en `public/audio/`.
+1. Crear `src/content/recursos/<slug>.md` con el frontmatter de los que ya existen (`respira-en-paz.md` para audio, `carta-a-los-padres.md` para PDF): `title`, `summary` (es/ca/en), `kind` (es/ca/en), `lang`, `date`; opcionales `duration`, `durationISO`, `audio`, `pdf`. El cuerpo es el texto de la página (en PDFs, el texto íntegro del documento, para que se pueda leer sin descargar).
+2. Si lleva audio, convertir a MP3 mono 96 kbps y guardarlo en `public/audio/`. Si es un PDF de Margarita, guardarlo en `public/pdf/<slug>.pdf` (la página muestra el botón "Descargar en PDF" y el enlace de la lista pasa de "Escuchar" a "Leer").
 3. Nada más: la página `/recursos/<slug>/`, el índice `/recursos/` (3 idiomas), el bloque "Recursos" de la home (3 últimos) y el sitemap se generan solos.
 
 ## Qué NO hacer

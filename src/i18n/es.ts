@@ -52,8 +52,10 @@ export const es = {
   retiro: { label: 'Próximo retiro', cta: 'Ver el retiro' },
   recursos: {
     title: 'Recursos',
-    intro: 'Ejercicios y herramientas sencillas para usar en tu día a día, a tu ritmo.',
+    intro: 'He preparado estos recursos para ti: para indagar, soltar emociones que pesan, cambiar pensamientos que ya no te sirven y darte un momento de autocuidado. Si alguno te llama la atención, lánzate: tu intuición sabe lo que necesitas. Y si te apetece contarme en qué punto estás, escríbeme. Lo hablamos sin ningún coste.',
     listen: 'Escuchar',
+    read: 'Leer',
+    download: 'Descargar en PDF',
     all: 'Ver todos los recursos',
     inLang: '',
   },
