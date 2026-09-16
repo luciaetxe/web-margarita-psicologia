@@ -53,8 +53,10 @@ export const ca: Dict = {
   retiro: { label: 'Proper retir', cta: 'Veure el retir' },
   recursos: {
     title: 'Recursos',
-    intro: 'Exercicis i eines senzilles per fer servir en el teu dia a dia, al teu ritme.',
+    intro: "He preparat aquests recursos per a tu: per indagar, deixar anar emocions que pesen, canviar pensaments que ja no et serveixen i donar-te un moment d'autocura. Si algun et crida l'atenció, llança-t'hi: la teva intuïció sap el que necessites. I si et ve de gust explicar-me en quin punt estàs, escriu-me. En parlem sense cap cost.",
     listen: 'Escoltar',
+    read: 'Llegir',
+    download: 'Descarregar en PDF',
     all: 'Veure tots els recursos',
     inLang: 'en castellà',
   },

@@ -49,13 +49,14 @@ const jsonLd = [
     <nav class="crumbs" aria-label="Estás en">
       <a href={home}>Inicio</a><span>›</span><a href={`${home}recursos/`}>{t.recursos.title}</a><span>›</span><span aria-current="page">{d.title}</span>
     </nav>
-    <span class="caps kicker">{d.kind[lang]} · {d.duration}</span>
+    <span class="caps kicker">{d.kind[lang]}{d.duration ? ` · ${d.duration}` : ''}</span>
     <h1>{d.title}</h1>
     <p class="lede">{description}</p>
     {d.audio && <audio controls preload="metadata" src={d.audio} title={d.title}></audio>}
     <Content />
     <div class="actions">
-      <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="btn btn-primary">{t.hero.cta}</a>
+      {d.pdf && <a href={d.pdf} download class="btn btn-primary">{t.recursos.download}</a>}
+      <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class={d.pdf ? 'link' : 'btn btn-primary'}>{t.hero.cta}</a>
       <a href={`${home}recursos/`} class="link">{t.recursos.all}</a>
     </div>
   </main>
