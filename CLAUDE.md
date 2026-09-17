@@ -48,6 +48,10 @@ Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica n
 2. Si lleva audio, convertir a MP3 mono 96 kbps y guardarlo en `public/audio/`. Si es un PDF de Margarita, guardarlo en `public/pdf/<slug>.pdf` (la página muestra el botón "Descargar en PDF" y el enlace de la lista pasa de "Escuchar" a "Leer").
 3. Nada más: la página `/recursos/<slug>/`, el índice `/recursos/` (3 idiomas), el bloque "Recursos" de la home (3 últimos) y el sitemap se generan solos.
 
+## Cómo añadir un artículo del blog
+1. Crear `src/content/blog/<slug>.md` con el frontmatter del que ya existe (`autoexigencia-de-sobrevivir-a-vivir.md`): `title`, `summary` (es/ca/en, es la entradilla y la descripción SEO), `lang`, `date`. El cuerpo es el artículo en Markdown, con el texto de Margarita tal cual (solo se corrigen erratas; su voz en femenino se respeta).
+2. Nada más: la página `/blog/<slug>/` (BlogPosting + migas), el índice `/blog/` en ES/CA/EN (fecha, minutos de lectura, "en castellano" si toca), el enlace "Blog" del menú y el sitemap se generan solos. Los artículos no salen en la home.
+
 ## Qué NO hacer
 - No inventar testimonios, formación, fotos "reales" ni datos de colegiatura.
 - No usar verde salvia, lavanda, flores/velas/piedras, vídeo de fondo.

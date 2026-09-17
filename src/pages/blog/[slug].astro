@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { dicts, waLink, base, readingTime, fmtDate } from '../../i18n';
+
+export async function getStaticPaths() {
+  const items = await getCollection('blog');
+  return items.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const lang = d.lang;
+const t = dicts[lang];
+const site = Astro.site!.toString().replace(/\/$/, '');
+const home = base(lang);
+const path = `blog/${entry.id}/`;
+const url = `${site}${home}${path}`;
+const title = `${d.title} · Margarita Margenat`;
+const description = d.summary[lang];
+const minutes = readingTime(entry.body ?? '');
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: d.title,
+    description,
+    datePublished: d.date.toISOString().slice(0, 10),
+    inLanguage: lang,
+    url,
+    mainEntityOfPage: url,
+    author: { '@type': 'Person', name: 'Margarita Margenat', url: `${site}${home}` },
+    publisher: { '@type': 'Person', name: 'Margarita Margenat' },
+    image: `${site}/og.jpg`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Margarita Margenat', item: `${site}${home}` },
+      { '@type': 'ListItem', position: 2, name: t.blog.title, item: `${site}${home}blog/` },
+      { '@type': 'ListItem', position: 3, name: d.title, item: url },
+    ],
+  },
+];
+---
+<Base lang={lang} t={t} title={title} description={description} path={path} single jsonLd={jsonLd}>
+  <main class="wrap narrow resource">
+    <nav class="crumbs" aria-label="Estás en">
+      <a href={home}>Inicio</a><span>›</span><a href={`${home}blog/`}>{t.blog.title}</a><span>›</span><span aria-current="page">{d.title}</span>
+    </nav>
+    <span class="caps kicker"><time datetime={d.date.toISOString().slice(0, 10)}>{fmtDate(d.date, lang)}</time> · {minutes} {t.blog.minRead}</span>
+    <h1>{d.title}</h1>
+    <p class="lede">{description}</p>
+    <Content />
+    <p class="byline">— Margarita Margenat</p>
+    <div class="actions">
+      <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="btn btn-primary">{t.hero.cta}</a>
+      <a href={`${home}blog/`} class="link">{t.blog.all}</a>
+    </div>
+  </main>
+</Base>

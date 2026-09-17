@@ -8,7 +8,7 @@ export const es = {
     shareTitle: 'Margarita Margenat · Psicóloga online',
     shareDescription: '¿Te exiges demasiado? Ansiedad, autoestima y relaciones. Empezamos con una llamada gratuita, sin compromiso.',
   },
-  nav: { empezamos: 'Cómo empezamos', sobremi: 'Sobre mí', recursos: 'Recursos', cta: 'Reservar llamada', menu: 'Abrir menú' },
+  nav: { empezamos: 'Cómo empezamos', sobremi: 'Sobre mí', recursos: 'Recursos', blog: 'Blog', cta: 'Reservar llamada', menu: 'Abrir menú' },
   wa: { msg: 'Hola Margarita, me gustaría reservar la llamada de valoración gratuita.', float: 'Escribir por WhatsApp' },
   hero: {
     kicker: '¿Te exiges demasiado?',
@@ -58,6 +58,13 @@ export const es = {
     download: 'Descargar en PDF',
     all: 'Ver todos los recursos',
     inLang: '',
+  },
+  blog: {
+    title: 'Blog',
+    description: 'Artículos de Margarita Margenat sobre autoexigencia, ansiedad, autoestima y relaciones.',
+    read: 'Leer el artículo',
+    all: 'Ver todos los artículos',
+    minRead: 'min de lectura',
   },
   notfound: {
     title: 'Esta página no existe',

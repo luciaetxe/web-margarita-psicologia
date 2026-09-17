@@ -18,4 +18,15 @@ const recursos = defineCollection({
   }),
 });
 
-export const collections = { recursos };
+// Cada artículo del blog es un archivo Markdown en src/content/blog/<slug>.md
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.object({ es: z.string(), ca: z.string(), en: z.string() }),
+    lang: z.enum(['es', 'ca', 'en']).default('es'),
+    date: z.coerce.date(),
+  }),
+});
+
+export const collections = { recursos, blog };
