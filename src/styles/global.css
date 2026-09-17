@@ -178,6 +178,7 @@ a { color: inherit; }
 .resource p { color: var(--color-ink-soft); font-size: 1.08rem; line-height: 1.8; margin: 0 0 1.2rem; }
 .resource ul { margin: 0 0 1.2rem; padding-left: 1.2rem; }
 .resource li { color: var(--color-ink-soft); font-size: 1.08rem; line-height: 1.8; margin-bottom: 0.4rem; }
+.resource .byline { font-family: var(--serif); font-size: 1.3rem; color: var(--color-ink); margin-top: 2rem; }
 .resource .actions { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; margin-top: 2.4rem; }
 
 /* Cierre */
@@ -206,9 +207,7 @@ a { color: inherit; }
 .footer-contact .dot { color: rgba(251,248,243,0.3); }
 
 /* Fade */
-.fade { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.fade.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fade { opacity: 1; transform: none; transition: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 /* ── Responsive ───────────────────────────────── */
 @media (max-width: 900px) {

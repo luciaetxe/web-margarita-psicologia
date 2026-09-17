@@ -91,10 +91,6 @@ const ogDesc = shareDescription ?? description;
       header.querySelectorAll('.nav-right a').forEach((a) =>
         a.addEventListener('click', () => { header.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); })
       );
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-      }, { threshold: 0.12 });
-      document.querySelectorAll('.fade').forEach((el) => io.observe(el));
     </script>
   </body>
 </html>

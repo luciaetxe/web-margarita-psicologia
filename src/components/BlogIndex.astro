@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { base, dicts, readingTime, fmtDate, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = dicts[lang];
+const items = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const title = `${t.blog.title} · Margarita Margenat`;
+---
+<Base lang={lang} t={t} title={title} description={t.blog.description} path="blog/">
+  <main class="wrap narrow page-head">
+    <h1 class="title">{t.blog.title}</h1>
+    <ul class="resources">
+      {items.map((p) => (
+        <li>
+          <span class="caps">{fmtDate(p.data.date, lang)} · {readingTime(p.body ?? '')} {t.blog.minRead}{p.data.lang !== lang && t.recursos.inLang ? ` · ${t.recursos.inLang}` : ''}</span>
+          <h2><a href={`${base(p.data.lang)}blog/${p.id}/`}>{p.data.title}</a></h2>
+          <p>{p.data.summary[lang]}</p>
+          <a href={`${base(p.data.lang)}blog/${p.id}/`} class="link">{t.blog.read}</a>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Base>

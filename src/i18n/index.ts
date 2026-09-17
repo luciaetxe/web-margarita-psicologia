@@ -17,3 +17,10 @@ export const EMAIL = 'margaritamp99@gmail.com';
 export const INSTAGRAM = 'margaritapsicologia';
 
 export const waLink = (msg: string) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+/** Minutos de lectura a ~200 palabras por minuto (mínimo 1). */
+export const readingTime = (text: string) => Math.max(1, Math.round(text.trim().split(/\s+/).length / 200));
+
+/** Fecha larga en el idioma de la página: "17 de septiembre de 2026". */
+export const fmtDate = (d: Date, lang: Lang) =>
+  new Intl.DateTimeFormat({ es: 'es-ES', ca: 'ca-ES', en: 'en-GB' }[lang], { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d);

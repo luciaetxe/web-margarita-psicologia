@@ -76,7 +76,7 @@ const jsonLd = {
   <section class="block" id="reconoces">
     <div class="wrap narrow">
       <h2 class="title">{t.reconoces.title}</h2>
-      <ul class="lines fade">
+      <ul class="lines">
         {t.reconoces.items.map((it) => (
           <li><span class="caps">{it.tag}</span><p>{it.text}</p></li>
         ))}
@@ -86,7 +86,7 @@ const jsonLd = {
 
   <!-- 3 · La frase -->
   <section class="block sky statement" id="enfoque">
-    <div class="wrap narrow fade">
+    <div class="wrap narrow">
       <p class="big">{t.statement.big}</p>
       <p class="em">{t.statement.em}</p>
       <p class="close">{t.statement.close}</p>
@@ -96,7 +96,7 @@ const jsonLd = {
 
   <!-- 4 · Margarita -->
   <section class="block sand" id="margarita">
-    <div class="wrap narrow about fade">
+    <div class="wrap narrow about">
       <img src="/margarita.jpeg" alt={t.sobremi.alt} width="776" height="776" loading="lazy" />
       <div>
         <h2 class="title">{t.sobremi.title}</h2>
@@ -109,11 +109,11 @@ const jsonLd = {
   <section class="block" id="empezamos">
     <div class="wrap narrow">
       <h2 class="title">{t.empezamos.title}</h2>
-      <ul class="lines fade">
+      <ul class="lines">
         {t.empezamos.steps.map((s) => <li><p>{s}</p></li>)}
       </ul>
       <h3 class="subtitle">{t.empezamos.tarifas}</h3>
-      <dl class="prices fade">
+      <dl class="prices">
         {precios.flatMap((p) => p.variants.length > 1
           ? [
               <div class="group"><dt>{p.name[lang]}</dt></div>,
@@ -138,7 +138,7 @@ const jsonLd = {
   <!-- 6 · Próximo retiro -->
   {nextRetiro && (
     <section class="block dusk retiro" id="retiro">
-      <div class="wrap narrow fade">
+      <div class="wrap narrow">
         <span class="caps">{t.retiro.label} · {nextRetiro.kind[lang]}</span>
         <h2 class="title">{nextRetiro.name}</h2>
         <p class="date">{nextRetiro.date[lang]}</p>
@@ -150,7 +150,7 @@ const jsonLd = {
 
   <!-- 7 · Recursos -->
   <section class="block" id="recursos">
-    <div class="wrap narrow fade">
+    <div class="wrap narrow">
       <h2 class="title">{t.recursos.title}</h2>
       <ul class="resources">
         {recursos.map((r) => (

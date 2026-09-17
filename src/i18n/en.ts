@@ -9,7 +9,7 @@ export const en: Dict = {
     shareTitle: 'Margarita Margenat · Online psychologist',
     shareDescription: 'Do you demand too much of yourself? Anxiety, self-esteem and relationships. We start with a free call, no obligation.',
   },
-  nav: { empezamos: 'How we start', sobremi: 'About me', recursos: 'Resources', cta: 'Book a call', menu: 'Open menu' },
+  nav: { empezamos: 'How we start', sobremi: 'About me', recursos: 'Resources', blog: 'Blog', cta: 'Book a call', menu: 'Open menu' },
   wa: { msg: 'Hi Margarita, I would like to book the free assessment call.', float: 'Message on WhatsApp' },
   hero: {
     kicker: 'Do you demand too much of yourself?',
@@ -59,6 +59,13 @@ export const en: Dict = {
     download: 'Download as PDF',
     all: 'See all resources',
     inLang: 'in Spanish',
+  },
+  blog: {
+    title: 'Blog',
+    description: 'Articles by Margarita Margenat on self-demand, anxiety, self-esteem and relationships.',
+    read: 'Read the article',
+    all: 'See all articles',
+    minRead: 'min read',
   },
   notfound: {
     title: "This page doesn't exist",

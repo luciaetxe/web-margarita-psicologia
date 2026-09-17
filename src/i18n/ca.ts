@@ -9,7 +9,7 @@ export const ca: Dict = {
     shareTitle: 'Margarita Margenat · Psicòloga online',
     shareDescription: "T'exigeixes massa? Ansietat, autoestima i relacions. Comencem amb una trucada gratuïta, sense compromís.",
   },
-  nav: { empezamos: 'Com comencem', sobremi: 'Sobre mi', recursos: 'Recursos', cta: 'Reservar trucada', menu: 'Obrir menú' },
+  nav: { empezamos: 'Com comencem', sobremi: 'Sobre mi', recursos: 'Recursos', blog: 'Blog', cta: 'Reservar trucada', menu: 'Obrir menú' },
   wa: { msg: "Hola Margarita, m'agradaria reservar la trucada de valoració gratuïta.", float: 'Escriure per WhatsApp' },
   hero: {
     kicker: "T'exigeixes massa?",
@@ -59,6 +59,13 @@ export const ca: Dict = {
     download: 'Descarregar en PDF',
     all: 'Veure tots els recursos',
     inLang: 'en castellà',
+  },
+  blog: {
+    title: 'Blog',
+    description: "Articles de Margarita Margenat sobre autoexigència, ansietat, autoestima i relacions.",
+    read: "Llegir l'article",
+    all: 'Veure tots els articles',
+    minRead: 'min de lectura',
   },
   notfound: {
     title: 'Aquesta pàgina no existeix',
