@@ -43,6 +43,7 @@ export const es = {
     ],
     tarifas: 'Tarifas',
     consult: 'Se concreta en la llamada',
+    note: 'Si tienes dudas, empezamos con una llamada gratuita de valoración: escucho lo que necesitas, te explico lo que quieras saber y lo concretamos todo.',
   },
   sobremi: {
     title: 'Soy Margarita',

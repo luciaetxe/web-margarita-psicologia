@@ -44,6 +44,7 @@ export const ca: Dict = {
     ],
     tarifas: 'Tarifes',
     consult: 'Es concreta a la trucada',
+    note: "Si tens dubtes, comencem amb una trucada gratuïta de valoració: escolto el que necessites, t'explico el que vulguis saber i ho concretem tot.",
   },
   sobremi: {
     title: 'Soc la Margarita',

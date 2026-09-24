@@ -44,6 +44,7 @@ export const en: Dict = {
     ],
     tarifas: 'Pricing',
     consult: 'Agreed on the call',
+    note: "If you have any questions, we start with a free assessment call: I listen to what you need, explain whatever you want to know and we settle the details together.",
   },
   sobremi: {
     title: "I'm Margarita",

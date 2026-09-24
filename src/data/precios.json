@@ -3,8 +3,12 @@
     "id": "adultos",
     "name": { "es": "Adultos", "ca": "Adults", "en": "Adults" },
     "variants": [
-      { "dur": { "es": "1 h 30 min", "ca": "1 h 30 min", "en": "1 hr 30 min" }, "price": 100, "was": 120 },
-      { "dur": { "es": "1 h", "ca": "1 h", "en": "1 hr" }, "price": 80 }
+      { "dur": { "es": "1 h", "ca": "1 h", "en": "1 hr" }, "price": 80 },
+      {
+        "dur": { "es": "Packs de 4, 6 u 8 sesiones", "ca": "Packs de 4, 6 o 8 sessions", "en": "Packs of 4, 6 or 8 sessions" },
+        "price": null,
+        "note": { "es": "Precio reducido, a consultar", "ca": "Preu reduït, a consultar", "en": "Reduced price, on request" }
+      }
     ]
   },
   {

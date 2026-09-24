@@ -120,18 +120,19 @@ const jsonLd = {
               ...p.variants.map((v) => (
                 <div class="sub">
                   <dt>{v.dur[lang]}</dt>
-                  <dd>{v.price ? <>{'was' in v && v.was && <s>{eur(v.was)}</s>}{eur(v.price)}</> : <em>{t.empezamos.consult}</em>}</dd>
+                  <dd>{v.price ? eur(v.price) : <em>{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</em>}</dd>
                 </div>
               )),
             ]
           : p.variants.map((v) => (
               <div>
                 <dt>{p.name[lang]} <span>· {v.dur[lang]}</span></dt>
-                <dd>{v.price ? eur(v.price) : <em>{t.empezamos.consult}</em>}</dd>
+                <dd>{v.price ? eur(v.price) : <em>{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</em>}</dd>
               </div>
             ))
         )}
       </dl>
+      <p class="prices-note">{t.empezamos.note}</p>
     </div>
   </section>
 
