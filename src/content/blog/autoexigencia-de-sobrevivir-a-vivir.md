@@ -1,14 +1,14 @@
 ---
 title: "Autoexigencia: de sobrevivir a vivir"
 summary:
-  es: La autoexigencia no es un rasgo con el que se nace. Es un mecanismo de defensa que aprendimos, y que podemos ir deshaciendo.
-  ca: L'autoexigència no és un tret amb què es neix. És un mecanisme de defensa que vam aprendre, i que podem anar desfent.
-  en: Self-demand isn't a trait you're born with. It's a defence mechanism we learned, and one we can gradually undo.
+  es: La autoexigencia no es un rasgo con el que se nace. Es una estrategia de adaptación que aprendimos, y que podemos ir deshaciendo.
+  ca: L'autoexigència no és un tret amb què es neix. És una estratègia d'adaptació que vam aprendre, i que podem anar desfent.
+  en: Self-demand isn't a trait you're born with. It's an adaptation strategy we learned, and one we can gradually undo.
 lang: es
 date: 2026-09-17
 ---
 
-La autoexigencia, para mí, es un mecanismo de defensa que aprendemos en algún momento de nuestra vida para sobrellevar una situación difícil. Quizás hubo un día en el que interpretamos, por lo que sucedía en nuestro entorno, que quien se esforzaba conseguía lo que necesitaba. Quizás interpretamos que el éxito conllevaba sufrimiento. Quizás interpretamos que, para sentir la validación de otro, lo que hacíamos tenía que ser perfecto. Quizás interpretamos que un error significaba fracaso, en vez de parte del camino.
+La autoexigencia, para mí, es una estrategia de adaptación que aprendemos en algún momento de nuestra vida para sobrellevar una situación difícil. Quizás hubo un día en el que interpretamos, por lo que sucedía en nuestro entorno, que quien se esforzaba conseguía lo que necesitaba. Quizás interpretamos que el éxito conllevaba sufrimiento. Quizás interpretamos que, para sentir la validación de otro, lo que hacíamos tenía que ser perfecto. Quizás interpretamos que un error significaba fracaso, en vez de parte del camino.
 
 Y puede ser que eso se convirtiese en una manera de relacionarnos con nosotras mismas, con exigencia constante, y lo normalicemos. Y lo convirtamos en nuestra manera de funcionar.
 

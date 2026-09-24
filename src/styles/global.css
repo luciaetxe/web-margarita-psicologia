@@ -124,6 +124,7 @@ a { color: inherit; }
 .prices dd { font-family: var(--serif); font-size: 1.6rem; color: var(--color-sea); white-space: nowrap; }
 .prices dd em { font-size: 1.05rem; color: var(--color-ink-soft); }
 .prices dd s { color: var(--color-ink-soft); font-size: 1.1rem; margin-right: 0.6rem; text-decoration-thickness: 1px; }
+.prices-note { max-width: 34rem; margin: 1.4rem 0 0; font-size: 0.92rem; line-height: 1.7; color: var(--color-ink-soft); }
 .prices > div.group { border-bottom: 0; padding-bottom: 0.2rem; }
 .prices > div.sub { padding: 0.7rem 0 0.7rem 1.4rem; border-bottom: 0; }
 .prices > div.sub dt { font-family: var(--sans); font-size: 0.95rem; color: var(--color-ink-soft); }
