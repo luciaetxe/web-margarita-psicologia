@@ -1,11 +1,15 @@
 ---
-import { EMAIL, INSTAGRAM, type Dict } from '../i18n';
-interface Props { t: Dict }
-const { t } = Astro.props;
+import { EMAIL, INSTAGRAM, base, type Dict, type Lang } from '../i18n';
+import Gull from './Gull.astro';
+interface Props { lang: Lang; t: Dict }
+const { lang, t } = Astro.props;
 ---
 <footer class="site-footer">
   <div class="wrap footer-in">
-    <span class="fname">Margarita Margenat</span>
+    <a href={base(lang)} class="fbrand" aria-label="Margarita Margenat">
+      <Gull class="fgull" />
+      <span class="fname">Margarita Margenat</span>
+    </a>
     <span>{t.footer.role}</span>
     <span class="footer-contact">
       <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
