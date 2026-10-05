@@ -13,6 +13,7 @@ const recursos = defineCollection({
     durationISO: z.string().optional(), // "PT3M13S"
     audio: z.string().optional(),       // "/audio/respira-en-paz.mp3"
     pdf: z.string().optional(),         // "/pdf/carta-a-los-padres.pdf"
+    order: z.number().default(0),       // desempate a igual fecha: 1, 2, 3…
     lang: z.enum(['es', 'ca', 'en']).default('es'),
     date: z.coerce.date(),
   }),

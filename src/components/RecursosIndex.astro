@@ -1,13 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { base, dicts, type Lang } from '../i18n';
+import { base, byNewest, dicts, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = dicts[lang];
 const home = base(lang);
-const items = (await getCollection('recursos')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const items = (await getCollection('recursos')).sort(byNewest);
 const title = `${t.recursos.title} · Margarita Margenat`;
 ---
 <Base lang={lang} t={t} title={title} description={t.recursos.intro} path="recursos/">

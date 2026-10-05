@@ -2,7 +2,7 @@
 import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import WhatsAppIcon from './WhatsAppIcon.astro';
-import { base, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
+import { base, byNewest, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
 import precios from '../data/precios.json';
 import retiros from '../data/retiros.json';
 import heroWide from '../assets/hero-wide.jpg';
@@ -13,7 +13,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = dicts[lang];
 const home = base(lang);
-const recursos = (await getCollection('recursos')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+const recursos = (await getCollection('recursos')).sort(byNewest).slice(0, 3);
 
 // Hero con dirección de arte: recorte apaisado en escritorio, vertical en móvil.
 const wideAvif = await getImage({ src: heroWide, format: 'avif', widths: [1200, 1800, 2600], sizes: '100vw' });
