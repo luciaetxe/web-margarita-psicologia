@@ -2,9 +2,9 @@
 export const es = {
   lang: 'es',
   meta: {
-    title: 'Psicóloga online · Ansiedad y autoexigencia · Margarita Margenat',
+    title: 'Margarita Psicología · Psicóloga online · Ansiedad y autoexigencia',
     description:
-      'Psicóloga online para personas que se exigen demasiado. Ansiedad, autoestima y relaciones. Empezamos con una llamada gratuita, sin compromiso.',
+      'Margarita Margenat, psicóloga online para personas que se exigen demasiado. Ansiedad, autoestima y relaciones. Empezamos con una llamada gratuita, sin compromiso.',
     shareTitle: 'Margarita Margenat · Psicóloga online',
     shareDescription: '¿Te exiges demasiado? Ansiedad, autoestima y relaciones. Empezamos con una llamada gratuita, sin compromiso.',
   },

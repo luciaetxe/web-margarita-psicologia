@@ -3,9 +3,9 @@ import type { Dict } from './index';
 export const ca: Dict = {
   lang: 'ca',
   meta: {
-    title: 'Psicòloga online · Ansietat i autoexigència · Margarita Margenat',
+    title: 'Margarita Psicologia · Psicòloga online · Ansietat i autoexigència',
     description:
-      "Psicòloga online per a persones que s'exigeixen massa. Ansietat, autoestima i relacions. Comencem amb una trucada gratuïta, sense compromís.",
+      "Margarita Margenat, psicòloga online per a persones que s'exigeixen massa. Ansietat, autoestima i relacions. Comencem amb una trucada gratuïta, sense compromís.",
     shareTitle: 'Margarita Margenat · Psicòloga online',
     shareDescription: "T'exigeixes massa? Ansietat, autoestima i relacions. Comencem amb una trucada gratuïta, sense compromís.",
   },

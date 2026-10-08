@@ -3,9 +3,9 @@ import type { Dict } from './index';
 export const en: Dict = {
   lang: 'en',
   meta: {
-    title: 'Online psychologist · Anxiety and self-demand · Margarita Margenat',
+    title: 'Margarita Psicología · Online psychologist · Anxiety and self-demand',
     description:
-      'Online psychologist for people who demand too much of themselves. Anxiety, self-esteem and relationships. We start with a free call, no obligation.',
+      'Margarita Margenat, online psychologist for people who demand too much of themselves. Anxiety, self-esteem and relationships. We start with a free call, no obligation.',
     shareTitle: 'Margarita Margenat · Online psychologist',
     shareDescription: 'Do you demand too much of yourself? Anxiety, self-esteem and relationships. We start with a free call, no obligation.',
   },
