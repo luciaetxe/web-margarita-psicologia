@@ -26,6 +26,11 @@ const wa = waLink(t.wa.msg);
 const nextRetiro = retiros.find((r) => r.upcoming);
 const eur = (n: number) => (lang === 'en' ? `€${n}` : `${n} €`);
 
+import retrato from '../assets/margarita.jpeg';
+const retratoAvif = await getImage({ src: retrato, format: 'avif', widths: [320, 480, 640], quality: 60 });
+const retratoWebp = await getImage({ src: retrato, format: 'webp', widths: [320, 480, 640], quality: 70 });
+const retratoJpg = await getImage({ src: retrato, format: 'jpeg', width: 640, quality: 75 });
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Psychologist',
@@ -41,7 +46,12 @@ const jsonLd = {
   areaServed: { '@type': 'Country', name: 'España' },
   availableLanguage: ['es', 'ca', 'en'],
   knowsAbout: ['ansiedad', 'autoestima', 'autoexigencia', 'relaciones', 'terapia online'],
-  sameAs: [`https://instagram.com/${INSTAGRAM}`],
+  sameAs: [
+    `https://instagram.com/${INSTAGRAM}`,
+    'https://es.linkedin.com/in/margarita-margenat-puig-51896223a',
+    'https://www.mundopsicologos.com/procard/margarita-margenat',
+    'https://www.toppsicologos.com/barcelona/psicologos/margarita-margenat',
+  ],
   makesOffer: precios.flatMap((p) =>
     p.variants.filter((v) => v.price).map((v) => ({
       '@type': 'Offer', price: String(v.price), priceCurrency: 'EUR',
@@ -99,7 +109,11 @@ const jsonLd = {
   <!-- 4 · Margarita -->
   <section class="block sand" id="margarita">
     <div class="wrap narrow about">
-      <img src="/margarita.jpeg" alt={t.sobremi.alt} width="776" height="776" loading="lazy" />
+      <picture>
+        <source type="image/avif" srcset={retratoAvif.srcSet.attribute} sizes="(max-width: 600px) 70vw, 320px" />
+        <source type="image/webp" srcset={retratoWebp.srcSet.attribute} sizes="(max-width: 600px) 70vw, 320px" />
+        <img src={retratoJpg.src} alt={t.sobremi.alt} width={retratoJpg.attributes.width} height={retratoJpg.attributes.height} loading="lazy" decoding="async" />
+      </picture>
       <div>
         <h2 class="title">{t.sobremi.title}</h2>
         <p>{t.sobremi.p1}</p>
