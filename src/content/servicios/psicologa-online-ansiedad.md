@@ -25,7 +25,9 @@ Por eso no trabajo solo para que la ansiedad baje. Trabajo para que entiendas qu
 
 ## Cómo trabajamos
 
-Soy psicóloga de formación humanista. Eso quiere decir que no vengo con un protocolo cerrado: te escucho, te acompaño y vamos a tu ritmo.
+Soy psicóloga de formación humanista. No vengo con un protocolo cerrado y no me quedo en escucharte. En sesión te acompaño a entender y a sanar lo que hay debajo de la ansiedad. Y te llevas herramientas para casa, para usarlas en tu día a día hasta que lo que trabajamos sea tuyo.
+
+El objetivo es que sientas paz por dentro y notes cambios reales en tu vida, no solo en la consulta.
 
 - Ponemos nombre a lo que te pasa y a dónde viene, sin juzgarlo.
 - Aprendes a reconocer la ansiedad en el cuerpo y a bajarla con la respiración y la atención. Tienes un ejemplo en el audio [Respira en paz](/recursos/respira-en-paz/).
