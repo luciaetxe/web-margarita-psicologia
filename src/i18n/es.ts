@@ -23,9 +23,9 @@ export const es = {
   reconoces: {
     title: '¿Te reconoces?',
     items: [
-      { tag: 'Ansiedad', text: 'La cabeza no para y cualquier cosa parece demasiado.' },
-      { tag: 'Autoexigencia', text: 'Nada es suficiente y te cuesta descansar sin culpa.' },
-      { tag: 'Relaciones', text: 'Te dejas para el final y no sabes decir que no.' },
+      { tag: 'Ansiedad', href: '/psicologa-online-ansiedad/', text: 'La cabeza no para y cualquier cosa parece demasiado.' },
+      { tag: 'Autoexigencia', href: '/autoexigencia/', text: 'Nada es suficiente y te cuesta descansar sin culpa.' },
+      { tag: 'Relaciones', href: '/terapia-online/', text: 'Te dejas para el final y no sabes decir que no.' },
     ],
   },
   statement: {
@@ -53,6 +53,7 @@ export const es = {
   retiro: { label: 'Próximo retiro', cta: 'Ver el retiro' },
   recursos: {
     title: 'Recursos',
+    description: 'Ejercicios escritos, visualizaciones y audios de respiración de Margarita Margenat para indagar, soltar lo que pesa y cuidarte. Gratis.',
     intro: 'He preparado estos recursos para ti: para indagar, soltar emociones que pesan, cambiar pensamientos que ya no te sirven y darte un momento de autocuidado. Si alguno te llama la atención, lánzate: tu intuición sabe lo que necesitas. Y si te apetece contarme en qué punto estás, escríbeme. Lo hablamos sin ningún coste.',
     listen: 'Escuchar',
     read: 'Leer',

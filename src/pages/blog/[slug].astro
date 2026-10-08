@@ -17,7 +17,8 @@ const site = Astro.site!.toString().replace(/\/$/, '');
 const home = base(lang);
 const path = `blog/${entry.id}/`;
 const url = `${site}${home}${path}`;
-const title = `${d.title} · Margarita Margenat`;
+const title = `${d.seoTitle ?? d.title} · Margarita Margenat`;
+const shareTitle = `${d.title} · Margarita Margenat`;
 const description = d.summary[lang];
 const minutes = readingTime(entry.body ?? '');
 
@@ -28,6 +29,7 @@ const jsonLd = [
     headline: d.title,
     description,
     datePublished: d.date.toISOString().slice(0, 10),
+    dateModified: (d.updated ?? d.date).toISOString().slice(0, 10),
     inLanguage: lang,
     url,
     mainEntityOfPage: url,
@@ -46,7 +48,7 @@ const jsonLd = [
   },
 ];
 ---
-<Base lang={lang} t={t} title={title} description={description} path={path} single jsonLd={jsonLd}>
+<Base lang={lang} t={t} title={title} shareTitle={shareTitle} description={description} path={path} single jsonLd={jsonLd}>
   <main class="wrap narrow resource">
     <nav class="crumbs" aria-label="Estás en">
       <a href={home}>Inicio</a><span>›</span><a href={`${home}blog/`}>{t.blog.title}</a><span>›</span><span aria-current="page">{d.title}</span>

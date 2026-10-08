@@ -80,7 +80,7 @@ const jsonLd = {
       <h2 class="title">{t.reconoces.title}</h2>
       <ul class="lines">
         {t.reconoces.items.map((it) => (
-          <li><span class="caps">{it.tag}</span><p>{it.text}</p></li>
+          <li>{it.href ? <a href={it.href} class="caps">{it.tag}</a> : <span class="caps">{it.tag}</span>}<p>{it.text}</p></li>
         ))}
       </ul>
     </div>

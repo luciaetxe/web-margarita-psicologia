@@ -174,6 +174,7 @@ a { color: inherit; }
 .resource { padding-top: 8rem; padding-bottom: 6rem; }
 .resource .kicker { display: block; margin-bottom: 1.4rem; }
 .resource h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1.02; letter-spacing: -0.01em; margin: 0 0 1rem; }
+.resource h2 { font-family: var(--serif); font-weight: 400; font-size: 1.75rem; line-height: 1.2; color: var(--color-ink); margin: 2.6rem 0 0.8rem; }
 .resource .lede { font-family: var(--serif); font-size: 1.5rem; line-height: 1.35; color: var(--color-ink-soft); margin: 0 0 2rem; }
 .resource audio { display: block; width: 100%; margin: 0 0 2rem; accent-color: var(--color-sea); }
 .resource p { color: var(--color-ink-soft); font-size: 1.08rem; line-height: 1.8; margin: 0 0 1.2rem; }
@@ -187,6 +188,17 @@ a { color: inherit; }
 .resource summary:hover { color: var(--color-sea); text-decoration-color: var(--color-sea); }
 .resource summary:focus-visible { outline: 2px solid var(--color-sea); outline-offset: 4px; }
 .resource details[open] > summary { margin-bottom: 1.2rem; text-decoration: none; }
+/* Páginas de servicio: tabla de precios, FAQ más compacta, enlaces en el texto */
+.resource table { width: 100%; border-collapse: collapse; margin: 0 0 1.6rem; font-size: 1.05rem; }
+.resource th, .resource td { text-align: left; padding: 0.7rem 0; border-bottom: 1px solid var(--color-line); color: var(--color-ink-soft); vertical-align: top; }
+.resource th { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; color: var(--color-sea); border-bottom-color: var(--color-ink); }
+.resource td:last-child, .resource th:last-child { text-align: right; white-space: nowrap; padding-left: 1rem; }
+.resource .faq summary { font-size: 1.25rem; }
+.resource .faq details { margin-bottom: 0.9rem; }
+.resource :where(p, li) a { color: var(--color-sea); text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: var(--color-sky-hi); text-underline-offset: 0.25em; }
+.resource :where(p, li) a:hover { text-decoration-color: var(--color-sea); }
+.lines a.caps { text-decoration: none; }
+.lines a.caps:hover { color: var(--color-sea-deep); text-decoration: underline; text-underline-offset: 0.3em; }
 .resource .byline { font-family: var(--serif); font-size: 1.3rem; color: var(--color-ink); margin-top: 2rem; }
 .resource .actions { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; margin-top: 2.4rem; }
 

@@ -24,9 +24,9 @@ export const ca: Dict = {
   reconoces: {
     title: "T'hi reconeixes?",
     items: [
-      { tag: 'Ansietat', text: 'El cap no para i qualsevol cosa sembla massa.' },
-      { tag: 'Autoexigència', text: 'Res no és suficient i et costa descansar sense culpa.' },
-      { tag: 'Relacions', text: 'Et deixes per al final i no saps dir que no.' },
+      { tag: 'Ansietat', href: '', text: 'El cap no para i qualsevol cosa sembla massa.' },
+      { tag: 'Autoexigència', href: '', text: 'Res no és suficient i et costa descansar sense culpa.' },
+      { tag: 'Relacions', href: '', text: 'Et deixes per al final i no saps dir que no.' },
     ],
   },
   statement: {
@@ -54,6 +54,7 @@ export const ca: Dict = {
   retiro: { label: 'Proper retir', cta: 'Veure el retir' },
   recursos: {
     title: 'Recursos',
+    description: 'Exercicis escrits, visualitzacions i àudios de respiració de Margarita Margenat per indagar, deixar anar el que pesa i cuidar-te. Gratuïts.',
     intro: "He preparat aquests recursos per a tu: per indagar, deixar anar emocions que pesen, canviar pensaments que ja no et serveixen i donar-te un moment d'autocura. Si algun et crida l'atenció, llança-t'hi: la teva intuïció sap el que necessites. I si et ve de gust explicar-me en quin punt estàs, escriu-me. En parlem sense cap cost.",
     listen: 'Escoltar',
     read: 'Llegir',

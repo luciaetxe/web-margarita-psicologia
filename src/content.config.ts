@@ -16,6 +16,7 @@ const recursos = defineCollection({
     order: z.number().default(0),       // desempate a igual fecha: 1, 2, 3…
     lang: z.enum(['es', 'ca', 'en']).default('es'),
     date: z.coerce.date(),
+    updated: z.coerce.date().optional(),
   }),
 });
 
@@ -27,7 +28,25 @@ const blog = defineCollection({
     summary: z.object({ es: z.string(), ca: z.string(), en: z.string() }),
     lang: z.enum(['es', 'ca', 'en']).default('es'),
     date: z.coerce.date(),
+    updated: z.coerce.date().optional(), // última revisión del texto (lastmod del sitemap)
+    seoTitle: z.string().optional(),     // <title> con la búsqueda real; el h1 sigue siendo title
   }),
 });
 
-export const collections = { recursos, blog };
+// Cada página de servicio es un archivo Markdown en src/content/servicios/<slug>.md → /<slug>/
+const servicios = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/servicios' }),
+  schema: z.object({
+    title: z.string(),                   // h1
+    seoTitle: z.string().optional(),     // <title> con la búsqueda real
+    kicker: z.string(),                  // etiqueta sobre el h1 ("Ansiedad")
+    summary: z.string(),                 // entradilla y descripción SEO
+    lang: z.enum(['es', 'ca', 'en']).default('es'),
+    date: z.coerce.date(),
+    updated: z.coerce.date().optional(),
+    order: z.number().default(0),
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
+  }),
+});
+
+export const collections = { recursos, blog, servicios };

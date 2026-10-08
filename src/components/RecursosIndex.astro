@@ -10,7 +10,7 @@ const home = base(lang);
 const items = (await getCollection('recursos')).sort(byNewest);
 const title = `${t.recursos.title} · Margarita Margenat`;
 ---
-<Base lang={lang} t={t} title={title} description={t.recursos.intro} path="recursos/">
+<Base lang={lang} t={t} title={title} description={t.recursos.description} path="recursos/">
   <main class="wrap narrow page-head">
     <h1 class="title">{t.recursos.title}</h1>
     <p class="intro">{t.recursos.intro}</p>

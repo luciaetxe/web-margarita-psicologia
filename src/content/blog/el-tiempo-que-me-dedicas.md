@@ -4,8 +4,10 @@ summary:
   es: No sentirte elegida, no sentirte su prioridad. A veces, echar de menos a alguien habla de echarse de menos a una misma.
   ca: No sentir-te escollida, no sentir-te la seva prioritat. De vegades, trobar a faltar algú parla de trobar-se a faltar a una mateixa.
   en: Not feeling chosen, not feeling like their priority. Sometimes, missing someone is really about missing yourself.
+seoTitle: "No sentirte su prioridad: qué dice de ti y qué puedes hacer"
 lang: es
 date: 2026-09-23
+updated: 2026-10-06
 ---
 
 No sentirte elegida. No sentirte su prioridad. Sentir que eres la última de la lista. Sentir que, si te dedica mucho tiempo, molestas, es demasiado. Sentir que no mereces tanto tiempo y, a la vez, desear más atención. Sentir que persigues a alguien que no está presente, aunque lo esté físicamente. Sentirle lejos, echarle de menos, reclamar amor y, a la vez, protegerse de él.
@@ -14,7 +16,7 @@ Qué lío, ¿no?
 
 Yo aquí veo dos cosas.
 
-1\. A veces, echar de menos a alguien habla de echarse de menos a uno mismo.
+## 1. A veces, echar de menos a alguien habla de echarse de menos a uno mismo
 
 ¿Te has planteado alguna vez, cuando has sentido que no te elige, si tú te estás eligiendo? Cuando sientes que no te atiende, ¿si tú te estás atendiendo? ¿Escuchando tus necesidades y satisfaciéndolas?
 
@@ -32,7 +34,7 @@ Cuando equilibras lo que buscas fuera y lo que buscas dentro, la vida se suaviza
 
 Y quizás no ha cambiado nada externo. Simplemente has puesto tu mirada hacia dentro y has encontrado un tesoro infinito.
 
-2\. La segunda cosa que veo es el doble filo de este reclamo.
+## 2. El doble filo del reclamo
 
 A veces, el simple hecho de vivir en ese reclamo es lo que nos bloquea de sentir lo que el otro nos da.
 
@@ -47,6 +49,8 @@ Esto tiene que ver con lo que se habla tanto hoy en día de la abundancia. No se
 Y es entonces cuando el amor fluye y se siente tanto desde dentro como desde fuera, de los demás.
 
 Aquí voy a ser muy sincera y te diré que es algo que estoy experimentando por primera vez desde hace tres meses. Y no vivo cada día desde esta abundancia ni siento cada día este amor desde dentro. Pero se está convirtiendo en un anclaje muy potente para mí.
+
+## Gestos pequeños para volver a ti
 
 Acciones como mirarme al espejo y decirme que me quiero, ponerme una mano en el pecho y recordarme que estoy aquí, respirar y recordar que no estoy sola, parar, observar mis pensamientos y recordarme que no me identifique con ellos, que la mente tiene miedo y por eso intenta protegerme con pensamientos negativos.
 

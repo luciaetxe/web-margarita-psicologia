@@ -4,8 +4,10 @@ summary:
   es: La autoexigencia no es un rasgo con el que se nace. Es una estrategia de adaptación que aprendimos, y que podemos ir deshaciendo.
   ca: L'autoexigència no és un tret amb què es neix. És una estratègia d'adaptació que vam aprendre, i que podem anar desfent.
   en: Self-demand isn't a trait you're born with. It's an adaptation strategy we learned, and one we can gradually undo.
+seoTitle: "Autoexigencia: por qué te exiges tanto y cómo dejar de hacerlo"
 lang: es
 date: 2026-09-17
+updated: 2026-10-06
 ---
 
 La autoexigencia, para mí, es una estrategia de adaptación que aprendemos en algún momento de nuestra vida para sobrellevar una situación difícil. Quizás hubo un día en el que interpretamos, por lo que sucedía en nuestro entorno, que quien se esforzaba conseguía lo que necesitaba. Quizás interpretamos que el éxito conllevaba sufrimiento. Quizás interpretamos que, para sentir la validación de otro, lo que hacíamos tenía que ser perfecto. Quizás interpretamos que un error significaba fracaso, en vez de parte del camino.
@@ -14,11 +16,15 @@ Y puede ser que eso se convirtiese en una manera de relacionarnos con nosotras m
 
 Hasta que un día nos damos cuenta de que estamos agotadas.
 
+## La autoexigencia se aprende, y se puede desaprender
+
 El punto positivo de todo esto es que la autoexigencia no es un tema de personalidad con el que se nace y ya está. Es algo que, de la misma manera que incorporamos en nosotras, podemos ir deshaciendo.
 
 En terapia, yo personalmente, he podido observar en qué puntos de mi vida empecé a programar en mi sistema de creencias que debía ser exigente conmigo misma para funcionar. He podido comprender, he podido expresar las emociones que quedaron estancadas en ese momento, he podido darle la vuelta y entender que ya no necesito seguir viviendo así.
 
 Que eso no era vivir, era sobrevivir.
+
+## Sobrevivir no es vivir
 
 Y la supervivencia es parte de nosotros porque, cuando es necesaria, se usa. Si un león está a punto de atacarnos, necesitaremos todas nuestras capacidades para sobrevivir. Pero si un chico no responde a nuestro mensaje, no hace falta.
 
@@ -31,6 +37,8 @@ Ahora que sé lo que es vivir, me encanta acompañar a personas que se encuentra
 Es una transformación: pasar de tratarnos así y vivir la vida con tanta dureza, presión, rigidez y esfuerzo que se convierten en sufrimiento, ansiedad y agotamiento, a empezar a respirar, vivir, agradecer y disfrutar, y sentirnos más en paz con nosotras mismas, sea lo que sea que esté pasando a nuestro alrededor.
 
 Y recordar que, cada vez que nuestro cuerpo se active o estemos pasando un momento difícil, la dureza no nos llevará a ningún lado.
+
+## Un trato más suave contigo misma
 
 Quizás podamos empezar a llevar con nosotras un trato más suave.
 

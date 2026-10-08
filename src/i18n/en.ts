@@ -24,9 +24,9 @@ export const en: Dict = {
   reconoces: {
     title: 'Sound familiar?',
     items: [
-      { tag: 'Anxiety', text: "Your head won't stop and everything feels like too much." },
-      { tag: 'Self-demand', text: "Nothing is ever enough and resting without guilt feels impossible." },
-      { tag: 'Relationships', text: "You leave yourself for last and can't say no." },
+      { tag: 'Anxiety', href: '', text: "Your head won't stop and everything feels like too much." },
+      { tag: 'Self-demand', href: '', text: "Nothing is ever enough and resting without guilt feels impossible." },
+      { tag: 'Relationships', href: '', text: "You leave yourself for last and can't say no." },
     ],
   },
   statement: {
@@ -54,6 +54,7 @@ export const en: Dict = {
   retiro: { label: 'Next retreat', cta: 'See the retreat' },
   recursos: {
     title: 'Resources',
+    description: 'Written exercises, visualisations and breathing audios by Margarita Margenat to look inward, let go of what weighs on you and care for yourself. Free.',
     intro: "I've put together these resources for you: to look inward, let go of emotions that weigh on you, change thoughts that no longer serve you and give yourself a moment of self-care. If one of them speaks to you, go for it: your intuition knows what you need. And if you'd like to tell me where you are right now, write to me. We'll talk it through, free of charge.",
     listen: 'Listen',
     read: 'Read',
