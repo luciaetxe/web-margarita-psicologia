@@ -24,9 +24,9 @@ export const en: Dict = {
   reconoces: {
     title: 'Sound familiar?',
     items: [
-      { tag: 'Anxiety', href: '', text: "Your head won't stop and everything feels like too much." },
-      { tag: 'Self-demand', href: '', text: "Nothing is ever enough and resting without guilt feels impossible." },
-      { tag: 'Relationships', href: '', text: "You leave yourself for last and can't say no." },
+      { tag: 'Anxiety', href: '/en/psicologa-online-ansiedad/', text: "Your head won't stop and everything feels like too much." },
+      { tag: 'Self-demand', href: '/en/autoexigencia/', text: "Nothing is ever enough and resting without guilt feels impossible." },
+      { tag: 'Relationships', href: '/en/terapia-online/', text: "You leave yourself for last and can't say no." },
     ],
   },
   statement: {
@@ -75,5 +75,6 @@ export const en: Dict = {
     home: 'Go to the home page',
   },
   cierre: { title: 'Shall we start?', sub: 'A free call, no obligation.', cta: 'Book on WhatsApp' },
+  servicios: { faq: 'Frequently asked questions', home: 'Home' },
   footer: { role: 'Psychologist and psychotherapist · Online' },
 };

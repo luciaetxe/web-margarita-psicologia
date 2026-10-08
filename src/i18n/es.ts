@@ -74,5 +74,6 @@ export const es = {
     home: 'Ir al inicio',
   },
   cierre: { title: '¿Empezamos?', sub: 'Una llamada gratuita, sin compromiso.', cta: 'Reservar por WhatsApp' },
+  servicios: { faq: 'Preguntas frecuentes', home: 'Inicio' },
   footer: { role: 'Psicóloga y psicoterapeuta · Online' },
 };

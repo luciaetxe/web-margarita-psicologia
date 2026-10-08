@@ -24,9 +24,9 @@ export const ca: Dict = {
   reconoces: {
     title: "T'hi reconeixes?",
     items: [
-      { tag: 'Ansietat', href: '', text: 'El cap no para i qualsevol cosa sembla massa.' },
-      { tag: 'Autoexigència', href: '', text: 'Res no és suficient i et costa descansar sense culpa.' },
-      { tag: 'Relacions', href: '', text: 'Et deixes per al final i no saps dir que no.' },
+      { tag: 'Ansietat', href: '/ca/psicologa-online-ansiedad/', text: 'El cap no para i qualsevol cosa sembla massa.' },
+      { tag: 'Autoexigència', href: '/ca/autoexigencia/', text: 'Res no és suficient i et costa descansar sense culpa.' },
+      { tag: 'Relacions', href: '/ca/terapia-online/', text: 'Et deixes per al final i no saps dir que no.' },
     ],
   },
   statement: {
@@ -75,5 +75,6 @@ export const ca: Dict = {
     home: "Anar a l'inici",
   },
   cierre: { title: 'Comencem?', sub: 'Una trucada gratuïta, sense compromís.', cta: 'Reservar per WhatsApp' },
+  servicios: { faq: 'Preguntes freqüents', home: 'Inici' },
   footer: { role: 'Psicòloga i psicoterapeuta · Online' },
 };

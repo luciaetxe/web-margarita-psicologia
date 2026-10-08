@@ -55,8 +55,8 @@ Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica n
 
 ## Cómo añadir una página de servicio
 1. Crear `src/content/servicios/<slug>.md` con el frontmatter de los que existen (`psicologa-online-ansiedad.md`): `title` (h1), `seoTitle` (el `<title>` tal cual, máx. 60 caracteres, con la búsqueda real), `kicker`, `summary` (entradilla y descripción SEO), `lang`, `date`, `order`, `faq` (preguntas y respuestas: salen al final como `<details>` y como FAQPage en el schema). El cuerpo es la página en Markdown, en la voz de Margarita; enlazar recursos y artículos relacionados.
-2. La página sale en `/<slug>/` (plantilla `src/pages/[slug].astro`, con schema Service + BreadcrumbList) y en el sitemap. Los tres puntos de "¿Te reconoces?" de la home enlazan a su página con `href` en `reconoces.items` (solo ES por ahora; en CA/EN `href: ''`).
-3. Estado 08-10-2026: las tres primeras (ansiedad, autoexigencia, terapia online) son BORRADOR en la rama `seo-preview`, pendientes del visto bueno de Margarita, publicadas con noindex en https://seo-preview.margarita-psicologia.pages.dev. Cuando apruebe: fusionar en `master`, hacer CA y EN, desplegar.
+2. La página sale en `/<slug>/` (plantilla `src/pages/[slug].astro`, con schema Service + BreadcrumbList) y en el sitemap. Los tres puntos de "¿Te reconoces?" de la home enlazan a su página con `href` en `reconoces.items` (en los tres idiomas).
+3. Las versiones CA y EN van en `src/content/servicios/ca/<slug>.md` y `en/<slug>.md` con el MISMO slug (así `Base` genera el hreflang); las sirven `src/pages/ca/[slug].astro` y `en/[slug].astro`. Las tres primeras (ansiedad, autoexigencia, terapia online) las aprobó Margarita el 08-10-2026 y están en producción en los tres idiomas.
 
 ## Qué NO hacer
 - No inventar testimonios, formación, fotos "reales" ni datos de colegiatura.
