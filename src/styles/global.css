@@ -135,7 +135,7 @@ a { color: inherit; }
 .about { text-align: center; }
 .about img { width: min(320px, 70vw); height: auto; aspect-ratio: 1 / 1; object-fit: cover; margin: 0 auto 2rem; filter: grayscale(1) contrast(1.03); }
 .about .title { margin-bottom: 1rem; }
-.about p { max-width: 34rem; margin: 0 auto; font-size: 1.08rem; line-height: 1.8; color: var(--color-ink-soft); }
+.about p { max-width: 34rem; margin: 0 auto; font-size: 1.08rem; line-height: 1.8; color: #4E4943; } /* ink-soft oscurecido: AA sobre arena */
 
 /* 6 · Próximo retiro (con el rosa del retiro como acento) */
 .retiro .caps { display: block; margin-bottom: 1.4rem; color: var(--color-rose-deep); }
