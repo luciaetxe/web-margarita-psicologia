@@ -38,4 +38,4 @@ Las sesiones son por videollamada, de una hora, desde donde tú estés. Entre se
 
 La sesión de una hora cuesta 80 €. Hay packs de 4, 6 u 8 sesiones a precio reducido. Antes de nada, hacemos una llamada gratuita de 15 minutos para ver si puedo ayudarte.
 
-Si la ansiedad es tan fuerte que sientes que no puedes con ella ahora mismo, llama al 024, la línea de atención a la conducta suicida, o al 112. Yo no atiendo urgencias.
+Si la ansiedad es tan fuerte que sientes que no puedes con ella ahora mismo, pide ayuda en tu centro de salud o en el 112. Y cuando estés mejor, aquí estoy.
