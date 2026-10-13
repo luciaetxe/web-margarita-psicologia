@@ -51,6 +51,7 @@ export const es = {
     alt: 'Margarita Margenat',
   },
   retiro: { label: 'Próximo retiro', cta: 'Ver el retiro' },
+  taller: { label: 'Talleres', cta: 'Avísame del próximo', msg: 'Hola Margarita, me gustaría que me avisaras del próximo taller Mírate con amor.' },
   recursos: {
     title: 'Recursos',
     description: 'Ejercicios escritos, visualizaciones y audios de respiración de Margarita Margenat para indagar, soltar lo que pesa y cuidarte. Gratis.',

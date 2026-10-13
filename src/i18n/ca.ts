@@ -52,6 +52,7 @@ export const ca: Dict = {
     alt: 'Margarita Margenat',
   },
   retiro: { label: 'Proper retir', cta: 'Veure el retir' },
+  taller: { label: 'Tallers', cta: "Avisa'm del proper", msg: "Hola Margarita, m'agradaria que m'avisessis del proper taller Mira't amb amor." },
   recursos: {
     title: 'Recursos',
     description: 'Exercicis escrits, visualitzacions i àudios de respiració de Margarita Margenat per indagar, deixar anar el que pesa i cuidar-te. Gratuïts.',

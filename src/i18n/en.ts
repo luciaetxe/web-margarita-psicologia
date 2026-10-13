@@ -52,6 +52,7 @@ export const en: Dict = {
     alt: 'Margarita Margenat',
   },
   retiro: { label: 'Next retreat', cta: 'See the retreat' },
+  taller: { label: 'Workshops', cta: 'Tell me about the next one', msg: 'Hi Margarita, I would like to hear about the next Look at yourself with love workshop.' },
   recursos: {
     title: 'Resources',
     description: 'Written exercises, visualisations and breathing audios by Margarita Margenat to look inward, let go of what weighs on you and care for yourself. Free.',

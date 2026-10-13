@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "mirate-con-amor",
+    "name": { "es": "Mírate con amor", "ca": "Mira't amb amor", "en": "Look at yourself with love" },
+    "kind": { "es": "Taller de autoestima", "ca": "Taller d'autoestima", "en": "Self-esteem workshop" },
+    "text": {
+      "es": [
+        "Mírate con amor es un taller de autoestima en el que experimentamos la conexión con uno/a mismo/a y así cultivamos el amor propio.",
+        "Partiendo de la idea de que la relación que tenemos con nosotros mismos es la base de todas las relaciones que tenemos con los demás, nos centramos en regalarnos un rato de conexión, a través de 3 fases: una más mental, otra más emocional y otra más corporal.",
+        "Lo que se vive en el taller es un regalo para el corazón, además de las herramientas que puedes llevarte para aplicar en tu día a día y que mejore la relación contigo mismo/a y con tus seres queridos."
+      ],
+      "ca": [
+        "Mira't amb amor és un taller d'autoestima en què experimentem la connexió amb un/a mateix/a i així cultivem l'amor propi.",
+        "Partint de la idea que la relació que tenim amb nosaltres mateixos és la base de totes les relacions que tenim amb els altres, ens centrem a regalar-nos una estona de connexió, a través de 3 fases: una de més mental, una altra de més emocional i una altra de més corporal.",
+        "El que es viu al taller és un regal per al cor, a més de les eines que et pots endur per aplicar en el teu dia a dia i que millori la relació amb tu mateix/a i amb els teus éssers estimats."
+      ],
+      "en": [
+        "Look at yourself with love is a self-esteem workshop where we experience connection with ourselves and, through it, cultivate self-love.",
+        "Starting from the idea that the relationship we have with ourselves is the basis of every relationship we have with others, we focus on giving ourselves a moment of connection, in 3 phases: one more mental, one more emotional and one more physical.",
+        "What you live in the workshop is a gift for the heart, along with tools you can take home and use day to day to improve your relationship with yourself and with the people you love."
+      ]
+    },
+    "photos": [
+      { "file": "taller-mirate-con-amor-1.jpg", "alt": { "es": "Participantes del taller Mírate con amor sentadas en círculo", "ca": "Participants del taller Mira't amb amor assegudes en cercle", "en": "Participants of the workshop sitting in a circle" } },
+      { "file": "taller-mirate-con-amor-2.jpg", "alt": { "es": "Margarita y las participantes durante el taller", "ca": "La Margarita i les participants durant el taller", "en": "Margarita and the participants during the workshop" } }
+    ],
+    "latest": true
+  }
+]

@@ -5,8 +5,10 @@ import WhatsAppIcon from './WhatsAppIcon.astro';
 import { base, byNewest, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
 import precios from '../data/precios.json';
 import retiros from '../data/retiros.json';
+import talleres from '../data/talleres.json';
 import heroWide from '../assets/hero-wide.jpg';
 import heroTall from '../assets/hero-tall.jpg';
+import retrato from '../assets/margarita.jpeg';
 import { getCollection } from 'astro:content';
 
 interface Props { lang: Lang }
@@ -24,9 +26,22 @@ const tallWebp = await getImage({ src: heroTall, format: 'webp', widths: [600, 9
 const site = Astro.site!.toString().replace(/\/$/, '');
 const wa = waLink(t.wa.msg);
 const nextRetiro = retiros.find((r) => r.upcoming);
+
+// Taller: el último hecho (latest). Fotos en src/assets/taller-*.jpg, nombradas en talleres.json.
+const taller = talleres.find((x) => x.latest);
+const tallerFiles = import.meta.glob<{ default: ImageMetadata }>('../assets/taller-*.jpg', { eager: true });
+const tallerPhotos = taller ? await Promise.all(taller.photos.map(async (ph) => {
+  const src = tallerFiles[`../assets/${ph.file}`].default;
+  const sizes = '(max-width: 600px) 100vw, 640px';
+  return {
+    alt: ph.alt[lang],
+    avif: await getImage({ src, format: 'avif', widths: [480, 800, 1280], sizes, quality: 60 }),
+    webp: await getImage({ src, format: 'webp', widths: [480, 800, 1280], sizes, quality: 72 }),
+    jpg: await getImage({ src, format: 'jpeg', width: 1280, quality: 75 }),
+  };
+})) : [];
 const eur = (n: number) => (lang === 'en' ? `€${n}` : `${n} €`);
 
-import retrato from '../assets/margarita.jpeg';
 const retratoAvif = await getImage({ src: retrato, format: 'avif', widths: [320, 480, 640], quality: 60 });
 const retratoWebp = await getImage({ src: retrato, format: 'webp', widths: [320, 480, 640], quality: 70 });
 const retratoJpg = await getImage({ src: retrato, format: 'jpeg', width: 640, quality: 75 });
@@ -165,6 +180,27 @@ const jsonLd = {
         <p class="date">{nextRetiro.date[lang]}</p>
         <p class="notes">{nextRetiro.notes[lang]}</p>
         <a href={nextRetiro.url} target="_blank" rel="noopener" class="btn btn-rose">{t.retiro.cta}</a>
+      </div>
+    </section>
+  )}
+
+  <!-- 6b · Taller -->
+  {taller && (
+    <section class="block sand taller" id="talleres">
+      <div class="wrap narrow">
+        <span class="caps">{t.taller.label} · {taller.kind[lang]}</span>
+        <h2 class="title">{taller.name[lang]}</h2>
+        <div class="photos">
+          {tallerPhotos.map((ph) => (
+            <picture>
+              <source type="image/avif" srcset={ph.avif.srcSet.attribute} sizes="(max-width: 600px) 100vw, 640px" />
+              <source type="image/webp" srcset={ph.webp.srcSet.attribute} sizes="(max-width: 600px) 100vw, 640px" />
+              <img src={ph.jpg.src} alt={ph.alt} width={ph.jpg.attributes.width} height={ph.jpg.attributes.height} loading="lazy" decoding="async" />
+            </picture>
+          ))}
+        </div>
+        {taller.text[lang].map((p) => <p>{p}</p>)}
+        <a href={waLink(t.taller.msg)} target="_blank" rel="noopener" class="btn btn-primary"><WhatsAppIcon /> {t.taller.cta}</a>
       </div>
     </section>
   )}
