@@ -9,7 +9,7 @@ export const ca: Dict = {
     shareTitle: 'Margarita Margenat · Psicòloga online',
     shareDescription: "T'exigeixes massa? Ansietat, autoestima i relacions. Comencem amb una trucada gratuïta, sense compromís.",
   },
-  nav: { empezamos: 'Com comencem', sobremi: 'Sobre mi', recursos: 'Recursos', blog: 'Blog', cta: 'Reservar trucada', menu: 'Obrir menú' },
+  nav: { empezamos: 'Com comencem', sobremi: 'Sobre mi', encuentros: 'Trobades', recursos: 'Recursos', blog: 'Blog', cta: 'Reservar trucada', menu: 'Obrir menú' },
   wa: { msg: "Hola Margarita, m'agradaria reservar la trucada de valoració gratuïta.", float: 'Escriure per WhatsApp' },
   hero: {
     kicker: "T'exigeixes massa?",
@@ -51,7 +51,15 @@ export const ca: Dict = {
     p1: "Psicòloga i terapeuta de formació humanista. Treballo oferint sessions de teràpia online amb persones que volen viure més en pau amb si mateixes i millorar les seves relacions.",
     alt: 'Margarita Margenat',
   },
-  retiro: { label: 'Proper retir', cta: 'Veure el retir' },
+  encuentros: {
+    title: 'Trobades',
+    description: "Tallers i retirs de Margarita Margenat, psicòloga online: l'ocasió de veure'ns en persona.",
+    intro: "La teràpia és online. Aquestes trobades són l'ocasió de veure'ns en persona.",
+    upcoming: 'Proper',
+    open: 'Veure el taller',
+    external: 'Veure el retir',
+    all: 'Veure totes les trobades',
+  },
   recursos: {
     title: 'Recursos',
     description: 'Exercicis escrits, visualitzacions i àudios de respiració de Margarita Margenat per indagar, deixar anar el que pesa i cuidar-te. Gratuïts.',

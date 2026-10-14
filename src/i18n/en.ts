@@ -9,7 +9,7 @@ export const en: Dict = {
     shareTitle: 'Margarita Margenat · Online psychologist',
     shareDescription: 'Do you demand too much of yourself? Anxiety, self-esteem and relationships. We start with a free call, no obligation.',
   },
-  nav: { empezamos: 'How we start', sobremi: 'About me', recursos: 'Resources', blog: 'Blog', cta: 'Book a call', menu: 'Open menu' },
+  nav: { empezamos: 'How we start', sobremi: 'About me', encuentros: 'Gatherings', recursos: 'Resources', blog: 'Blog', cta: 'Book a call', menu: 'Open menu' },
   wa: { msg: 'Hi Margarita, I would like to book the free assessment call.', float: 'Message on WhatsApp' },
   hero: {
     kicker: 'Do you demand too much of yourself?',
@@ -51,7 +51,15 @@ export const en: Dict = {
     p1: 'Psychologist and humanistic-trained therapist. I offer online therapy sessions to people who want to live more at peace with themselves and improve their relationships.',
     alt: 'Margarita Margenat',
   },
-  retiro: { label: 'Next retreat', cta: 'See the retreat' },
+  encuentros: {
+    title: 'Gatherings',
+    description: 'Workshops and retreats by Margarita Margenat, online psychologist: a chance to meet in person.',
+    intro: 'Therapy is online. These gatherings are a chance to meet in person.',
+    upcoming: 'Next',
+    open: 'See the workshop',
+    external: 'See the retreat',
+    all: 'See all gatherings',
+  },
   recursos: {
     title: 'Resources',
     description: 'Written exercises, visualisations and breathing audios by Margarita Margenat to look inward, let go of what weighs on you and care for yourself. Free.',

@@ -1,0 +1,70 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import EncuentroFoto from './EncuentroFoto.astro';
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import { dicts, waLink, base } from '../i18n';
+
+// Página de un encuentro (taller) en su idioma: /encuentros/<slug>/, /ca/encuentros/<slug>/, /en/encuentros/<slug>/.
+interface Props { entry: CollectionEntry<'encuentros'> }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+const lang = d.lang;
+const t = dicts[lang];
+const site = Astro.site!.toString().replace(/\/$/, '');
+const home = base(lang);
+const slug = entry.id.replace(/^(ca|en)\//, '');
+const path = `encuentros/${slug}/`;
+const url = `${site}${home}${path}`;
+const title = `${d.title} · ${d.kicker} · Margarita Margenat`;
+const description = d.summary;
+const photos = d.photos.length ? d.photos : [{ file: d.cover, alt: d.coverAlt }];
+// Sin recortes: cada columna tan ancha como la proporción de su foto, así todas quedan a la misma altura.
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/encuentro-*.jpg', { eager: true });
+const cols = photos.map((ph) => { const m = files[`../assets/${ph.file}`]?.default; return m ? (m.width / m.height).toFixed(3) + 'fr' : '1fr'; }).join(' ');
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: d.title,
+    description,
+    url,
+    inLanguage: lang,
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    organizer: { '@type': 'Person', name: 'Margarita Margenat', url: `${site}${home}` },
+    image: `${site}/og.jpg`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Margarita Margenat', item: `${site}${home}` },
+      { '@type': 'ListItem', position: 2, name: t.encuentros.title, item: `${site}${home}encuentros/` },
+      { '@type': 'ListItem', position: 3, name: d.title, item: url },
+    ],
+  },
+];
+---
+<Base lang={lang} t={t} title={title} description={description} path={path} jsonLd={jsonLd}>
+  <main class="wrap narrow resource encuentro">
+    <nav class="crumbs" aria-label="Estás en">
+      <a href={home}>{t.servicios.home}</a><span>›</span><a href={`${home}encuentros/`}>{t.encuentros.title}</a><span>›</span><span aria-current="page">{d.title}</span>
+    </nav>
+    <span class="caps kicker">{d.kicker}</span>
+    <h1>{d.title}</h1>
+    <p class="when">{d.when}{d.notes ? ` · ${d.notes}` : ''}</p>
+    <div class="photos" style={`grid-template-columns: ${cols}`}>
+      {photos.map((ph, i) => <EncuentroFoto file={ph.file} alt={ph.alt} eager={i === 0} />)}
+    </div>
+    <Content />
+    <div class="actions">
+      {d.cta
+        ? <a href={waLink(d.cta.msg)} target="_blank" rel="noopener" class="btn btn-primary"><WhatsAppIcon /> {d.cta.label}</a>
+        : <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="btn btn-primary"><WhatsAppIcon /> {t.cierre.cta}</a>}
+      <a href={`${home}encuentros/`} class="link">{t.encuentros.all}</a>
+    </div>
+    <p class="byline">— Margarita Margenat</p>
+  </main>
+</Base>
