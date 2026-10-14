@@ -20,8 +20,10 @@ interface Props {
   /** La página abre con el hero de foto (cabecera transparente y clara). */
   hero?: boolean;
   jsonLd?: object | object[];
+  /** Imágenes a precargar (la foto de portada): srcset + sizes, con media para elegir una por pantalla. */
+  preload?: { imagesrcset: string; imagesizes: string; media?: string; type?: string }[];
 }
-const { lang, t, title, description, path = '', single = false, shareTitle, shareDescription, hero = false, jsonLd } = Astro.props;
+const { lang, t, title, description, path = '', single = false, shareTitle, shareDescription, hero = false, jsonLd, preload = [] } = Astro.props;
 const site = Astro.site!.toString().replace(/\/$/, '');
 const url = (l: Lang) => `${site}${base(l)}${path}`;
 const canonical = url(lang);
@@ -68,6 +70,7 @@ const ogDesc = shareDescription ?? description;
     <link rel="preload" href="/fonts/cormorant-garamond-400-italic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter-500.woff2" as="font" type="font/woff2" crossorigin />
+    {preload.map((p) => <link rel="preload" as="image" imagesrcset={p.imagesrcset} imagesizes={p.imagesizes} media={p.media} type={p.type} fetchpriority="high" />)}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>

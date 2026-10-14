@@ -6,6 +6,7 @@ import EncuentroFoto from './EncuentroFoto.astro';
 import { base, byNewest, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
 import precios from '../data/precios.json';
 import luna from '../assets/luna.jpg';
+import lunaMovil from '../assets/luna-movil.jpg'; // recorte cuadrado para móvil: se carga solo lo que se ve
 import cielo from '../assets/hero-wide.jpg';
 import retrato from '../assets/margarita.jpeg';
 import { getCollection } from 'astro:content';
@@ -17,9 +18,18 @@ const home = base(lang);
 const recursos = (await getCollection('recursos')).sort(byNewest).slice(0, 3);
 
 // Portada: la luna sobre el pino (foto de Margarita), a media pantalla en escritorio y bajo el texto en móvil.
-const lunaAvif = await getImage({ src: luna, format: 'avif', widths: [640, 960, 1400], sizes: '(max-width: 900px) 100vw, 50vw', quality: 60 });
-const lunaWebp = await getImage({ src: luna, format: 'webp', widths: [640, 960, 1400], sizes: '(max-width: 900px) 100vw, 50vw', quality: 72 });
-const lunaJpg  = await getImage({ src: luna, format: 'jpg', width: 1400, quality: 75 });
+const SZ_DESK = '(max-width: 900px) 0px, 50vw';
+const lunaAvif = await getImage({ src: luna, format: 'avif', widths: [640, 1000, 1400], sizes: SZ_DESK, quality: 52 });
+const lunaWebp = await getImage({ src: luna, format: 'webp', widths: [640, 1000, 1400], sizes: SZ_DESK, quality: 68 });
+const lunaJpg  = await getImage({ src: luna, format: 'jpg', width: 1000, quality: 72 });
+const SZ_MOV = '100vw';
+const movilAvif = await getImage({ src: lunaMovil, format: 'avif', widths: [480, 720, 960], sizes: SZ_MOV, quality: 50 });
+const movilWebp = await getImage({ src: lunaMovil, format: 'webp', widths: [480, 720, 960], sizes: SZ_MOV, quality: 66 });
+// Precarga de la foto de portada (es el elemento más grande que se pinta): una versión por tamaño de pantalla.
+const preload = [
+  { imagesrcset: movilAvif.srcSet.attribute, imagesizes: SZ_MOV, media: '(max-width: 900px)', type: 'image/avif' },
+  { imagesrcset: lunaAvif.srcSet.attribute, imagesizes: '50vw', media: '(min-width: 901px)', type: 'image/avif' },
+];
 // Pausa: el cielo con la gaviota.
 const cieloAvif = await getImage({ src: cielo, format: 'avif', widths: [800, 1400, 2000], sizes: '100vw', quality: 55 });
 const cieloWebp = await getImage({ src: cielo, format: 'webp', widths: [800, 1400, 2000], sizes: '100vw', quality: 70 });
@@ -71,7 +81,7 @@ const jsonLd = {
   ),
 };
 ---
-<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} shareTitle={t.meta.shareTitle} shareDescription={t.meta.shareDescription} jsonLd={jsonLd}>
+<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} shareTitle={t.meta.shareTitle} shareDescription={t.meta.shareDescription} jsonLd={jsonLd} preload={preload}>
 
   <!-- 1 · Portada partida: texto sobre papel, la cala al lado -->
   <section class="hero" id="inicio">
@@ -83,8 +93,10 @@ const jsonLd = {
     </div>
     <div class="hero-photo">
       <picture>
-        <source type="image/avif" srcset={lunaAvif.srcSet.attribute} sizes="(max-width: 900px) 100vw, 50vw" />
-        <source type="image/webp" srcset={lunaWebp.srcSet.attribute} sizes="(max-width: 900px) 100vw, 50vw" />
+        <source media="(max-width: 900px)" type="image/avif" srcset={movilAvif.srcSet.attribute} sizes={SZ_MOV} />
+        <source media="(max-width: 900px)" type="image/webp" srcset={movilWebp.srcSet.attribute} sizes={SZ_MOV} />
+        <source type="image/avif" srcset={lunaAvif.srcSet.attribute} sizes="50vw" />
+        <source type="image/webp" srcset={lunaWebp.srcSet.attribute} sizes="50vw" />
         <img src={lunaJpg.src} width={lunaJpg.attributes.width} height={lunaJpg.attributes.height} alt={t.hero.alt} loading="eager" fetchpriority="high" decoding="async" />
       </picture>
     </div>
