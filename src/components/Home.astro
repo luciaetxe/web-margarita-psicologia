@@ -23,8 +23,8 @@ const lunaAvif = await getImage({ src: luna, format: 'avif', widths: [640, 1000,
 const lunaWebp = await getImage({ src: luna, format: 'webp', widths: [640, 1000, 1400], sizes: SZ_DESK, quality: 68 });
 const lunaJpg  = await getImage({ src: luna, format: 'jpg', width: 1000, quality: 72 });
 const SZ_MOV = '100vw';
-const movilAvif = await getImage({ src: lunaMovil, format: 'avif', widths: [480, 720, 960], sizes: SZ_MOV, quality: 50 });
-const movilWebp = await getImage({ src: lunaMovil, format: 'webp', widths: [480, 720, 960], sizes: SZ_MOV, quality: 66 });
+const movilAvif = await getImage({ src: lunaMovil, format: 'avif', widths: [480, 720], sizes: SZ_MOV, quality: 50 });
+const movilWebp = await getImage({ src: lunaMovil, format: 'webp', widths: [480, 720], sizes: SZ_MOV, quality: 66 });
 // Precarga de la foto de portada (es el elemento más grande que se pinta): una versión por tamaño de pantalla.
 const preload = [
   { imagesrcset: movilAvif.srcSet.attribute, imagesizes: SZ_MOV, media: '(max-width: 900px)', type: 'image/avif' },
