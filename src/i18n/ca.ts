@@ -19,7 +19,7 @@ export const ca: Dict = {
     sub: 'Psicòloga online. Ansietat, autoestima i relacions.',
     cta: 'Reservar trucada gratuïta',
     cta2: 'Com comencem',
-    alt: 'Gavina sobre el cel de la Costa Brava',
+    alt: 'Lluna sobre un pi davant del mar, a la Costa Brava',
   },
   reconoces: {
     title: "T'hi reconeixes?",

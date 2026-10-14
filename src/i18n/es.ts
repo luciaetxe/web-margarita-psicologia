@@ -18,7 +18,7 @@ export const es = {
     sub: 'Psicóloga online. Ansiedad, autoestima y relaciones.',
     cta: 'Reservar llamada gratuita',
     cta2: 'Cómo empezamos',
-    alt: 'Gaviota sobre el cielo de la Costa Brava',
+    alt: 'Luna sobre un pino frente al mar, en la Costa Brava',
   },
   reconoces: {
     title: '¿Te reconoces?',

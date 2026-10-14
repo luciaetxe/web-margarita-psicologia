@@ -5,7 +5,7 @@ import WhatsAppIcon from './WhatsAppIcon.astro';
 import EncuentroFoto from './EncuentroFoto.astro';
 import { base, byNewest, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
 import precios from '../data/precios.json';
-import costa from '../assets/costa.jpg';
+import luna from '../assets/luna.jpg';
 import cielo from '../assets/hero-wide.jpg';
 import retrato from '../assets/margarita.jpeg';
 import { getCollection } from 'astro:content';
@@ -16,10 +16,10 @@ const t = dicts[lang];
 const home = base(lang);
 const recursos = (await getCollection('recursos')).sort(byNewest).slice(0, 3);
 
-// Portada: la cala de la Costa Brava, a media pantalla en escritorio y bajo el texto en móvil.
-const costaAvif = await getImage({ src: costa, format: 'avif', widths: [640, 960, 1400], sizes: '(max-width: 900px) 100vw, 50vw', quality: 60 });
-const costaWebp = await getImage({ src: costa, format: 'webp', widths: [640, 960, 1400], sizes: '(max-width: 900px) 100vw, 50vw', quality: 72 });
-const costaJpg  = await getImage({ src: costa, format: 'jpg', width: 1400, quality: 75 });
+// Portada: la luna sobre el pino (foto de Margarita), a media pantalla en escritorio y bajo el texto en móvil.
+const lunaAvif = await getImage({ src: luna, format: 'avif', widths: [640, 960, 1400], sizes: '(max-width: 900px) 100vw, 50vw', quality: 60 });
+const lunaWebp = await getImage({ src: luna, format: 'webp', widths: [640, 960, 1400], sizes: '(max-width: 900px) 100vw, 50vw', quality: 72 });
+const lunaJpg  = await getImage({ src: luna, format: 'jpg', width: 1400, quality: 75 });
 // Pausa: el cielo con la gaviota.
 const cieloAvif = await getImage({ src: cielo, format: 'avif', widths: [800, 1400, 2000], sizes: '100vw', quality: 55 });
 const cieloWebp = await getImage({ src: cielo, format: 'webp', widths: [800, 1400, 2000], sizes: '100vw', quality: 70 });
@@ -83,9 +83,9 @@ const jsonLd = {
     </div>
     <div class="hero-photo">
       <picture>
-        <source type="image/avif" srcset={costaAvif.srcSet.attribute} sizes="(max-width: 900px) 100vw, 50vw" />
-        <source type="image/webp" srcset={costaWebp.srcSet.attribute} sizes="(max-width: 900px) 100vw, 50vw" />
-        <img src={costaJpg.src} width={costaJpg.attributes.width} height={costaJpg.attributes.height} alt={t.hero.alt} loading="eager" fetchpriority="high" decoding="async" />
+        <source type="image/avif" srcset={lunaAvif.srcSet.attribute} sizes="(max-width: 900px) 100vw, 50vw" />
+        <source type="image/webp" srcset={lunaWebp.srcSet.attribute} sizes="(max-width: 900px) 100vw, 50vw" />
+        <img src={lunaJpg.src} width={lunaJpg.attributes.width} height={lunaJpg.attributes.height} alt={t.hero.alt} loading="eager" fetchpriority="high" decoding="async" />
       </picture>
     </div>
   </section>

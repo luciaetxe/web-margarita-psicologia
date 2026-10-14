@@ -93,7 +93,7 @@ a { color: inherit; }
 .hero-title em { font-style: italic; color: var(--color-sea); }
 .hero-sub { color: var(--color-ink-soft); font-size: 1.05rem; max-width: 30ch; margin-bottom: 2.6rem; }
 .hero-photo { position: relative; overflow: hidden; }
-.hero-photo picture, .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.hero-photo picture, .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
 
 /* ── Bloques ──────────────────────────────────── */
 .block { padding: 8rem 0; }

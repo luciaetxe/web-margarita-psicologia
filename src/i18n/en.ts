@@ -19,7 +19,7 @@ export const en: Dict = {
     sub: 'Online psychologist. Anxiety, self-esteem and relationships.',
     cta: 'Book a free call',
     cta2: 'How we start',
-    alt: 'Seagull over the Costa Brava sky',
+    alt: 'Moon over a pine tree by the sea, on the Costa Brava',
   },
   reconoces: {
     title: 'Sound familiar?',
