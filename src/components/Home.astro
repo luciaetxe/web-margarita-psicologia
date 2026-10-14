@@ -165,14 +165,13 @@ const jsonLd = {
     <section class="block sand encuentros-home" id="encuentros">
       <div class="wrap narrow">
         <h2 class="title">{t.encuentros.title}</h2>
-        <p class="intro">{t.encuentros.intro}</p>
         <ul class="encuentros">
           {encuentros.map((e) => {
             const d = e.data; const href = encHref(e); const ext = Boolean(d.url);
             return (
               <li>
                 <a href={href} class="cover" target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined} tabindex="-1" aria-hidden="true">
-                  <EncuentroFoto file={d.cover} alt="" sizes="(max-width: 600px) 100vw, 300px" width={800} />
+                  <EncuentroFoto file={d.cover} alt="" sizes="96px" width={240} />
                 </a>
                 <div class="body">
                   <span class="caps">{d.upcoming ? `${t.encuentros.upcoming} · ` : ''}{d.kicker}</span>

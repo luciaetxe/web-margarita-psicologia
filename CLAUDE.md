@@ -7,7 +7,7 @@ Brief completo: `Downloads/BRIEF-web-margarita-psicologia.md` (Lucía). Este arc
 - Mensaje, hero y SEO apuntan a: **ansiedad · autoestima y autoexigencia · relaciones**. Coherente con Instagram @margaritapsicologia ("¿Te exiges demasiado? Te acompaño a dejar de ser tu peor enemiga y confiar en ti").
 - Terapia infantil y acompañamiento a familias existen como servicios secundarios con página propia, sin protagonismo en la home.
 - Solo online (videollamada). Geografía: "psicóloga online (España)", Barcelona como base, Catalunya como lugar de los retiros. No competir por "psicóloga Barcelona" presencial.
-- Retiros y talleres son lo diferencial: bloque destacado en la home y página permanente `/retiros`.
+- Retiros y talleres son lo diferencial: sección **Encuentros** (`/encuentros/`, CA "Trobades", EN "Gatherings"; nombre elegido el 14-10-2026 porque la terapia es online y los encuentros son la ocasión de verse en persona) y una lista compacta en la home. El bloque rosa del retiro en la home se quitó ese día.
 
 ## Voz
 Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica ni frases de taza. Evitar "espacio seguro", "sanar", "viaje", "empoderar" salvo que Margarita las use. Lenguaje neutro en género cuando se habla a quien lee (nada de "juntas").
@@ -34,7 +34,7 @@ Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica n
 - Hero: foto de cielo/mar de la Costa Brava hecha por Margarita (`src/assets/ocell.jpg`, gaviota) con el titular encima. **Su retrato NO va en el hero**: solo en "Sobre mí". Sin vídeo. `costa.jpg` reservada para retiros.
 - Layout: mucho aire, ancho de lectura 65-72 caracteres, secciones alternando arena, cielo y arena-cartel.
 - **Menos es más (feedback de Lucía, sept 2026):** nada de numeración de secciones (01, 02…), nada de etiquetas de sección, nada de párrafos de intro bajo cada título, nada de enumeraciones largas. Cada bloque cabe en una pantalla y tiene un solo trabajo. Si falta información (formación, testimonios), el bloque no se muestra: no se ponen placeholders visibles.
-- Home = cinco bloques: cartel · ¿Te reconoces? · la frase ("No eres tú…") · cómo empezamos + tarifas · Margarita (foto) — y un cierre con botón.
+- Home = cartel · ¿Te reconoces? · la frase ("No eres tú…") · Margarita (foto) · cómo empezamos + tarifas · Encuentros (lista con miniaturas) · Recursos — y un cierre con botón.
 - Nada de botones píldora, tarjetas en cuadrícula ni cajas decorativas. Contraste AA mínimo.
 
 ## Datos fijos
@@ -57,6 +57,12 @@ Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica n
 1. Crear `src/content/servicios/<slug>.md` con el frontmatter de los que existen (`psicologa-online-ansiedad.md`): `title` (h1), `seoTitle` (el `<title>` tal cual, máx. 60 caracteres, con la búsqueda real), `kicker`, `summary` (entradilla y descripción SEO), `lang`, `date`, `order`, `faq` (preguntas y respuestas: salen al final como `<details>` y como FAQPage en el schema). El cuerpo es la página en Markdown, en la voz de Margarita; enlazar recursos y artículos relacionados.
 2. La página sale en `/<slug>/` (plantilla `src/pages/[slug].astro`, con schema Service + BreadcrumbList) y en el sitemap. Los tres puntos de "¿Te reconoces?" de la home enlazan a su página con `href` en `reconoces.items` (en los tres idiomas).
 3. Las versiones CA y EN van en `src/content/servicios/ca/<slug>.md` y `en/<slug>.md` con el MISMO slug (así `Base` genera el hreflang); las sirven `src/pages/ca/[slug].astro` y `en/[slug].astro`. Las tres primeras (ansiedad, autoexigencia, terapia online) las aprobó Margarita el 08-10-2026 y están en producción en los tres idiomas.
+
+## Cómo añadir un encuentro (taller, retiro…)
+1. Crear `src/content/encuentros/<slug>.md` con el frontmatter de `mirate-con-amor.md`: `title`, `kicker` (tipo: "Taller de autoestima"), `summary` (una frase: tarjeta y descripción SEO), `when` (fecha en texto o "Próxima edición por anunciar"), `cover` + `coverAlt` (foto de la tarjeta), `lang`, `date`, `order`; opcionales `notes`, `upcoming: true` (sale primero con la etiqueta "Próximo"), `photos` (las de la página), `cta` (`label` y `msg` del botón de WhatsApp). El cuerpo es el texto de Margarita tal cual.
+2. Si el encuentro tiene web propia (el retiro: tribuconecta.site), poner `url` y dejar el cuerpo vacío: la tarjeta enlaza fuera y no se genera página aquí.
+3. Fotos en `src/assets/encuentro-<slug>-N.jpg` (reducidas a ≤ 2000 px y sin EXIF; comprobar que las participantes han dado permiso). Se muestran sin recortar, cada una con su proporción (`EncuentroFoto.astro`).
+4. Versiones CA y EN en `src/content/encuentros/ca/<slug>.md` y `en/<slug>.md` con el MISMO slug. El índice `/encuentros/`, la página `/encuentros/<slug>/` (Event + migas), la lista de la home, el menú y el sitemap se generan solos.
 
 ## Qué NO hacer
 - No inventar testimonios, formación, fotos "reales" ni datos de colegiatura.

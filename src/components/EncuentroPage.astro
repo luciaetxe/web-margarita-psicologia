@@ -20,6 +20,9 @@ const url = `${site}${home}${path}`;
 const title = `${d.title} · ${d.kicker} · Margarita Margenat`;
 const description = d.summary;
 const photos = d.photos.length ? d.photos : [{ file: d.cover, alt: d.coverAlt }];
+// Sin recortes: cada columna tan ancha como la proporción de su foto, así todas quedan a la misma altura.
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/encuentro-*.jpg', { eager: true });
+const cols = photos.map((ph) => { const m = files[`../assets/${ph.file}`]?.default; return m ? (m.width / m.height).toFixed(3) + 'fr' : '1fr'; }).join(' ');
 
 const jsonLd = [
   {
@@ -52,7 +55,7 @@ const jsonLd = [
     <span class="caps kicker">{d.kicker}</span>
     <h1>{d.title}</h1>
     <p class="when">{d.when}{d.notes ? ` · ${d.notes}` : ''}</p>
-    <div class={`photos n${photos.length}`}>
+    <div class="photos" style={`grid-template-columns: ${cols}`}>
       {photos.map((ph, i) => <EncuentroFoto file={ph.file} alt={ph.alt} eager={i === 0} />)}
     </div>
     <Content />
