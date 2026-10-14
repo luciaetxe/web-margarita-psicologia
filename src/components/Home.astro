@@ -2,10 +2,9 @@
 import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import WhatsAppIcon from './WhatsAppIcon.astro';
+import EncuentroFoto from './EncuentroFoto.astro';
 import { base, byNewest, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
 import precios from '../data/precios.json';
-import retiros from '../data/retiros.json';
-import talleres from '../data/talleres.json';
 import heroWide from '../assets/hero-wide.jpg';
 import heroTall from '../assets/hero-tall.jpg';
 import retrato from '../assets/margarita.jpeg';
@@ -25,21 +24,11 @@ const tallAvif = await getImage({ src: heroTall, format: 'avif', widths: [600, 9
 const tallWebp = await getImage({ src: heroTall, format: 'webp', widths: [600, 900, 1200], sizes: '100vw' });
 const site = Astro.site!.toString().replace(/\/$/, '');
 const wa = waLink(t.wa.msg);
-const nextRetiro = retiros.find((r) => r.upcoming);
-
-// Taller: el último hecho (latest). Fotos en src/assets/taller-*.jpg, nombradas en talleres.json.
-const taller = talleres.find((x) => x.latest);
-const tallerFiles = import.meta.glob<{ default: ImageMetadata }>('../assets/taller-*.jpg', { eager: true });
-const tallerPhotos = taller ? await Promise.all(taller.photos.map(async (ph) => {
-  const src = tallerFiles[`../assets/${ph.file}`].default;
-  const sizes = '(max-width: 600px) 100vw, 640px';
-  return {
-    alt: ph.alt[lang],
-    avif: await getImage({ src, format: 'avif', widths: [480, 800, 1280], sizes, quality: 60 }),
-    webp: await getImage({ src, format: 'webp', widths: [480, 800, 1280], sizes, quality: 72 }),
-    jpg: await getImage({ src, format: 'jpeg', width: 1280, quality: 75 }),
-  };
-})) : [];
+// Encuentros (talleres y retiros) en el idioma de la página: próximos primero.
+const encuentros = (await getCollection('encuentros'))
+  .filter((e) => e.data.lang === lang)
+  .sort((a, b) => Number(b.data.upcoming) - Number(a.data.upcoming) || byNewest(a, b));
+const encHref = (e: (typeof encuentros)[number]) => e.data.url ?? `${home}encuentros/${e.id.replace(/^(ca|en)\//, '')}/`;
 const eur = (n: number) => (lang === 'en' ? `€${n}` : `${n} €`);
 
 const retratoAvif = await getImage({ src: retrato, format: 'avif', widths: [320, 480, 640], quality: 60 });
@@ -171,36 +160,31 @@ const jsonLd = {
     </div>
   </section>
 
-  <!-- 6 · Próximo retiro -->
-  {nextRetiro && (
-    <section class="block dusk retiro" id="retiro">
+  <!-- 6 · Encuentros -->
+  {encuentros.length > 0 && (
+    <section class="block sand encuentros-home" id="encuentros">
       <div class="wrap narrow">
-        <span class="caps">{t.retiro.label} · {nextRetiro.kind[lang]}</span>
-        <h2 class="title">{nextRetiro.name}</h2>
-        <p class="date">{nextRetiro.date[lang]}</p>
-        <p class="notes">{nextRetiro.notes[lang]}</p>
-        <a href={nextRetiro.url} target="_blank" rel="noopener" class="btn btn-rose">{t.retiro.cta}</a>
-      </div>
-    </section>
-  )}
-
-  <!-- 6b · Taller -->
-  {taller && (
-    <section class="block sand taller" id="talleres">
-      <div class="wrap narrow">
-        <span class="caps">{t.taller.label} · {taller.kind[lang]}</span>
-        <h2 class="title">{taller.name[lang]}</h2>
-        <div class="photos">
-          {tallerPhotos.map((ph) => (
-            <picture>
-              <source type="image/avif" srcset={ph.avif.srcSet.attribute} sizes="(max-width: 600px) 100vw, 640px" />
-              <source type="image/webp" srcset={ph.webp.srcSet.attribute} sizes="(max-width: 600px) 100vw, 640px" />
-              <img src={ph.jpg.src} alt={ph.alt} width={ph.jpg.attributes.width} height={ph.jpg.attributes.height} loading="lazy" decoding="async" />
-            </picture>
-          ))}
-        </div>
-        {taller.text[lang].map((p) => <p>{p}</p>)}
-        <a href={waLink(t.taller.msg)} target="_blank" rel="noopener" class="btn btn-primary"><WhatsAppIcon /> {t.taller.cta}</a>
+        <h2 class="title">{t.encuentros.title}</h2>
+        <p class="intro">{t.encuentros.intro}</p>
+        <ul class="encuentros">
+          {encuentros.map((e) => {
+            const d = e.data; const href = encHref(e); const ext = Boolean(d.url);
+            return (
+              <li>
+                <a href={href} class="cover" target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined} tabindex="-1" aria-hidden="true">
+                  <EncuentroFoto file={d.cover} alt="" sizes="(max-width: 600px) 100vw, 300px" width={800} />
+                </a>
+                <div class="body">
+                  <span class="caps">{d.upcoming ? `${t.encuentros.upcoming} · ` : ''}{d.kicker}</span>
+                  <h3><a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{d.title}</a></h3>
+                  <p class="when">{d.when}</p>
+                  <a href={href} class="link" target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{ext ? t.encuentros.external : t.encuentros.open}</a>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+        <p class="more"><a href={`${home}encuentros/`} class="link">{t.encuentros.all}</a></p>
       </div>
     </section>
   )}

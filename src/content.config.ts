@@ -49,4 +49,27 @@ const servicios = defineCollection({
   }),
 });
 
-export const collections = { recursos, blog, servicios };
+// Cada encuentro (taller, retiro…) es un archivo Markdown en src/content/encuentros/<slug>.md (+ ca/ y en/ con el mismo slug).
+// Si tiene `url` (web propia, como el retiro), no se genera página aquí: la tarjeta enlaza fuera.
+const encuentros = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/encuentros' }),
+  schema: z.object({
+    title: z.string(),                   // h1
+    kicker: z.string(),                  // tipo: "Taller de autoestima", "Retiro de mujeres"
+    summary: z.string(),                 // una frase para la tarjeta y la descripción SEO
+    when: z.string(),                    // "20, 21 y 22 de noviembre de 2026" o "Próxima edición por anunciar"
+    notes: z.string().optional(),        // "Grupo reducido · Aportación voluntaria"
+    upcoming: z.boolean().default(false),
+    url: z.string().optional(),          // web propia (sin página aquí)
+    cover: z.string(),                   // archivo en src/assets/encuentro-*.jpg
+    coverAlt: z.string(),
+    photos: z.array(z.object({ file: z.string(), alt: z.string() })).default([]),
+    cta: z.object({ label: z.string(), msg: z.string() }).optional(), // botón WhatsApp de la página
+    lang: z.enum(['es', 'ca', 'en']).default('es'),
+    date: z.coerce.date(),
+    updated: z.coerce.date().optional(),
+    order: z.number().default(0),
+  }),
+});
+
+export const collections = { recursos, blog, servicios, encuentros };

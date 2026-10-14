@@ -1,0 +1,12 @@
+---
+import { getCollection } from 'astro:content';
+import EncuentroPage from '../../../components/EncuentroPage.astro';
+
+// Encuentros en CA con página propia (los que tienen `url` enlazan fuera y no se generan aquí).
+export async function getStaticPaths() {
+  const items = (await getCollection('encuentros')).filter((e) => e.data.lang === 'ca' && !e.data.url);
+  return items.map((entry) => ({ params: { slug: entry.id.replace(/^(ca|en)\//, '') }, props: { entry } }));
+}
+const { entry } = Astro.props;
+---
+<EncuentroPage entry={entry} />

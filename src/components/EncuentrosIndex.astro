@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import EncuentroFoto from './EncuentroFoto.astro';
+import { base, byNewest, dicts, type Lang } from '../i18n';
+
+// Índice de encuentros (/encuentros/, /ca/encuentros/, /en/encuentros/): una tarjeta por taller o retiro.
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = dicts[lang];
+const home = base(lang);
+const items = (await getCollection('encuentros'))
+  .filter((e) => e.data.lang === lang)
+  .sort((a, b) => Number(b.data.upcoming) - Number(a.data.upcoming) || byNewest(a, b));
+const slugOf = (id: string) => id.replace(/^(ca|en)\//, '');
+const title = `${t.encuentros.title} · Margarita Margenat`;
+---
+<Base lang={lang} t={t} title={title} description={t.encuentros.description} path="encuentros/">
+  <main class="wrap narrow page-head">
+    <h1 class="title">{t.encuentros.title}</h1>
+    <p class="intro">{t.encuentros.intro}</p>
+    <ul class="encuentros">
+      {items.map((e) => {
+        const d = e.data;
+        const href = d.url ?? `${home}encuentros/${slugOf(e.id)}/`;
+        const ext = Boolean(d.url);
+        return (
+          <li>
+            <a href={href} class="cover" target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined} tabindex="-1" aria-hidden="true">
+              <EncuentroFoto file={d.cover} alt="" sizes="(max-width: 600px) 100vw, 300px" width={800} />
+            </a>
+            <div class="body">
+              <span class="caps">{d.upcoming ? `${t.encuentros.upcoming} · ` : ''}{d.kicker}</span>
+              <h2><a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{d.title}</a></h2>
+              <p class="when">{d.when}{d.notes ? ` · ${d.notes}` : ''}</p>
+              <p>{d.summary}</p>
+              <a href={href} class="link" target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{ext ? t.encuentros.external : t.encuentros.open}</a>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </main>
+</Base>

@@ -5,10 +5,10 @@ import { readdirSync, readFileSync } from 'node:fs';
 // Dominio de producción (Vercel sirve www como principal; el apex redirige).
 export const SITE = 'https://www.margaritapsicologia.com';
 
-// lastmod del sitemap: fecha `updated` (o `date`) del frontmatter de cada artículo y recurso.
+// lastmod del sitemap: fecha `updated` (o `date`) del frontmatter de cada artículo, recurso y encuentro.
 function lastmods() {
   const out = new Map();
-  for (const dir of ['blog', 'recursos']) {
+  for (const dir of ['blog', 'recursos', 'encuentros']) {
     for (const f of readdirSync(`./src/content/${dir}`)) {
       if (!f.endsWith('.md')) continue;
       const fm = readFileSync(`./src/content/${dir}/${f}`, 'utf8').split(/\r?\n---/)[0];

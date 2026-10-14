@@ -1,0 +1,21 @@
+---
+import { getImage } from 'astro:assets';
+
+// Foto de un encuentro: `file` es un archivo de src/assets/encuentro-*.jpg (nombrado en el frontmatter).
+interface Props { file: string; alt: string; sizes?: string; width?: number; class?: string; eager?: boolean }
+const { file, alt, sizes = '(max-width: 600px) 100vw, 640px', width = 1280, class: cls, eager = false } = Astro.props;
+
+const files = import.meta.glob<{ default: ImageMetadata }>('../assets/encuentro-*.jpg', { eager: true });
+const src = files[`../assets/${file}`]?.default;
+if (!src) throw new Error(`Falta la foto src/assets/${file}`);
+
+const widths = [480, 800, 1280].filter((w) => w <= src.width);
+const avif = await getImage({ src, format: 'avif', widths, sizes, quality: 60 });
+const webp = await getImage({ src, format: 'webp', widths, sizes, quality: 72 });
+const jpg = await getImage({ src, format: 'jpeg', width: Math.min(width, src.width), quality: 75 });
+---
+<picture class={cls}>
+  <source type="image/avif" srcset={avif.srcSet.attribute} sizes={sizes} />
+  <source type="image/webp" srcset={webp.srcSet.attribute} sizes={sizes} />
+  <img src={jpg.src} alt={alt} width={jpg.attributes.width} height={jpg.attributes.height} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+</picture>

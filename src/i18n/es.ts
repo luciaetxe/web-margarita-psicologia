@@ -8,7 +8,7 @@ export const es = {
     shareTitle: 'Margarita Margenat · Psicóloga online',
     shareDescription: '¿Te exiges demasiado? Ansiedad, autoestima y relaciones. Empezamos con una llamada gratuita, sin compromiso.',
   },
-  nav: { empezamos: 'Cómo empezamos', sobremi: 'Sobre mí', recursos: 'Recursos', blog: 'Blog', cta: 'Reservar llamada', menu: 'Abrir menú' },
+  nav: { empezamos: 'Cómo empezamos', sobremi: 'Sobre mí', encuentros: 'Encuentros', recursos: 'Recursos', blog: 'Blog', cta: 'Reservar llamada', menu: 'Abrir menú' },
   wa: { msg: 'Hola Margarita, me gustaría reservar la llamada de valoración gratuita.', float: 'Escribir por WhatsApp' },
   hero: {
     kicker: '¿Te exiges demasiado?',
@@ -50,8 +50,15 @@ export const es = {
     p1: 'Psicóloga y terapeuta de formación humanista. Trabajo ofreciendo sesiones de terapia online con personas que quieren vivir más en paz consigo mismas y mejorar sus relaciones.',
     alt: 'Margarita Margenat',
   },
-  retiro: { label: 'Próximo retiro', cta: 'Ver el retiro' },
-  taller: { label: 'Talleres', cta: 'Avísame del próximo', msg: 'Hola Margarita, me gustaría que me avisaras del próximo taller Mírate con amor.' },
+  encuentros: {
+    title: 'Encuentros',
+    description: 'Talleres y retiros de Margarita Margenat, psicóloga online: la ocasión de vernos en persona.',
+    intro: 'La terapia es online. Estos encuentros son la ocasión de vernos en persona.',
+    upcoming: 'Próximo',
+    open: 'Ver el taller',
+    external: 'Ver el retiro',
+    all: 'Ver todos los encuentros',
+  },
   recursos: {
     title: 'Recursos',
     description: 'Ejercicios escritos, visualizaciones y audios de respiración de Margarita Margenat para indagar, soltar lo que pesa y cuidarte. Gratis.',
