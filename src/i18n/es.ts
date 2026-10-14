@@ -63,6 +63,7 @@ export const es = {
     title: 'Recursos',
     description: 'Ejercicios escritos, visualizaciones y audios de respiración de Margarita Margenat para indagar, soltar lo que pesa y cuidarte. Gratis.',
     intro: 'He preparado estos recursos para ti: para indagar, soltar emociones que pesan, cambiar pensamientos que ya no te sirven y darte un momento de autocuidado. Si alguno te llama la atención, lánzate: tu intuición sabe lo que necesitas. Y si te apetece contarme en qué punto estás, escríbeme. Lo hablamos sin ningún coste.',
+    short: 'Ejercicios escritos, visualizaciones y audios de respiración.',
     listen: 'Escuchar',
     read: 'Leer',
     download: 'Descargar en PDF',

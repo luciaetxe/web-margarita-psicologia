@@ -12,30 +12,28 @@ Brief completo: `Downloads/BRIEF-web-margarita-psicologia.md` (Lucía). Este arc
 ## Voz
 Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica ni frases de taza. Evitar "espacio seguro", "sanar", "viaje", "empoderar" salvo que Margarita las use. Lenguaje neutro en género cuando se habla a quien lee (nada de "juntas").
 
-## Sistema de diseño (del feed de Instagram, no de plantilla)
-**Mar y Costa Brava.** Granate y fucsia son de la web del retiro (tribuconecta.site): aquí solo un **acento rosa pequeño y únicamente en el bloque del retiro** (`--color-rose #D62E7F`: etiqueta y botón), decidido con Margarita el 15-09-2026. Tampoco verde salvia ni lavanda. Sí otros colores de naturaleza que salen en el feed (arena, madera, atardecer), con moderación.
+## Sistema de diseño (rediseño "papel y tinta", en producción desde el 14-10-2026)
+Lucía rediseñó la web entera ese día (maqueta en `_lab/borrador/`, carpeta ignorada en git; la variante terracota descartada en `_lab/descartado/`). **Papel, tinta y un solo acento: el azul mar de su Instagram.** Nada de fondos de colores alternos: solo papel, un papel un punto más oscuro en Encuentros, y mar profundo en el cierre y el pie. El rosa del retiro ya no existe en esta web (el retiro vive en tribuconecta.site).
 ```css
 :root {
-  --color-bg:        #F3EEE6;  /* arena clara: fondo principal */
-  --color-surface:   #FBF8F3;  /* blanco roto */
+  --color-bg:        #FAF6EF;  /* papel */
+  --color-bg-2:      #F1EADF;  /* papel más oscuro: bloque Encuentros */
+  --color-surface:   #FBF8F3;
   --color-ink:       #1B2430;  /* tinta azulada: texto */
   --color-ink-soft:  #5C5750;  /* texto secundario */
-  --color-sea:       #2F5F78;  /* mar profundo: marca, títulos destacados, botones, cursivas */
-  --color-sea-deep:  #1E4457;  /* hover del mar */
-  --color-sky:       #C9D8E0;  /* cielo sobre el mar: secciones alternas */
-  --color-sky-hi:    #7FA9CF;  /* azul del cartel de trekking: subrayados, hover, detalles */
-  --color-sand:      #D9CBB8;  /* arena de cartel: bloques tipo póster con tipografía */
-  --color-wood:      #A9743F;  /* madera: detalle muy puntual */
-  --color-dusk:      #E6C3BC;  /* rosa atardecer: rarísimo, nunca fondo grande */
-  --color-line:      #E1D9CC;  /* separadores */
+  --color-sea:       #2F5F78;  /* acento: cursiva del titular, etiquetas, flechas, "Leer/Escuchar" */
+  --color-sea-deep:  #1E4457;  /* hover, cierre "¿Empezamos?" y pie */
+  --color-sky-hi:    #7FA9CF;  /* subrayados y foco */
+  --color-line:      #DCD4C7;  /* líneas finas: son la única separación entre cosas */
 }
 ```
-- Display: Instrument Serif (o Fraunces); títulos grandes, interlineado ajustado, una palabra en cursiva en color mar. Texto: Inter 400/500. `font-display: swap` + preconnect.
-- Hero: foto de cielo/mar de la Costa Brava hecha por Margarita (`src/assets/ocell.jpg`, gaviota) con el titular encima. **Su retrato NO va en el hero**: solo en "Sobre mí". Sin vídeo. `costa.jpg` reservada para retiros.
-- Layout: mucho aire, ancho de lectura 65-72 caracteres, secciones alternando arena, cielo y arena-cartel.
-- **Menos es más (feedback de Lucía, sept 2026):** nada de numeración de secciones (01, 02…), nada de etiquetas de sección, nada de párrafos de intro bajo cada título, nada de enumeraciones largas. Cada bloque cabe en una pantalla y tiene un solo trabajo. Si falta información (formación, testimonios), el bloque no se muestra: no se ponen placeholders visibles.
-- Home = cartel · ¿Te reconoces? · la frase ("No eres tú…") · Margarita (foto) · cómo empezamos + tarifas · Encuentros (lista con miniaturas) · Recursos — y un cierre con botón.
-- Nada de botones píldora, tarjetas en cuadrícula ni cajas decorativas. Contraste AA mínimo.
+- Tipografía: **Cormorant Garamond** 400/500 + cursiva 400 (títulos grandes, frases de las listas) e **Inter** 400/500. Fuentes **alojadas en `public/fonts/`**, precargadas en `Base.astro` y con `font-display: block`: a Lucía le molesta mucho que la web se pinte con otra letra y cambie al cargar. No volver a Google Fonts.
+- Esquema de todos los bloques de la home: **título a la izquierda, contenido a la derecha** (`.block.side`), líneas finas, botones planos (tinta o contorno), sin tarjetas ni sombras ni píldoras.
+- Home, en este orden: portada partida (texto sobre papel | foto de la cala, en móvil el texto primero) · ¿Te reconoces? (tres líneas grandes, toda la fila es enlace) · la frase sobre el cielo con la gaviota (texto a la izquierda para no tapar al pájaro) · Margarita (retrato grande + texto) · Cómo empezamos (pasos apilados) · Tarifas · Encuentros (dos fotos pequeñas a media página, a la misma altura, sin recortar, solo nombre y tipo en el pie) · Recursos (los tres últimos) · cierre "¿Empezamos?" enorme en mar profundo.
+- Cabecera estática con línea debajo, sin botón; el botón flotante de WhatsApp aparece al pasar la portada.
+- **Menos es más (feedback de Lucía, sept 2026):** nada de numeración de secciones, nada de etiquetas de sección, nada de párrafos de intro bajo cada título en la home, nada de enumeraciones largas. Si falta información (formación, testimonios), el bloque no se muestra.
+- Su retrato NO va en la portada: solo en "Soy Margarita". Sin vídeo. `costa.jpg` es la foto de portada; `hero-wide.jpg` (gaviota) la de la pausa; `hero-tall.jpg` y `ocell.jpg` sin uso.
+- Contraste AA mínimo (Lighthouse móvil tras el rediseño: 88 / 100 / 100 / 100; el LCP es la foto de la cala).
 
 ## Datos fijos
 - Email margaritamp99@gmail.com · WhatsApp +34 639 66 49 82 (`https://wa.me/34639664982`) · Instagram @margaritapsicologia.

@@ -5,8 +5,8 @@ import WhatsAppIcon from './WhatsAppIcon.astro';
 import EncuentroFoto from './EncuentroFoto.astro';
 import { base, byNewest, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
 import precios from '../data/precios.json';
-import heroWide from '../assets/hero-wide.jpg';
-import heroTall from '../assets/hero-tall.jpg';
+import costa from '../assets/costa.jpg';
+import cielo from '../assets/hero-wide.jpg';
 import retrato from '../assets/margarita.jpeg';
 import { getCollection } from 'astro:content';
 
@@ -16,24 +16,31 @@ const t = dicts[lang];
 const home = base(lang);
 const recursos = (await getCollection('recursos')).sort(byNewest).slice(0, 3);
 
-// Hero con dirección de arte: recorte apaisado en escritorio, vertical en móvil.
-const wideAvif = await getImage({ src: heroWide, format: 'avif', widths: [1200, 1800, 2600], sizes: '100vw' });
-const wideWebp = await getImage({ src: heroWide, format: 'webp', widths: [1200, 1800, 2600], sizes: '100vw' });
-const wideJpg  = await getImage({ src: heroWide, format: 'jpg', width: 1800 });
-const tallAvif = await getImage({ src: heroTall, format: 'avif', widths: [600, 900, 1200], sizes: '100vw' });
-const tallWebp = await getImage({ src: heroTall, format: 'webp', widths: [600, 900, 1200], sizes: '100vw' });
+// Portada: la cala de la Costa Brava, a media pantalla en escritorio y bajo el texto en móvil.
+const costaAvif = await getImage({ src: costa, format: 'avif', widths: [640, 960, 1400], sizes: '(max-width: 900px) 100vw, 50vw', quality: 60 });
+const costaWebp = await getImage({ src: costa, format: 'webp', widths: [640, 960, 1400], sizes: '(max-width: 900px) 100vw, 50vw', quality: 72 });
+const costaJpg  = await getImage({ src: costa, format: 'jpg', width: 1400, quality: 75 });
+// Pausa: el cielo con la gaviota.
+const cieloAvif = await getImage({ src: cielo, format: 'avif', widths: [800, 1400, 2000], sizes: '100vw', quality: 55 });
+const cieloWebp = await getImage({ src: cielo, format: 'webp', widths: [800, 1400, 2000], sizes: '100vw', quality: 70 });
+const cieloJpg  = await getImage({ src: cielo, format: 'jpg', width: 1600, quality: 72 });
+// Margarita
+const retratoAvif = await getImage({ src: retrato, format: 'avif', widths: [400, 600, 776], quality: 60 });
+const retratoWebp = await getImage({ src: retrato, format: 'webp', widths: [400, 600, 776], quality: 70 });
+const retratoJpg = await getImage({ src: retrato, format: 'jpeg', width: 776, quality: 75 });
+
 const site = Astro.site!.toString().replace(/\/$/, '');
 const wa = waLink(t.wa.msg);
-// Encuentros (talleres y retiros) en el idioma de la página: próximos primero.
+const eur = (n: number) => (lang === 'en' ? `€${n}` : `${n} €`);
+
+// Encuentros (talleres y retiros) en el idioma de la página: próximos primero. Las fotos van a su proporción,
+// con cada columna tan ancha como pide su foto para que queden a la misma altura.
 const encuentros = (await getCollection('encuentros'))
   .filter((e) => e.data.lang === lang)
   .sort((a, b) => Number(b.data.upcoming) - Number(a.data.upcoming) || byNewest(a, b));
 const encHref = (e: (typeof encuentros)[number]) => e.data.url ?? `${home}encuentros/${e.id.replace(/^(ca|en)\//, '')}/`;
-const eur = (n: number) => (lang === 'en' ? `€${n}` : `${n} €`);
-
-const retratoAvif = await getImage({ src: retrato, format: 'avif', widths: [320, 480, 640], quality: 60 });
-const retratoWebp = await getImage({ src: retrato, format: 'webp', widths: [320, 480, 640], quality: 70 });
-const retratoJpg = await getImage({ src: retrato, format: 'jpeg', width: 640, quality: 75 });
+const fotos = import.meta.glob<{ default: ImageMetadata }>('../assets/encuentro-*.jpg', { eager: true });
+const encCols = encuentros.map((e) => { const m = fotos[`../assets/${e.data.cover}`]?.default; return m ? `minmax(0, ${(m.width / m.height).toFixed(3)}fr)` : 'minmax(0, 1fr)'; }).join(' ');
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -64,33 +71,28 @@ const jsonLd = {
   ),
 };
 ---
-<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} shareTitle={t.meta.shareTitle} shareDescription={t.meta.shareDescription} hero jsonLd={jsonLd}>
+<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} shareTitle={t.meta.shareTitle} shareDescription={t.meta.shareDescription} jsonLd={jsonLd}>
 
-  <!-- 1 · Cartel -->
+  <!-- 1 · Portada partida: texto sobre papel, la cala al lado -->
   <section class="hero" id="inicio">
-    <div class="hero-media" aria-hidden="true">
-      <picture>
-        <source media="(max-width: 900px)" type="image/avif" srcset={tallAvif.srcSet.attribute} sizes="100vw" />
-        <source media="(max-width: 900px)" type="image/webp" srcset={tallWebp.srcSet.attribute} sizes="100vw" />
-        <source type="image/avif" srcset={wideAvif.srcSet.attribute} sizes="100vw" />
-        <source type="image/webp" srcset={wideWebp.srcSet.attribute} sizes="100vw" />
-        <img src={wideJpg.src} width={wideJpg.attributes.width} height={wideJpg.attributes.height} alt="" loading="eager" fetchpriority="high" decoding="async" />
-      </picture>
-    </div>
-    <div class="wrap hero-inner">
+    <div class="hero-text">
       <span class="caps hero-kicker">{t.hero.kicker}</span>
       <h1 class="hero-title">{t.hero.t1}<em>{t.hero.em}</em>{t.hero.t2}</h1>
       <p class="hero-sub">{t.hero.sub}</p>
-      <div class="hero-actions">
-        <a href={wa} target="_blank" rel="noopener" class="btn btn-light">{t.hero.cta}</a>
-        <a href="#empezamos" class="link link-light">{t.hero.cta2}</a>
-      </div>
+      <div><a href={wa} target="_blank" rel="noopener" class="btn btn-primary">{t.hero.cta}</a></div>
+    </div>
+    <div class="hero-photo">
+      <picture>
+        <source type="image/avif" srcset={costaAvif.srcSet.attribute} sizes="(max-width: 900px) 100vw, 50vw" />
+        <source type="image/webp" srcset={costaWebp.srcSet.attribute} sizes="(max-width: 900px) 100vw, 50vw" />
+        <img src={costaJpg.src} width={costaJpg.attributes.width} height={costaJpg.attributes.height} alt={t.hero.alt} loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
     </div>
   </section>
 
   <!-- 2 · ¿Te reconoces? -->
   <section class="block" id="reconoces">
-    <div class="wrap narrow">
+    <div class="wrap">
       <h2 class="title">{t.reconoces.title}</h2>
       <ul class="lines">
         {t.reconoces.items.map((it) => (
@@ -104,114 +106,140 @@ const jsonLd = {
     </div>
   </section>
 
-  <!-- 3 · La frase -->
-  <section class="block sky statement" id="enfoque">
-    <div class="wrap narrow">
+  <!-- 3 · La frase, sobre el cielo -->
+  <section class="pause" id="enfoque">
+    <picture class="pause-media" aria-hidden="true">
+      <source type="image/avif" srcset={cieloAvif.srcSet.attribute} sizes="100vw" />
+      <source type="image/webp" srcset={cieloWebp.srcSet.attribute} sizes="100vw" />
+      <img src={cieloJpg.src} width={cieloJpg.attributes.width} height={cieloJpg.attributes.height} alt="" loading="lazy" decoding="async" />
+    </picture>
+    <div class="wrap"><div class="pause-in">
       <p class="big">{t.statement.big}</p>
       <p class="em">{t.statement.em}</p>
       <p class="close">{t.statement.close}</p>
-      <a href={wa} target="_blank" rel="noopener" class="btn btn-primary">{t.statement.cta}</a>
-    </div>
+      <a href={wa} target="_blank" rel="noopener" class="btn btn-ghost">{t.statement.cta}</a>
+    </div></div>
   </section>
 
   <!-- 4 · Margarita -->
-  <section class="block sand" id="margarita">
-    <div class="wrap narrow about">
+  <section class="block about" id="margarita">
+    <div class="wrap">
       <picture>
-        <source type="image/avif" srcset={retratoAvif.srcSet.attribute} sizes="(max-width: 600px) 70vw, 320px" />
-        <source type="image/webp" srcset={retratoWebp.srcSet.attribute} sizes="(max-width: 600px) 70vw, 320px" />
+        <source type="image/avif" srcset={retratoAvif.srcSet.attribute} sizes="(max-width: 900px) 100vw, 460px" />
+        <source type="image/webp" srcset={retratoWebp.srcSet.attribute} sizes="(max-width: 900px) 100vw, 460px" />
         <img src={retratoJpg.src} alt={t.sobremi.alt} width={retratoJpg.attributes.width} height={retratoJpg.attributes.height} loading="lazy" decoding="async" />
       </picture>
       <div>
+        <span class="caps">{t.nav.sobremi}</span>
         <h2 class="title">{t.sobremi.title}</h2>
         <p>{t.sobremi.p1}</p>
+        <a href="#empezamos" class="lnk">{t.nav.empezamos}</a>
       </div>
     </div>
   </section>
 
-  <!-- 5 · Cómo empezamos + tarifas -->
-  <section class="block" id="empezamos">
-    <div class="wrap narrow">
+  <!-- 5 · Cómo empezamos -->
+  <section class="block side start" id="empezamos">
+    <div class="wrap">
       <h2 class="title">{t.empezamos.title}</h2>
-      <ul class="lines">
+      <ul class="steps">
         {t.empezamos.steps.map((s) => <li><p>{s}</p></li>)}
       </ul>
-      <h3 class="subtitle">{t.empezamos.tarifas}</h3>
-      <dl class="prices">
-        {precios.flatMap((p) => p.variants.length > 1
-          ? [
-              <div class="group"><dt>{p.name[lang]}</dt></div>,
-              ...p.variants.map((v) => (
-                <div class="sub">
-                  <dt>{v.dur[lang]}</dt>
-                  <dd>{v.price ? eur(v.price) : <em>{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</em>}</dd>
-                </div>
-              )),
-            ]
-          : p.variants.map((v) => (
-              <div>
-                <dt>{p.name[lang]} <span>· {v.dur[lang]}</span></dt>
-                <dd>{v.price ? eur(v.price) : <em>{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</em>}</dd>
-              </div>
-            ))
-        )}
-      </dl>
-      <p class="prices-note">{t.empezamos.note}</p>
     </div>
   </section>
 
-  <!-- 6 · Encuentros -->
-  {encuentros.length > 0 && (
-    <section class="block sand encuentros-home" id="encuentros">
-      <div class="wrap narrow">
-        <h2 class="title">{t.encuentros.title}</h2>
-        <ul class="encuentros">
-          {encuentros.map((e) => {
-            const d = e.data; const href = encHref(e); const ext = Boolean(d.url);
-            return (
-              <li>
-                <a href={href} class="cover" target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined} tabindex="-1" aria-hidden="true">
-                  <EncuentroFoto file={d.cover} alt="" sizes="96px" width={240} />
-                </a>
-                <div class="body">
-                  <span class="caps">{d.upcoming ? `${t.encuentros.upcoming} · ` : ''}{d.kicker}</span>
-                  <h3><a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{d.title}</a></h3>
-                  <p class="when">{d.when}</p>
-                  <a href={href} class="link" target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{ext ? t.encuentros.external : t.encuentros.open}</a>
+  <!-- 6 · Tarifas -->
+  <section class="block side fees" id="tarifas">
+    <div class="wrap">
+      <h2 class="title">{t.empezamos.tarifas}</h2>
+      <div>
+        <dl class="prices">
+          {precios.flatMap((p) => p.variants.length > 1
+            ? [
+                <div class="group"><dt>{p.name[lang]}</dt></div>,
+                ...p.variants.map((v) => (
+                  <div class="sub">
+                    <dt>{v.dur[lang]}</dt>
+                    <dd>{v.price ? eur(v.price) : <em>{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</em>}</dd>
+                  </div>
+                )),
+              ]
+            : p.variants.map((v) => (
+                <div>
+                  <dt>{p.name[lang]} <span>· {v.dur[lang]}</span></dt>
+                  <dd>{v.price ? eur(v.price) : <em>{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</em>}</dd>
                 </div>
-              </li>
-            );
-          })}
-        </ul>
-        <p class="more"><a href={`${home}encuentros/`} class="link">{t.encuentros.all}</a></p>
+              ))
+          )}
+        </dl>
+        <p class="prices-note">{t.empezamos.note}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Encuentros -->
+  {encuentros.length > 0 && (
+    <section class="block side meet" id="encuentros">
+      <div class="wrap">
+        <div>
+          <h2 class="title">{t.encuentros.title}</h2>
+          <p class="lead">{t.encuentros.intro}</p>
+        </div>
+        <div>
+          <div class="strip" style={`grid-template-columns: ${encCols}`}>
+            {encuentros.map((e) => {
+              const d = e.data; const href = encHref(e); const ext = Boolean(d.url);
+              return (
+                <figure>
+                  <a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>
+                    <EncuentroFoto file={d.cover} alt={d.coverAlt} sizes="(max-width: 900px) 60vw, 420px" width={900} />
+                  </a>
+                  <figcaption>
+                    <a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{d.title}</a>
+                    <span>{d.kicker}</span>
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </div>
+          <p class="more"><a href={`${home}encuentros/`} class="lnk">{t.encuentros.all}</a></p>
+        </div>
       </div>
     </section>
   )}
 
-  <!-- 7 · Recursos -->
-  <section class="block" id="recursos">
-    <div class="wrap narrow">
-      <h2 class="title">{t.recursos.title}</h2>
-      <ul class="resources">
-        {recursos.map((r) => (
-          <li>
-            <span class="caps">{r.data.kind[lang]}{r.data.duration ? ` · ${r.data.duration}` : ''}{r.data.lang !== lang && t.recursos.inLang ? ` · ${t.recursos.inLang}` : ''}</span>
-            <h3><a href={`${base(r.data.lang)}recursos/${r.id}/`}>{r.data.title}</a></h3>
-            <p>{r.data.summary[lang]}</p>
-            <a href={`${base(r.data.lang)}recursos/${r.id}/`} class="link">{r.data.audio ? t.recursos.listen : t.recursos.read}</a>
-          </li>
-        ))}
-      </ul>
-      <p class="more"><a href={`${home}recursos/`} class="link">{t.recursos.all}</a></p>
+  <!-- 8 · Recursos: los tres últimos -->
+  <section class="block side res" id="recursos">
+    <div class="wrap">
+      <div>
+        <h2 class="title">{t.recursos.title}</h2>
+        <p class="lead">{t.recursos.short}</p>
+      </div>
+      <div>
+        <ul class="reslist">
+          {recursos.map((r) => {
+            const href = `${base(r.data.lang)}recursos/${r.id}/`;
+            return (
+              <li><a href={href}>
+                <span><b>{r.data.title}</b><span class="caps">{r.data.kind[lang]}{r.data.duration ? ` · ${r.data.duration}` : ''}{r.data.lang !== lang && t.recursos.inLang ? ` · ${t.recursos.inLang}` : ''}</span></span>
+                <span class="go">{r.data.audio ? t.recursos.listen : t.recursos.read}</span>
+              </a></li>
+            );
+          })}
+        </ul>
+        <p class="more"><a href={`${home}recursos/`} class="lnk">{t.recursos.all}</a></p>
+      </div>
     </div>
   </section>
 
-  <!-- Cierre -->
-  <section class="block sea cierre" id="contacto">
-    <div class="wrap narrow">
-      <h2 class="title">{t.cierre.title}</h2>
-      <p>{t.cierre.sub}</p>
-      <a href={wa} target="_blank" rel="noopener" class="btn btn-light"><WhatsAppIcon /> {t.cierre.cta}</a>
+  <!-- 9 · Cierre -->
+  <section class="end" id="contacto">
+    <div class="wrap">
+      <h2>{t.cierre.title}</h2>
+      <div class="row">
+        <a href={wa} target="_blank" rel="noopener" class="btn btn-ghost"><WhatsAppIcon /> {t.cierre.cta}</a>
+        <p>{t.cierre.sub}</p>
+      </div>
     </div>
   </section>
 

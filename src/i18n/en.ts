@@ -64,6 +64,7 @@ export const en: Dict = {
     title: 'Resources',
     description: 'Written exercises, visualisations and breathing audios by Margarita Margenat to look inward, let go of what weighs on you and care for yourself. Free.',
     intro: "I've put together these resources for you: to look inward, let go of emotions that weigh on you, change thoughts that no longer serve you and give yourself a moment of self-care. If one of them speaks to you, go for it: your intuition knows what you need. And if you'd like to tell me where you are right now, write to me. We'll talk it through, free of charge.",
+    short: 'Written exercises, visualisations and breathing audios.',
     listen: 'Listen',
     read: 'Read',
     download: 'Download as PDF',

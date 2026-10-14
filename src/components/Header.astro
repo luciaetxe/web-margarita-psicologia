@@ -1,10 +1,10 @@
 ---
-import { base, langs, waLink, type Lang, type Dict } from '../i18n';
+import { base, langs, type Lang, type Dict } from '../i18n';
 interface Props { lang: Lang; t: Dict; hero?: boolean }
-const { lang, t, hero = false } = Astro.props;
+const { lang, t } = Astro.props;
 const home = base(lang);
 ---
-<header class:list={['site-header', { solid: !hero }]} id="site-header">
+<header class="site-header" id="site-header">
   <a href={home} class="logo">Margarita Margenat</a>
   <button class="nav-toggle" aria-label={t.nav.menu} aria-expanded="false" aria-controls="nav-right"><span></span><span></span><span></span></button>
   <div class="nav-right" id="nav-right">
@@ -23,6 +23,5 @@ const home = base(lang);
         </>
       ))}
     </div>
-    <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="btn btn-primary nav-cta">{t.nav.cta}</a>
   </div>
 </header>

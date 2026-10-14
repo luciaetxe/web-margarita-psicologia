@@ -64,6 +64,7 @@ export const ca: Dict = {
     title: 'Recursos',
     description: 'Exercicis escrits, visualitzacions i àudios de respiració de Margarita Margenat per indagar, deixar anar el que pesa i cuidar-te. Gratuïts.',
     intro: "He preparat aquests recursos per a tu: per indagar, deixar anar emocions que pesen, canviar pensaments que ja no et serveixen i donar-te un moment d'autocura. Si algun et crida l'atenció, llança-t'hi: la teva intuïció sap el que necessites. I si et ve de gust explicar-me en quin punt estàs, escriu-me. En parlem sense cap cost.",
+    short: 'Exercicis escrits, visualitzacions i àudios de respiració.',
     listen: 'Escoltar',
     read: 'Llegir',
     download: 'Descarregar en PDF',

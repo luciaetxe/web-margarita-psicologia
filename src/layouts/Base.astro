@@ -62,10 +62,12 @@ const ogDesc = shareDescription ?? description;
     <link rel="icon" href="/favicon.png?v=2" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" sizes="180x180" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet" /></noscript>
+    {/* Fuentes alojadas aquí y precargadas (font-display: block en global.css): el texto no se pinta con otra letra y luego cambia */}
+    <link rel="preload" href="/fonts/cormorant-garamond-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-garamond-400-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-500.woff2" as="font" type="font/woff2" crossorigin />
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
@@ -81,7 +83,6 @@ const ogDesc = shareDescription ?? description;
       const wa = document.getElementById('wa-float')!;
       const hero = document.querySelector<HTMLElement>('.hero');
       const onScroll = () => {
-        header.classList.toggle('scrolled', window.scrollY > 40);
         const past = hero ? window.scrollY > hero.offsetTop + hero.offsetHeight - 80 : window.scrollY > 300;
         wa.classList.toggle('show', past);
       };
