@@ -158,6 +158,7 @@ a { color: inherit; }
 .encuentros .when { font-family: var(--serif); font-size: 1.2rem; line-height: 1.3; color: var(--color-ink); margin: 0 0 0.6rem; }
 .encuentros p { max-width: 34rem; font-size: 1.05rem; line-height: 1.75; color: var(--color-ink-soft); margin: 0 0 0.9rem; }
 .encuentros-home .encuentros p { color: #4E4943; }
+.encuentros-home .encuentros .caps { color: var(--color-sea-deep); } /* AA sobre arena */
 /* En la home, versión ligera: miniatura pequeña al lado del texto */
 .encuentros-home .encuentros li { grid-template-columns: 6rem minmax(0, 1fr); gap: 1.4rem; padding: 1.4rem 0; align-items: center; }
 .encuentros-home .encuentros h3 { font-size: 1.6rem; }
