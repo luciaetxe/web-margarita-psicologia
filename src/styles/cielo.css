@@ -88,8 +88,10 @@ body.cielo {
 .cielo .enc .c-mirate svg { width: 360px; max-width: 72%; height: auto; }
 .cielo .enc .c-otro { background: #fff; color: var(--tinta); }
 .cielo .enc .marca { margin: 0; font-family: 'Young Serif', serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.15; letter-spacing: 0.01em; }
-.cielo .enc figcaption { margin-top: 14px; display: flex; justify-content: space-between; gap: 16px; font-size: 16px; }
-.cielo .enc figcaption span:last-child { opacity: 0.8; text-align: right; }
+.cielo .enc figcaption { margin-top: 16px; display: flex; flex-direction: column; gap: 4px; }
+.cielo .enc figcaption .tipo { font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400; }
+.cielo .enc figcaption .dato { display: flex; justify-content: space-between; gap: 16px; font-size: 16px; }
+.cielo .enc figcaption .dato span:last-child { opacity: 0.8; text-align: right; }
 .cielo .todos { margin-top: 36px; font-size: 16px; }
 .cielo .todos a { border-bottom: 1px solid rgba(255,255,255,0.6); padding-bottom: 3px; transition: border-color 0.2s; }
 .cielo .todos a:hover { border-color: #fff; }

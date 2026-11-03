@@ -156,7 +156,7 @@ const jsonLd = {
                   )}
                   {m === 'otro' && <p class="marca">{d.title}</p>}
                 </a>
-                <figcaption><span>{d.title} · {d.kicker}</span><span>{d.when}</span></figcaption>
+                <figcaption><span class="tipo">{d.kicker}</span><span class="dato"><span>{d.title}</span><span>{d.when}</span></span></figcaption>
               </figure>
             );
           })}
