@@ -12,7 +12,15 @@ Brief completo: `Downloads/BRIEF-web-margarita-psicologia.md` (Lucía). Este arc
 ## Voz
 Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica ni frases de taza. Evitar "espacio seguro", "sanar", "viaje", "empoderar" salvo que Margarita las use. Lenguaje neutro en género cuando se habla a quien lee (nada de "juntas").
 
-## Sistema de diseño (rediseño "papel y tinta", en producción desde el 14-10-2026)
+## Home "Cielo" (desde el 03-11-2026)
+La home (ES/CA/EN) es el boceto "Cielo" de gurí, elegido por Lucía el 02-11-2026 (maqueta en `_lab/bocetos/cielo.html`; los descartados, `manifiesto.html` y `marea.html`, y el lab de marcas `mirate.html` en la misma carpeta; publicados con noindex en lab.margarita-psicologia.pages.dev). `Home.astro` + `src/styles/cielo.css`, que solo actúa con `body.cielo` (prop `cielo` de `Base.astro`). **Las páginas interiores siguen en papel y tinta** (sección siguiente): pasarlas a Cielo es el paso pendiente.
+- Toda la página es un solo degradado, del rosa del amanecer (#f3e1e3) al azul noche (#1a2436); sin papel, sin bloques, sin tarjetas: el texto flota, líneas finas como única separación. Tinta #1f2a3a arriba, blanco desde la frase hacia abajo.
+- Tipografía **Jost** variable (200 para títulos, 300 texto), alojada en `public/fonts/jost.woff2` + `jost-italic.woff2`; **Young Serif** para el nombre del retiro y **Caveat** (variable) para el "Mírate con amor" escrito a mano. Precargadas en `Base.astro` cuando `cielo`; `font-display: block`.
+- Orden: portada (gaviota del logo arriba a la derecha, título enorme y ligero, botón de contorno; el título escala con ancho Y alto de ventana, `min(7vw, 10.5vh)`, para que el botón entre siempre; en móvil la gaviota va en flujo sobre el título) · ¿Te reconoces? · la frase centrada · Soy Margarita (retrato redondo en blanco y negro fundido con el cielo) · Cómo empezamos + tarifas · Encuentros · Recursos (los 4 últimos) · cierre "¿Empezamos?" sobre la foto de la luna · pie noche.
+- **Encuentros son cuadros-enlace de color**, no fotos (Lucía, 02-11-2026): el retiro en blanco con la hoguera (tinta + fucsia #d9408c) y "Presencia y Celebración" en Young Serif; "Mírate con amor" escrito a mano (Caveat) sobre rosa fuerte #d9a3ad con tinta blanca. Un encuentro nuevo sale en blanco con su nombre en Young Serif (`marca()` en `Home.astro`). Descartados: espejo de mano (parecía el símbolo de Venus), espejo de la reina dorado ("muy IA"), melocotón y ciruela.
+- Cabecera transparente sobre el cielo, en Jost mayúsculas pequeñas; menú móvil desplegable blanco.
+
+## Sistema de diseño (rediseño "papel y tinta", páginas interiores; en la home desde el 14-10-2026 hasta el 03-11-2026)
 Lucía rediseñó la web entera ese día (maqueta en `_lab/borrador/`, carpeta ignorada en git; la variante terracota descartada en `_lab/descartado/`). **Papel, tinta y un solo acento: el azul mar de su Instagram.** Nada de fondos de colores alternos: solo papel, un papel un punto más oscuro en Encuentros, y mar profundo en el cierre y el pie. El rosa del retiro ya no existe en esta web (el retiro vive en tribuconecta.site).
 ```css
 :root {
