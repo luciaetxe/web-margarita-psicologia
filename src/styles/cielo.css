@@ -1,0 +1,147 @@
+/* Diseño "Cielo" de la home (boceto de gurí, elegido por Lucía el 02-11-2026; maqueta en _lab/bocetos/cielo.html).
+   Toda la página es un solo cielo que va del amanecer a la noche: sin papel ni bloques, el texto flota.
+   Se aplica solo donde el body lleva la clase .cielo (la home en los tres idiomas); las páginas interiores
+   siguen con papel y tinta (global.css). Fuentes alojadas en public/fonts: Jost (variable), Young Serif y Caveat (variable). */
+@font-face { font-family: 'Jost'; font-style: normal; font-weight: 100 900; font-display: block; src: url(/fonts/jost.woff2) format('woff2'); }
+@font-face { font-family: 'Jost'; font-style: italic; font-weight: 100 900; font-display: block; src: url(/fonts/jost-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Young Serif'; font-style: normal; font-weight: 400; font-display: block; src: url(/fonts/young-serif-400.woff2) format('woff2'); }
+@font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400 700; font-display: block; src: url(/fonts/caveat.woff2) format('woff2'); }
+
+body.cielo {
+  --alba: #f3e1e3; --dia: #cfe0f1; --azul: #8fb2d9; --tarde: #5d6f94; --noche: #1a2436; --tinta: #1f2a3a;
+  --cielo-sans: 'Jost', system-ui, sans-serif;
+  font-family: var(--cielo-sans); font-weight: 300; font-size: 18px; line-height: 1.55; color: var(--tinta);
+  background: linear-gradient(180deg, var(--alba) 0, var(--dia) 22%, var(--azul) 48%, var(--tarde) 74%, var(--noche) 100%);
+}
+.cielo h1, .cielo h2, .cielo h3 { font-family: var(--cielo-sans); font-weight: 200; line-height: 1; letter-spacing: -0.02em; }
+.cielo a { text-decoration: none; }
+.cielo .cw { width: min(1180px, 100% - 48px); margin-inline: auto; }
+.cielo section { padding: 140px 0; }
+
+/* Cabecera: sobre el cielo, sin fondo ni línea */
+.cielo .site-header { position: absolute; inset: 0 0 auto; z-index: 100; background: transparent; border-bottom: 0; padding: 26px 0; width: min(1180px, 100% - 48px); margin-inline: auto; }
+.cielo .logo { font-family: var(--cielo-sans); font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 400; }
+.cielo .nav-links a { font-family: var(--cielo-sans); font-size: 14px; letter-spacing: 0.06em; font-weight: 400; }
+.cielo .nav-links a:hover { color: var(--tarde); }
+.cielo .nav-lang { font-family: var(--cielo-sans); font-size: 14px; letter-spacing: 0.06em; font-weight: 400; }
+.cielo .nav-lang a { color: var(--tinta); opacity: 0.6; }
+.cielo .nav-lang a:hover, .cielo .nav-lang a[aria-current] { opacity: 1; }
+.cielo .nav-lang .sep { color: var(--tinta); opacity: 0.4; }
+
+/* Portada: la gaviota del logo vuela arriba a la derecha; el título, enorme y ligero */
+.cielo .hero { display: block; position: relative; padding-top: clamp(100px, 15vh, 190px); min-height: 0; }
+.cielo .gaviota { position: absolute; right: 8vw; top: 118px; width: min(22vw, 280px); height: auto; opacity: 0.9; transform: rotate(-8deg); color: #111; }
+.cielo .hero .cw { padding: 0 0 60px; }
+.cielo .hero .k { font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+.cielo .hero h1 { font-size: clamp(46px, min(7vw, 10.5vh), 104px); max-width: 11ch; }
+.cielo .hero h1 em { font-style: italic; font-weight: 200; }
+.cielo .hero .sub { margin-top: clamp(16px, 3vh, 30px); font-size: 20px; max-width: 34ch; }
+.cielo .cbtn { display: inline-block; margin-top: 36px; padding: 16px 28px; border: 1px solid currentColor; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; transition: background 0.25s, color 0.25s, border-color 0.25s; }
+.cielo .cbtn:hover { background: var(--tinta); color: #fff; border-color: var(--tinta); }
+@media (min-width: 861px) and (max-height: 760px) { .cielo .hero { padding-top: 104px; } .cielo .hero .cbtn { margin-top: 24px; } .cielo .gaviota { top: 96px; width: min(18vw, 220px); } }
+
+/* ¿Te reconoces?: tres líneas grandes, toda la fila es el enlace */
+.cielo .rec h2 { font-size: clamp(40px, 5vw, 72px); margin-bottom: 60px; }
+.cielo .rec a { display: grid; grid-template-columns: 150px 1fr; gap: 24px; align-items: baseline; padding: 28px 0; border-top: 1px solid rgba(31,42,58,0.25); font-size: clamp(26px, 3.3vw, 46px); font-weight: 200; line-height: 1.1; transition: padding-left 0.25s; }
+.cielo .rec a:last-child { border-bottom: 1px solid rgba(31,42,58,0.25); }
+.cielo .rec a small { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; }
+.cielo .rec a:hover { padding-left: 12px; }
+
+/* La frase, en el centro del cielo */
+.cielo .frase { color: #fff; text-align: center; }
+.cielo .frase p { font-size: clamp(34px, 4.6vw, 66px); font-weight: 200; line-height: 1.12; max-width: 22ch; margin-inline: auto; }
+.cielo .frase p em { font-style: italic; }
+.cielo .frase .c { font-size: 19px; margin-top: 40px; max-width: 40ch; margin-inline: auto; opacity: 0.9; }
+
+/* Margarita: retrato redondo, en blanco y negro fundido con el cielo */
+.cielo .yo { color: #fff; }
+.cielo .yo .cw { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+.cielo .yo img { width: min(100%, 420px); height: auto; aspect-ratio: 1; object-fit: cover; object-position: 50% 20%; border-radius: 50%; filter: grayscale(1); mix-blend-mode: luminosity; opacity: 0.95; }
+.cielo .yo h2 { font-size: clamp(44px, 6vw, 88px); margin-bottom: 26px; }
+.cielo .yo p { font-size: 19px; max-width: 40ch; opacity: 0.92; }
+
+/* Cómo empezamos y tarifas */
+.cielo .pasos { color: #fff; }
+.cielo .pasos .cw { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
+.cielo .pasos h2 { font-size: clamp(44px, 6vw, 88px); }
+.cielo .pasos ol { list-style: none; margin: 0; padding: 0; counter-reset: p; }
+.cielo .pasos li { padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.35); font-size: 21px; font-weight: 300; display: grid; grid-template-columns: 40px 1fr; gap: 16px; }
+.cielo .pasos li::before { counter-increment: p; content: counter(p); font-weight: 200; font-size: 26px; line-height: 1.1; }
+.cielo .tarifa { margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.35); padding-top: 22px; display: grid; gap: 10px; font-size: 18px; }
+.cielo .tarifa div { display: flex; justify-content: space-between; gap: 20px; }
+.cielo .tarifa b { font-weight: 400; }
+.cielo .tarifa small { opacity: 0.8; font-size: 15px; text-align: right; }
+.cielo .tarifa .nota { margin-top: 14px; font-size: 15px; opacity: 0.8; max-width: 40ch; }
+
+/* Encuentros: dos cuadros-enlace, cada uno con su color y su marca */
+.cielo .enc { color: #fff; }
+.cielo .enc h2 { font-size: clamp(44px, 6vw, 88px); margin-bottom: 14px; }
+.cielo .enc .i { opacity: 0.9; margin-bottom: 50px; font-size: 19px; }
+.cielo .enc .g { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.cielo .enc figure { margin: 0; }
+.cielo .enc .cuadro { aspect-ratio: 4 / 3; width: 100%; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; padding: 28px; transition: transform 0.25s, box-shadow 0.25s; box-shadow: 0 10px 30px rgba(10,20,40,0.18); }
+.cielo .enc a.cuadro:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(10,20,40,0.26); }
+.cielo .enc .cuadro svg { display: block; }
+.cielo .enc .c-retiro { background: #fff; color: var(--tinta); }
+.cielo .enc .c-mirate { background: #d9a3ad; color: #fff; }
+.cielo .enc .c-mirate svg { width: 360px; max-width: 72%; height: auto; }
+.cielo .enc .c-otro { background: #fff; color: var(--tinta); }
+.cielo .enc .marca { margin: 0; font-family: 'Young Serif', serif; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.15; letter-spacing: 0.01em; }
+.cielo .enc figcaption { margin-top: 14px; display: flex; justify-content: space-between; gap: 16px; font-size: 16px; }
+.cielo .enc figcaption span:last-child { opacity: 0.8; text-align: right; }
+.cielo .todos { margin-top: 36px; font-size: 16px; }
+.cielo .todos a { border-bottom: 1px solid rgba(255,255,255,0.6); padding-bottom: 3px; transition: border-color 0.2s; }
+.cielo .todos a:hover { border-color: #fff; }
+
+/* Recursos: los últimos, en lista */
+.cielo .recu { color: #fff; }
+.cielo .recu .cw { display: grid; grid-template-columns: 1fr 1.3fr; gap: 70px; align-items: start; }
+.cielo .recu h2 { font-size: clamp(44px, 6vw, 88px); }
+.cielo .recu .s { opacity: 0.85; margin-top: 18px; font-size: 18px; max-width: 30ch; }
+.cielo .recu ul { list-style: none; margin: 0; padding: 0; }
+.cielo .recu li a { padding: 20px 0; border-top: 1px solid rgba(255,255,255,0.35); display: flex; justify-content: space-between; gap: 20px; font-size: 22px; font-weight: 300; transition: padding-left 0.25s; }
+.cielo .recu li a:hover { padding-left: 10px; }
+.cielo .recu li small { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; align-self: center; opacity: 0.85; white-space: nowrap; }
+.cielo .recu .todos { margin-top: 28px; }
+
+/* Cierre: la luna de Margarita y "¿Empezamos?" enorme */
+.cielo .fin { position: relative; color: #fff; padding: 0; min-height: clamp(600px, 100svh, 900px); display: flex; align-items: center; overflow: hidden; }
+.cielo .fin picture, .cielo .fin img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+.cielo .fin .cw { position: relative; z-index: 1; }
+.cielo .fin h2 { font-size: clamp(72px, 14vw, 220px); line-height: 0.9; letter-spacing: -0.03em; }
+.cielo .fin p { font-size: 20px; margin-top: 22px; opacity: 0.9; }
+.cielo .fin .cbtn { border-color: #fff; color: #fff; display: inline-flex; align-items: center; gap: 0.6rem; }
+.cielo .fin .cbtn svg { width: 16px; height: 16px; }
+.cielo .fin .cbtn:hover { background: #fff; color: var(--noche); border-color: #fff; }
+
+/* Pie: noche */
+.cielo .site-footer { background: var(--noche); color: rgba(255,255,255,0.7); }
+.cielo .footer-in { border-top: 0; font-size: 13px; }
+.cielo .footer-in .fname { font-family: var(--cielo-sans); font-weight: 300; font-size: 15px; letter-spacing: 0.04em; }
+.cielo .site-footer a:hover { color: #fff; }
+
+@media (max-width: 900px) {
+  .cielo .site-header { padding: 18px 0; width: min(1180px, 100% - 48px); }
+  .cielo .nav-right { background: #fff; color: var(--tinta); border-top: 0; left: -24px; right: -24px; }
+  .cielo .site-header.open .nav-right { padding: 1.4rem 24px 1.8rem; }
+  .cielo .nav-links a { font-size: 1rem; letter-spacing: 0.04em; text-transform: none; }
+  .cielo .hero { padding-top: 66px; }
+  .cielo .gaviota { position: static; display: block; width: 30vw; max-width: 140px; margin: 0 0 14px auto; }
+  .cielo .hero .cw { padding-bottom: 64px; }
+  .cielo .hero .k { margin-bottom: 18px; }
+  .cielo section { padding: 64px 0; }
+  .cielo .yo .cw, .cielo .pasos .cw, .cielo .enc .g, .cielo .recu .cw { grid-template-columns: 1fr; gap: 32px; }
+  .cielo .rec h2 { margin-bottom: 28px; }
+  .cielo .rec a { grid-template-columns: 1fr; gap: 6px; padding: 20px 0; }
+  .cielo .frase .c { margin-top: 26px; }
+  .cielo .enc .i { margin-bottom: 30px; }
+  .cielo .enc h2 { margin-bottom: 10px; }
+  .cielo .recu .s { margin-bottom: 8px; }
+  .cielo .enc .c-mirate svg { max-width: 78%; }
+  .cielo .enc .c-retiro svg { width: 76px; height: 86px; }
+  .cielo .enc .cuadro { padding: 22px; }
+  .cielo .tarifa div { flex-direction: column; gap: 2px; }
+  .cielo .tarifa small { text-align: left; }
+  .cielo .fin { min-height: 0; padding: 96px 0; }
+  .cielo .fin h2 { font-size: 15vw; }
+}
