@@ -120,10 +120,11 @@ const jsonLd = {
       <div>
         <ol>{t.empezamos.steps.map((s) => <li>{s}</li>)}</ol>
         <div class="tarifa" id="tarifas">
+          <h3>{t.empezamos.tarifas}</h3>
           {precios.flatMap((p) => p.variants.map((v, i) => (
-            <div>
-              {i === 0 ? <span><b>{p.name[lang]}</b> · {v.dur[lang]}</span> : <span>{v.dur[lang]}</span>}
-              {v.price ? <span>{eur(v.price)}</span> : <small>{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</small>}
+            <div class="fila">
+              <span>{i > 0 ? v.dur[lang] : v.price ? `${p.name[lang]} · ${v.dur[lang]}` : p.name[lang]}</span>
+              {v.price ? <span>{eur(v.price)}</span> : <span class="n">{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</span>}
             </div>
           )))}
           <p class="nota">{t.empezamos.note}</p>

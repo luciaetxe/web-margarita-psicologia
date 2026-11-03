@@ -67,11 +67,12 @@ body.cielo {
 .cielo .pasos ol { list-style: none; margin: 0; padding: 0; counter-reset: p; }
 .cielo .pasos li { padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.35); font-size: 21px; font-weight: 300; display: grid; grid-template-columns: 40px 1fr; gap: 16px; }
 .cielo .pasos li::before { counter-increment: p; content: counter(p); font-weight: 200; font-size: 26px; line-height: 1.1; }
-.cielo .tarifa { margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.35); padding-top: 22px; display: grid; gap: 10px; font-size: 18px; }
-.cielo .tarifa div { display: flex; justify-content: space-between; gap: 20px; }
-.cielo .tarifa b { font-weight: 400; }
-.cielo .tarifa small { opacity: 0.8; font-size: 15px; text-align: right; }
-.cielo .tarifa .nota { margin-top: 14px; font-size: 15px; opacity: 0.8; max-width: 40ch; }
+.cielo .tarifa { margin-top: 64px; }
+.cielo .tarifa h3 { font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400; margin-bottom: 10px; }
+.cielo .tarifa .fila { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.35); font-size: 19px; font-weight: 300; }
+.cielo .tarifa .fila:last-of-type { border-bottom: 1px solid rgba(255,255,255,0.35); }
+.cielo .tarifa .fila .n { opacity: 0.8; text-align: right; }
+.cielo .tarifa .nota { margin-top: 18px; font-size: 15px; opacity: 0.8; max-width: 44ch; }
 
 /* Encuentros: dos cuadros-enlace, cada uno con su color y su marca */
 .cielo .enc { color: #fff; }
@@ -140,8 +141,8 @@ body.cielo {
   .cielo .enc .c-mirate svg { max-width: 78%; }
   .cielo .enc .c-retiro svg { width: 76px; height: 86px; }
   .cielo .enc .cuadro { padding: 22px; }
-  .cielo .tarifa div { flex-direction: column; gap: 2px; }
-  .cielo .tarifa small { text-align: left; }
+  .cielo .tarifa .fila { flex-direction: column; gap: 2px; }
+  .cielo .tarifa .fila .n { text-align: left; }
   .cielo .fin { min-height: 0; padding: 96px 0; }
   .cielo .fin h2 { font-size: 15vw; }
 }
