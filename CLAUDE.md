@@ -12,7 +12,8 @@ Brief completo: `Downloads/BRIEF-web-margarita-psicologia.md` (Lucía). Este arc
 ## Voz
 Primera persona, directa, cálida, tuteando, frases cortas. Sin jerga clínica ni frases de taza. Evitar "espacio seguro", "sanar", "viaje", "empoderar" salvo que Margarita las use. Lenguaje neutro en género cuando se habla a quien lee (nada de "juntas").
 
-## Home "Cielo" (desde el 03-11-2026)
+## Home "Cielo" (EN PAUSA desde el 04-11-2026; guardada en la rama `cielo`)
+**04-11-2026: Margarita prefiere la home anterior (papel y tinta con la luna) y producción vuelve a ella.** Cielo sigue completa en la rama git `cielo` y en https://cielo.margarita-psicologia.pages.dev para seguir probando borradores; `src/styles/cielo.css` y las fuentes Jost/Young Serif/Caveat siguen en master sin usarse. Lo que sigue describe Cielo tal como estuvo en producción el 03-11-2026.
 La home (ES/CA/EN) es el boceto "Cielo" de gurí, elegido por Lucía el 02-11-2026 (maqueta en `_lab/bocetos/cielo.html`; los descartados, `manifiesto.html` y `marea.html`, y el lab de marcas `mirate.html` en la misma carpeta; publicados con noindex en lab.margarita-psicologia.pages.dev). `Home.astro` + `src/styles/cielo.css`, que solo actúa con `body.cielo` (prop `cielo` de `Base.astro`). **Las páginas interiores siguen en papel y tinta** (sección siguiente): pasarlas a Cielo es el paso pendiente.
 - Toda la página es un solo degradado, del rosa del amanecer (#f3e1e3) al azul noche (#1a2436); sin papel, sin bloques, sin tarjetas: el texto flota, líneas finas como única separación. Tinta #1f2a3a arriba, blanco desde la frase hacia abajo.
 - Tipografía **Jost** variable (200 para títulos, 300 texto), alojada en `public/fonts/jost.woff2` + `jost-italic.woff2`; **Young Serif** para el nombre del retiro y **Caveat** (variable) para el "Mírate con amor" escrito a mano. Precargadas en `Base.astro` cuando `cielo`; `font-display: block`.

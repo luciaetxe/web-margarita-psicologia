@@ -1,15 +1,13 @@
 ---
-// Home "Cielo" (boceto de gurí elegido por Lucía el 02-11-2026, maqueta en _lab/bocetos/cielo.html):
-// toda la página es un solo cielo del amanecer a la noche; la gaviota del logo vuela en la portada y la luna
-// de Margarita cierra. Estilos en src/styles/cielo.css (solo con body.cielo); las interiores siguen en papel y tinta.
-import '../styles/cielo.css';
 import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import Gull from './Gull.astro';
 import WhatsAppIcon from './WhatsAppIcon.astro';
+import EncuentroFoto from './EncuentroFoto.astro';
 import { base, byNewest, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
 import precios from '../data/precios.json';
 import luna from '../assets/luna.jpg';
+import lunaMovil from '../assets/luna-movil.jpg'; // recorte cuadrado para móvil: se carga solo lo que se ve
+import cielo from '../assets/hero-wide.jpg';
 import retrato from '../assets/margarita.jpeg';
 import { getCollection } from 'astro:content';
 
@@ -17,29 +15,42 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = dicts[lang];
 const home = base(lang);
-const recursos = (await getCollection('recursos')).sort(byNewest).slice(0, 4);
+const recursos = (await getCollection('recursos')).sort(byNewest).slice(0, 3);
 
-// Margarita: retrato redondo (se pinta en blanco y negro fundido con el cielo).
-const retratoAvif = await getImage({ src: retrato, format: 'avif', widths: [420, 640, 840], sizes: '(max-width: 900px) 100vw, 420px', quality: 60 });
-const retratoWebp = await getImage({ src: retrato, format: 'webp', widths: [420, 640, 840], sizes: '(max-width: 900px) 100vw, 420px', quality: 70 });
-const retratoJpg = await getImage({ src: retrato, format: 'jpeg', width: 840, quality: 75 });
-// Cierre: la luna sobre el pino, a pantalla completa.
-const lunaAvif = await getImage({ src: luna, format: 'avif', widths: [800, 1400, 2000], sizes: '100vw', quality: 52 });
-const lunaWebp = await getImage({ src: luna, format: 'webp', widths: [800, 1400, 2000], sizes: '100vw', quality: 68 });
-const lunaJpg = await getImage({ src: luna, format: 'jpg', width: 1600, quality: 72 });
+// Portada: la luna sobre el pino (foto de Margarita), a media pantalla en escritorio y bajo el texto en móvil.
+const SZ_DESK = '(max-width: 900px) 0px, 50vw';
+const lunaAvif = await getImage({ src: luna, format: 'avif', widths: [640, 1000, 1400], sizes: SZ_DESK, quality: 52 });
+const lunaWebp = await getImage({ src: luna, format: 'webp', widths: [640, 1000, 1400], sizes: SZ_DESK, quality: 68 });
+const lunaJpg  = await getImage({ src: luna, format: 'jpg', width: 1000, quality: 72 });
+const SZ_MOV = '100vw';
+const movilAvif = await getImage({ src: lunaMovil, format: 'avif', widths: [480, 720], sizes: SZ_MOV, quality: 50 });
+const movilWebp = await getImage({ src: lunaMovil, format: 'webp', widths: [480, 720], sizes: SZ_MOV, quality: 66 });
+// Precarga de la foto de portada (es el elemento más grande que se pinta): una versión por tamaño de pantalla.
+const preload = [
+  { imagesrcset: movilAvif.srcSet.attribute, imagesizes: SZ_MOV, media: '(max-width: 900px)', type: 'image/avif' },
+  { imagesrcset: lunaAvif.srcSet.attribute, imagesizes: '50vw', media: '(min-width: 901px)', type: 'image/avif' },
+];
+// Pausa: el cielo con la gaviota.
+const cieloAvif = await getImage({ src: cielo, format: 'avif', widths: [800, 1400, 2000], sizes: '100vw', quality: 55 });
+const cieloWebp = await getImage({ src: cielo, format: 'webp', widths: [800, 1400, 2000], sizes: '100vw', quality: 70 });
+const cieloJpg  = await getImage({ src: cielo, format: 'jpg', width: 1600, quality: 72 });
+// Margarita
+const retratoAvif = await getImage({ src: retrato, format: 'avif', widths: [400, 600, 776], quality: 60 });
+const retratoWebp = await getImage({ src: retrato, format: 'webp', widths: [400, 600, 776], quality: 70 });
+const retratoJpg = await getImage({ src: retrato, format: 'jpeg', width: 776, quality: 75 });
 
 const site = Astro.site!.toString().replace(/\/$/, '');
 const wa = waLink(t.wa.msg);
 const eur = (n: number) => (lang === 'en' ? `€${n}` : `${n} €`);
 
-// Encuentros (talleres y retiros) en el idioma de la página: próximos primero. Cada uno es un cuadro de color
-// con su marca: la hoguera del retiro, el "Mírate con amor" escrito a mano; cualquier otro, su nombre en Young Serif.
+// Encuentros (talleres y retiros) en el idioma de la página: próximos primero. Las fotos van a su proporción,
+// con cada columna tan ancha como pide su foto para que queden a la misma altura.
 const encuentros = (await getCollection('encuentros'))
   .filter((e) => e.data.lang === lang)
   .sort((a, b) => Number(b.data.upcoming) - Number(a.data.upcoming) || byNewest(a, b));
-const slugOf = (e: (typeof encuentros)[number]) => e.id.replace(/^(ca|en)\//, '');
-const encHref = (e: (typeof encuentros)[number]) => e.data.url ?? `${home}encuentros/${slugOf(e)}/`;
-const marca = (slug: string) => (slug === 'presencia-y-celebracion' ? 'retiro' : slug === 'mirate-con-amor' ? 'mirate' : 'otro');
+const encHref = (e: (typeof encuentros)[number]) => e.data.url ?? `${home}encuentros/${e.id.replace(/^(ca|en)\//, '')}/`;
+const fotos = import.meta.glob<{ default: ImageMetadata }>('../assets/encuentro-*.jpg', { eager: true });
+const encCols = encuentros.map((e) => { const m = fotos[`../assets/${e.data.cover}`]?.default; return m ? `minmax(0, ${(m.width / m.height).toFixed(3)}fr)` : 'minmax(0, 1fr)'; }).join(' ');
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -70,131 +81,177 @@ const jsonLd = {
   ),
 };
 ---
-<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} shareTitle={t.meta.shareTitle} shareDescription={t.meta.shareDescription} jsonLd={jsonLd} cielo>
+<Base lang={lang} t={t} title={t.meta.title} description={t.meta.description} shareTitle={t.meta.shareTitle} shareDescription={t.meta.shareDescription} jsonLd={jsonLd} preload={preload}>
 
-  <!-- 1 · Portada: la gaviota vuela arriba; el título enorme y ligero -->
+  <!-- 1 · Portada partida: texto sobre papel, la cala al lado -->
   <section class="hero" id="inicio">
-    <Gull class="gaviota" />
-    <div class="cw">
-      <p class="k">{t.hero.kicker}</p>
-      <h1>{t.hero.t1}<em>{t.hero.em}</em>{t.hero.t2}</h1>
-      <p class="sub">{t.hero.sub}</p>
-      <a href={wa} target="_blank" rel="noopener" class="cbtn">{t.hero.cta}</a>
+    <div class="hero-text">
+      <span class="caps hero-kicker">{t.hero.kicker}</span>
+      <h1 class="hero-title">{t.hero.t1}<em>{t.hero.em}</em>{t.hero.t2}</h1>
+      <p class="hero-sub">{t.hero.sub}</p>
+      <div><a href={wa} target="_blank" rel="noopener" class="btn btn-primary">{t.hero.cta}</a></div>
+    </div>
+    <div class="hero-photo">
+      <picture>
+        <source media="(max-width: 900px)" type="image/avif" srcset={movilAvif.srcSet.attribute} sizes={SZ_MOV} />
+        <source media="(max-width: 900px)" type="image/webp" srcset={movilWebp.srcSet.attribute} sizes={SZ_MOV} />
+        <source type="image/avif" srcset={lunaAvif.srcSet.attribute} sizes="50vw" />
+        <source type="image/webp" srcset={lunaWebp.srcSet.attribute} sizes="50vw" />
+        <img src={lunaJpg.src} width={lunaJpg.attributes.width} height={lunaJpg.attributes.height} alt={t.hero.alt} loading="eager" fetchpriority="high" decoding="async" />
+      </picture>
     </div>
   </section>
 
   <!-- 2 · ¿Te reconoces? -->
-  <section class="rec" id="reconoces">
-    <div class="cw">
-      <h2>{t.reconoces.title}</h2>
-      {t.reconoces.items.map((it) => (
-        <a href={it.href ?? `${home}#contacto`}><small>{it.tag}</small><span>{it.text}</span></a>
-      ))}
+  <section class="block" id="reconoces">
+    <div class="wrap">
+      <h2 class="title">{t.reconoces.title}</h2>
+      <ul class="lines">
+        {t.reconoces.items.map((it) => (
+          <li class={it.href ? 'go' : undefined}>
+            {it.href
+              ? <a href={it.href}><span class="caps">{it.tag}</span><p>{it.text}</p><span class="arrow" aria-hidden="true">&rarr;</span></a>
+              : <><span class="caps">{it.tag}</span><p>{it.text}</p></>}
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
-  <!-- 3 · La frase -->
-  <section class="frase" id="enfoque">
-    <div class="cw">
-      <p>{t.statement.big} <em>{t.statement.em}</em></p>
-      <p class="c">{t.statement.close}</p>
-    </div>
+  <!-- 3 · La frase, sobre el cielo -->
+  <section class="pause" id="enfoque">
+    <picture class="pause-media" aria-hidden="true">
+      <source type="image/avif" srcset={cieloAvif.srcSet.attribute} sizes="100vw" />
+      <source type="image/webp" srcset={cieloWebp.srcSet.attribute} sizes="100vw" />
+      <img src={cieloJpg.src} width={cieloJpg.attributes.width} height={cieloJpg.attributes.height} alt="" loading="lazy" decoding="async" />
+    </picture>
+    <div class="wrap"><div class="pause-in">
+      <p class="big">{t.statement.big}</p>
+      <p class="em">{t.statement.em}</p>
+      <p class="close">{t.statement.close}</p>
+      <a href={wa} target="_blank" rel="noopener" class="btn btn-ghost">{t.statement.cta}</a>
+    </div></div>
   </section>
 
   <!-- 4 · Margarita -->
-  <section class="yo" id="margarita">
-    <div class="cw">
+  <section class="block about" id="margarita">
+    <div class="wrap">
       <picture>
-        <source type="image/avif" srcset={retratoAvif.srcSet.attribute} sizes="(max-width: 900px) 100vw, 420px" />
-        <source type="image/webp" srcset={retratoWebp.srcSet.attribute} sizes="(max-width: 900px) 100vw, 420px" />
+        <source type="image/avif" srcset={retratoAvif.srcSet.attribute} sizes="(max-width: 900px) 100vw, 460px" />
+        <source type="image/webp" srcset={retratoWebp.srcSet.attribute} sizes="(max-width: 900px) 100vw, 460px" />
         <img src={retratoJpg.src} alt={t.sobremi.alt} width={retratoJpg.attributes.width} height={retratoJpg.attributes.height} loading="lazy" decoding="async" />
       </picture>
-      <div><h2>{t.sobremi.title}</h2><p>{t.sobremi.p1}</p></div>
-    </div>
-  </section>
-
-  <!-- 5 · Cómo empezamos y tarifas -->
-  <section class="pasos" id="empezamos">
-    <div class="cw">
-      <h2>{t.empezamos.title}</h2>
       <div>
-        <ol>{t.empezamos.steps.map((s) => <li>{s}</li>)}</ol>
-        <div class="tarifa" id="tarifas">
-          <h3>{t.empezamos.tarifas}</h3>
-          {precios.flatMap((p) => p.variants.map((v, i) => (
-            <div class="fila">
-              <span>{i > 0 ? v.dur[lang] : v.price ? `${p.name[lang]} · ${v.dur[lang]}` : p.name[lang]}</span>
-              {v.price ? <span>{eur(v.price)}</span> : <span class="n">{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</span>}
-            </div>
-          )))}
-          <p class="nota">{t.empezamos.note}</p>
-        </div>
+        <span class="caps">{t.nav.sobremi}</span>
+        <h2 class="title">{t.sobremi.title}</h2>
+        <p>{t.sobremi.p1}</p>
+        <a href="#empezamos" class="lnk">{t.nav.empezamos}</a>
       </div>
     </div>
   </section>
 
-  <!-- 6 · Encuentros: cuadros de color, cada uno con su marca -->
+  <!-- 5 · Cómo empezamos -->
+  <section class="block side start" id="empezamos">
+    <div class="wrap">
+      <h2 class="title">{t.empezamos.title}</h2>
+      <ul class="steps">
+        {t.empezamos.steps.map((s) => <li><p>{s}</p></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6 · Tarifas -->
+  <section class="block side fees" id="tarifas">
+    <div class="wrap">
+      <h2 class="title">{t.empezamos.tarifas}</h2>
+      <div>
+        <dl class="prices">
+          {precios.flatMap((p) => p.variants.length > 1
+            ? [
+                <div class="group"><dt>{p.name[lang]}</dt></div>,
+                ...p.variants.map((v) => (
+                  <div class="sub">
+                    <dt>{v.dur[lang]}</dt>
+                    <dd>{v.price ? eur(v.price) : <em>{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</em>}</dd>
+                  </div>
+                )),
+              ]
+            : p.variants.map((v) => (
+                <div>
+                  <dt>{p.name[lang]} <span>· {v.dur[lang]}</span></dt>
+                  <dd>{v.price ? eur(v.price) : <em>{('note' in v && v.note) ? v.note[lang] : t.empezamos.consult}</em>}</dd>
+                </div>
+              ))
+          )}
+        </dl>
+        <p class="prices-note">{t.empezamos.note}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Encuentros -->
   {encuentros.length > 0 && (
-    <section class="enc" id="encuentros">
-      <div class="cw">
-        <h2>{t.encuentros.title}</h2>
-        <p class="i">{t.encuentros.intro}</p>
-        <div class="g">
-          {encuentros.map((e) => {
-            const d = e.data; const href = encHref(e); const ext = Boolean(d.url); const m = marca(slugOf(e));
-            return (
-              <figure>
-                <a class={`cuadro c-${m}`} href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined} aria-label={d.title}>
-                  {m === 'retiro' && (
-                    <>
-                      <svg viewBox="50 36 100 112" width="96" height="108" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M62,138 L140,120 M60,122 L138,140 M100,144 L100,128" stroke="#1f2a3a" stroke-width="7"/><path d="M100,112 C84,100 82,84 92,70 C92,82 98,86 100,92 C104,80 100,66 110,54 C112,74 124,80 124,98 C124,108 114,118 100,118 C92,118 86,112 86,104" stroke="#d9408c" stroke-width="7"/><circle cx="120" cy="44" r="4" fill="#d9408c"/><circle cx="84" cy="52" r="3.2" fill="#d9408c"/><circle cx="130" cy="62" r="3" fill="#d9408c"/></svg>
-                      <p class="marca">{d.title}</p>
-                    </>
-                  )}
-                  {m === 'mirate' && (
-                    <svg viewBox="0 0 260 120" aria-hidden="true"><text x="130" y="60" text-anchor="middle" fill="currentColor" font-family="Caveat" font-weight="700" font-size="74">Mírate</text><text x="130" y="100" text-anchor="middle" fill="currentColor" font-family="Caveat" font-weight="500" font-size="40">con amor</text><path d="M42,70 C90,64 170,76 222,66" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
-                  )}
-                  {m === 'otro' && <p class="marca">{d.title}</p>}
-                </a>
-                <figcaption><span class="tipo">{d.kicker}</span><span class="dato"><span>{d.title}</span><span>{d.when}</span></span></figcaption>
-              </figure>
-            );
-          })}
+    <section class="block side meet" id="encuentros">
+      <div class="wrap">
+        <div>
+          <h2 class="title">{t.encuentros.title}</h2>
+          <p class="lead">{t.encuentros.intro}</p>
         </div>
-        <p class="todos"><a href={`${home}encuentros/`}>{t.encuentros.all}</a></p>
+        <div>
+          <div class="strip" style={`grid-template-columns: ${encCols}`}>
+            {encuentros.map((e) => {
+              const d = e.data; const href = encHref(e); const ext = Boolean(d.url);
+              return (
+                <figure>
+                  <a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>
+                    <EncuentroFoto file={d.cover} alt={d.coverAlt} sizes="(max-width: 900px) 60vw, 420px" width={900} />
+                  </a>
+                  <figcaption>
+                    <a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{d.title}</a>
+                    <span>{d.kicker}</span>
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </div>
+          <p class="more"><a href={`${home}encuentros/`} class="lnk">{t.encuentros.all}</a></p>
+        </div>
       </div>
     </section>
   )}
 
-  <!-- 7 · Recursos: los últimos -->
-  <section class="recu" id="recursos">
-    <div class="cw">
-      <div><h2>{t.recursos.title}</h2><p class="s">{t.recursos.short}</p></div>
+  <!-- 8 · Recursos: los tres últimos -->
+  <section class="block side res" id="recursos">
+    <div class="wrap">
       <div>
-        <ul>
-          {recursos.map((r) => (
-            <li><a href={`${base(r.data.lang)}recursos/${r.id}/`}>
-              <span>{r.data.title}{r.data.duration ? ` · ${r.data.duration}` : ''}</span>
-              <small>{r.data.audio ? t.recursos.listen : t.recursos.read}</small>
-            </a></li>
-          ))}
+        <h2 class="title">{t.recursos.title}</h2>
+        <p class="lead">{t.recursos.short}</p>
+      </div>
+      <div>
+        <ul class="reslist">
+          {recursos.map((r) => {
+            const href = `${base(r.data.lang)}recursos/${r.id}/`;
+            return (
+              <li><a href={href}>
+                <span><b>{r.data.title}</b><span class="caps">{r.data.kind[lang]}{r.data.duration ? ` · ${r.data.duration}` : ''}{r.data.lang !== lang && t.recursos.inLang ? ` · ${t.recursos.inLang}` : ''}</span></span>
+                <span class="go">{r.data.audio ? t.recursos.listen : t.recursos.read}</span>
+              </a></li>
+            );
+          })}
         </ul>
-        <p class="todos"><a href={`${home}recursos/`}>{t.recursos.all}</a></p>
+        <p class="more"><a href={`${home}recursos/`} class="lnk">{t.recursos.all}</a></p>
       </div>
     </div>
   </section>
 
-  <!-- 8 · Cierre: la luna -->
-  <section class="fin" id="contacto">
-    <picture aria-hidden="true">
-      <source type="image/avif" srcset={lunaAvif.srcSet.attribute} sizes="100vw" />
-      <source type="image/webp" srcset={lunaWebp.srcSet.attribute} sizes="100vw" />
-      <img src={lunaJpg.src} width={lunaJpg.attributes.width} height={lunaJpg.attributes.height} alt="" loading="lazy" decoding="async" />
-    </picture>
-    <div class="cw">
+  <!-- 9 · Cierre -->
+  <section class="end" id="contacto">
+    <div class="wrap">
       <h2>{t.cierre.title}</h2>
-      <p>{t.cierre.sub}</p>
-      <a href={wa} target="_blank" rel="noopener" class="cbtn"><WhatsAppIcon /> {t.cierre.cta}</a>
+      <div class="row">
+        <a href={wa} target="_blank" rel="noopener" class="btn btn-ghost"><WhatsAppIcon /> {t.cierre.cta}</a>
+        <p>{t.cierre.sub}</p>
+      </div>
     </div>
   </section>
 

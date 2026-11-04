@@ -19,13 +19,11 @@ interface Props {
   shareDescription?: string;
   /** La página abre con el hero de foto (cabecera transparente y clara). */
   hero?: boolean;
-  /** Home "Cielo": body con la clase .cielo (estilos en src/styles/cielo.css) y sus fuentes precargadas. */
-  cielo?: boolean;
   jsonLd?: object | object[];
   /** Imágenes a precargar (la foto de portada): srcset + sizes, con media para elegir una por pantalla. */
   preload?: { imagesrcset: string; imagesizes: string; media?: string; type?: string }[];
 }
-const { lang, t, title, description, path = '', single = false, shareTitle, shareDescription, hero = false, cielo = false, jsonLd, preload = [] } = Astro.props;
+const { lang, t, title, description, path = '', single = false, shareTitle, shareDescription, hero = false, jsonLd, preload = [] } = Astro.props;
 const site = Astro.site!.toString().replace(/\/$/, '');
 const url = (l: Lang) => `${site}${base(l)}${path}`;
 const canonical = url(lang);
@@ -67,26 +65,15 @@ const ogDesc = shareDescription ?? description;
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" sizes="180x180" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     {/* Fuentes alojadas aquí y precargadas (font-display: block en global.css): el texto no se pinta con otra letra y luego cambia */}
-    {cielo ? (
-      <>
-        <link rel="preload" href="/fonts/jost.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="/fonts/jost-italic.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="/fonts/young-serif-400.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="/fonts/caveat.woff2" as="font" type="font/woff2" crossorigin />
-      </>
-    ) : (
-      <>
-        <link rel="preload" href="/fonts/cormorant-garamond-400.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="/fonts/cormorant-garamond-400-italic.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="/fonts/inter-500.woff2" as="font" type="font/woff2" crossorigin />
-      </>
-    )}
+    <link rel="preload" href="/fonts/cormorant-garamond-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-garamond-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/cormorant-garamond-400-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/inter-500.woff2" as="font" type="font/woff2" crossorigin />
     {preload.map((p) => <link rel="preload" as="image" imagesrcset={p.imagesrcset} imagesizes={p.imagesizes} media={p.media} type={p.type} fetchpriority="high" />)}
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
-  <body class={cielo ? 'cielo' : undefined}>
+  <body>
     <Header lang={lang} t={t} hero={hero} />
     <slot />
     <Footer lang={lang} t={t} />
