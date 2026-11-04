@@ -2,7 +2,6 @@
 import { getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import WhatsAppIcon from './WhatsAppIcon.astro';
-import EncuentroFoto from './EncuentroFoto.astro';
 import { base, byNewest, dicts, waLink, EMAIL, INSTAGRAM, type Lang } from '../i18n';
 import precios from '../data/precios.json';
 import luna from '../assets/luna.jpg';
@@ -43,14 +42,15 @@ const site = Astro.site!.toString().replace(/\/$/, '');
 const wa = waLink(t.wa.msg);
 const eur = (n: number) => (lang === 'en' ? `€${n}` : `${n} €`);
 
-// Encuentros (talleres y retiros) en el idioma de la página: próximos primero. Las fotos van a su proporción,
-// con cada columna tan ancha como pide su foto para que queden a la misma altura.
+// Encuentros (talleres y retiros) en el idioma de la página: próximos primero. Cada uno es un cuadro de color
+// con su marca (de la home Cielo, lo que Margarita quiso conservar): la hoguera del retiro, el "Mírate con amor"
+// escrito a mano; cualquier otro, su nombre en Young Serif.
 const encuentros = (await getCollection('encuentros'))
   .filter((e) => e.data.lang === lang)
   .sort((a, b) => Number(b.data.upcoming) - Number(a.data.upcoming) || byNewest(a, b));
 const encHref = (e: (typeof encuentros)[number]) => e.data.url ?? `${home}encuentros/${e.id.replace(/^(ca|en)\//, '')}/`;
-const fotos = import.meta.glob<{ default: ImageMetadata }>('../assets/encuentro-*.jpg', { eager: true });
-const encCols = encuentros.map((e) => { const m = fotos[`../assets/${e.data.cover}`]?.default; return m ? `minmax(0, ${(m.width / m.height).toFixed(3)}fr)` : 'minmax(0, 1fr)'; }).join(' ');
+const slugOf = (e: (typeof encuentros)[number]) => e.id.replace(/^(ca|en)\//, '');
+const marca = (slug: string) => (slug === 'presencia-y-celebracion' ? 'retiro' : slug === 'mirate-con-amor' ? 'mirate' : 'otro');
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -198,17 +198,27 @@ const jsonLd = {
           <p class="lead">{t.encuentros.intro}</p>
         </div>
         <div>
-          <div class="strip" style={`grid-template-columns: ${encCols}`}>
+          <div class="cuadros">
             {encuentros.map((e) => {
-              const d = e.data; const href = encHref(e); const ext = Boolean(d.url);
+              const d = e.data; const href = encHref(e); const ext = Boolean(d.url); const m = marca(slugOf(e));
               return (
                 <figure>
-                  <a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>
-                    <EncuentroFoto file={d.cover} alt={d.coverAlt} sizes="(max-width: 900px) 60vw, 420px" width={900} />
+                  <a class={`cuadro c-${m}`} href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined} aria-label={d.title}>
+                    {m === 'retiro' && (
+                      <>
+                        <svg viewBox="50 36 100 112" width="84" height="94" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M62,138 L140,120 M60,122 L138,140 M100,144 L100,128" stroke="#1B2430" stroke-width="7"/><path d="M100,112 C84,100 82,84 92,70 C92,82 98,86 100,92 C104,80 100,66 110,54 C112,74 124,80 124,98 C124,108 114,118 100,118 C92,118 86,112 86,104" stroke="#d9408c" stroke-width="7"/><circle cx="120" cy="44" r="4" fill="#d9408c"/><circle cx="84" cy="52" r="3.2" fill="#d9408c"/><circle cx="130" cy="62" r="3" fill="#d9408c"/></svg>
+                        <p class="marca">{d.title}</p>
+                      </>
+                    )}
+                    {m === 'mirate' && (
+                      <svg viewBox="0 0 260 120" aria-hidden="true"><text x="130" y="60" text-anchor="middle" fill="currentColor" font-family="Caveat" font-weight="700" font-size="74">Mírate</text><text x="130" y="100" text-anchor="middle" fill="currentColor" font-family="Caveat" font-weight="500" font-size="40">con amor</text><path d="M42,70 C90,64 170,76 222,66" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+                    )}
+                    {m === 'otro' && <p class="marca">{d.title}</p>}
                   </a>
                   <figcaption>
+                    <span class="caps">{d.kicker}</span>
                     <a href={href} target={ext ? '_blank' : undefined} rel={ext ? 'noopener' : undefined}>{d.title}</a>
-                    <span>{d.kicker}</span>
+                    <span class="when">{d.when}</span>
                   </figcaption>
                 </figure>
               );
