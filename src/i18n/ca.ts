@@ -50,6 +50,7 @@ export const ca: Dict = {
     title: 'Soc la Margarita',
     p1: "Psicòloga i terapeuta de formació humanista. Treballo oferint sessions de teràpia online amb persones que volen viure més en pau amb si mateixes i millorar les seves relacions.",
     alt: 'Margarita Margenat',
+    more: 'Coneix-me',
   },
   encuentros: {
     title: 'Trobades',

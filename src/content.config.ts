@@ -34,6 +34,17 @@ const blog = defineCollection({
   }),
 });
 
+// Página "Sobre mí": un archivo por idioma en src/content/sobre-mi/<lang>.md (es, ca, en) → /sobre-mi/, /ca/sobre-mi/, /en/sobre-mi/
+const sobremi = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/sobre-mi' }),
+  schema: z.object({
+    title: z.string(),                   // h1
+    summary: z.string(),                 // descripción SEO
+    lang: z.enum(['es', 'ca', 'en']),
+    date: z.coerce.date(),
+    updated: z.coerce.date().optional(),
+  }),
+});
 
 // Cada página de servicio es un archivo Markdown en src/content/servicios/<slug>.md → /<slug>/
 const servicios = defineCollection({
@@ -74,4 +85,4 @@ const encuentros = defineCollection({
   }),
 });
 
-export const collections = { recursos, blog, servicios, encuentros };
+export const collections = { recursos, blog, servicios, encuentros, sobremi };

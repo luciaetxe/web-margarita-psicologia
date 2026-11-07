@@ -50,6 +50,7 @@ export const en: Dict = {
     title: "I'm Margarita",
     p1: 'Psychologist and humanistic-trained therapist. I offer online therapy sessions to people who want to live more at peace with themselves and improve their relationships.',
     alt: 'Margarita Margenat',
+    more: 'Get to know me',
   },
   encuentros: {
     title: 'Gatherings',

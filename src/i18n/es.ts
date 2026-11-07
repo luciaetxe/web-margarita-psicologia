@@ -49,6 +49,7 @@ export const es = {
     title: 'Soy Margarita',
     p1: 'Psicóloga y terapeuta de formación humanista. Trabajo ofreciendo sesiones de terapia online con personas que quieren vivir más en paz consigo mismas y mejorar sus relaciones.',
     alt: 'Margarita Margenat',
+    more: 'Conóceme',
   },
   encuentros: {
     title: 'Encuentros',

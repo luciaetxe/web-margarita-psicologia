@@ -254,6 +254,12 @@ a { color: inherit; }
 .resource .byline { font-family: var(--serif); font-size: 1.5rem; color: var(--color-ink); margin-top: 2rem; }
 .resource .actions { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; margin-top: 2.4rem; }
 
+/* Página Sobre mí: retrato a la izquierda, texto a la derecha (como el bloque de la home) */
+.about-page { max-width: 1240px; }
+.about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 5rem; align-items: start; }
+.about-grid img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; }
+.about-text { max-width: 38rem; }
+
 /* WhatsApp flotante */
 .wa-float {
   position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 90;
@@ -311,6 +317,8 @@ a { color: inherit; }
   .pause-in { padding: 17rem 0 4rem; }
   .about .wrap { grid-template-columns: 1fr; gap: 2.4rem; }
   .about img { aspect-ratio: 1; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+  .about-grid img { aspect-ratio: 1; }
   .steps p { max-width: none; }
   .fees { padding-top: 0; }
   .prices > div { flex-direction: column; align-items: flex-start; gap: 0.2rem; }

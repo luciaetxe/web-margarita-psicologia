@@ -1,0 +1,67 @@
+---
+import { getEntry, render } from 'astro:content';
+import { getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { dicts, waLink, base, type Lang } from '../i18n';
+import retrato from '../assets/margarita.jpeg';
+
+// Página "Sobre mí" (/sobre-mi/, /ca/sobre-mi/, /en/sobre-mi/). El texto está en src/content/sobre-mi/<lang>.md.
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = dicts[lang];
+const entry = await getEntry('sobremi', lang);
+if (!entry) throw new Error(`Falta src/content/sobre-mi/${lang}.md`);
+const { Content } = await render(entry);
+const d = entry.data;
+const site = Astro.site!.toString().replace(/\/$/, '');
+const home = base(lang);
+const path = 'sobre-mi/';
+const url = `${site}${home}${path}`;
+const title = `${d.title} · Margarita Margenat`;
+const shareTitle = `${d.title} · Margarita Margenat`;
+
+const avif = await getImage({ src: retrato, format: 'avif', widths: [400, 600, 776], quality: 60 });
+const webp = await getImage({ src: retrato, format: 'webp', widths: [400, 600, 776], quality: 70 });
+const jpg = await getImage({ src: retrato, format: 'jpeg', width: 776, quality: 75 });
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    url,
+    inLanguage: lang,
+    mainEntity: { '@type': 'Person', name: 'Margarita Margenat', jobTitle: t.footer.role, url: `${site}${home}`, image: `${site}/margarita.jpeg` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Margarita Margenat', item: `${site}${home}` },
+      { '@type': 'ListItem', position: 2, name: d.title, item: url },
+    ],
+  },
+];
+---
+<Base lang={lang} t={t} title={title} shareTitle={shareTitle} description={d.summary} path={path} jsonLd={jsonLd}>
+  <main class="wrap about-page resource">
+    <nav class="crumbs" aria-label="Estás en">
+      <a href={home}>{t.servicios.home}</a><span>›</span><span aria-current="page">{t.nav.sobremi}</span>
+    </nav>
+    <div class="about-grid">
+      <picture>
+        <source type="image/avif" srcset={avif.srcSet.attribute} sizes="(max-width: 900px) 100vw, 420px" />
+        <source type="image/webp" srcset={webp.srcSet.attribute} sizes="(max-width: 900px) 100vw, 420px" />
+        <img src={jpg.src} alt={t.sobremi.alt} width={jpg.attributes.width} height={jpg.attributes.height} decoding="async" />
+      </picture>
+      <div class="about-text">
+        <span class="caps kicker">{t.nav.sobremi}</span>
+        <h1>{d.title}</h1>
+        <Content />
+        <div class="actions">
+          <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="btn btn-primary">{t.hero.cta}</a>
+          <a href={`${home}#empezamos`} class="link">{t.nav.empezamos}</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Base>
