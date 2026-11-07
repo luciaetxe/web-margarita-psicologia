@@ -30,8 +30,10 @@ const blog = defineCollection({
     date: z.coerce.date(),
     updated: z.coerce.date().optional(), // última revisión del texto (lastmod del sitemap)
     seoTitle: z.string().optional(),     // <title> con la búsqueda real; el h1 sigue siendo title
+    order: z.number().default(0),        // desempate a igual fecha: 1, 2, 3…
   }),
 });
+
 
 // Cada página de servicio es un archivo Markdown en src/content/servicios/<slug>.md → /<slug>/
 const servicios = defineCollection({
