@@ -16,11 +16,13 @@ const temas = TEMAS.filter((k) => items.some((p) => p.data.temas.includes(k)));
   <main class="wrap narrow page-head">
     <h1 class="title">{t.blog.title}</h1>
     {temas.length > 1 && (
-      <nav class="temas" aria-label={t.blog.temasTitle} id="temas">
-        <span class="caps">{t.blog.temasTitle}</span>
-        <button type="button" data-tema="" aria-pressed="true">{t.blog.todos}</button>
-        {temas.map((k) => <button type="button" data-tema={k} aria-pressed="false">{t.blog.temas[k]}</button>)}
-      </nav>
+      <details class="temas" id="temas">
+        <summary><span class="caps">{t.blog.filtros}</span><span class="caps sel" id="tema-sel"></span></summary>
+        <nav aria-label={t.blog.temasTitle}>
+          <button type="button" data-tema="" aria-pressed="true">{t.blog.todos}</button>
+          {temas.map((k) => <button type="button" data-tema={k} aria-pressed="false">{t.blog.temas[k]}</button>)}
+        </nav>
+      </details>
     )}
     <ul class="resources" id="articulos">
       {items.map((p) => (
@@ -34,14 +36,17 @@ const temas = TEMAS.filter((k) => items.some((p) => p.data.temas.includes(k)));
     </ul>
   </main>
   <script>
-    // Filtro por tema: oculta los artículos que no lo tienen. El tema elegido va en la URL (#tema=culpa) para poder enlazarlo.
-    const nav = document.getElementById('temas');
+    // Filtro por tema, plegado bajo "Filtros": oculta los artículos que no tienen el tema elegido,
+    // que se muestra junto a "Filtros" y va en la URL (#tema=culpa) para poder enlazarlo.
+    const nav = document.getElementById('temas') as HTMLDetailsElement | null;
     if (nav) {
       const buttons = Array.from(nav.querySelectorAll<HTMLButtonElement>('button'));
       const items = Array.from(document.querySelectorAll<HTMLLIElement>('#articulos li'));
+      const sel = document.getElementById('tema-sel')!;
       const apply = (tema: string) => {
         buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tema === tema)));
         items.forEach((li) => { li.hidden = tema !== '' && !(li.dataset.temas ?? '').split(' ').includes(tema); });
+        sel.textContent = tema ? ` · ${buttons.find((b) => b.dataset.tema === tema)?.textContent ?? ''}` : '';
       };
       buttons.forEach((b) => b.addEventListener('click', () => {
         const tema = b.dataset.tema ?? '';
@@ -49,7 +54,7 @@ const temas = TEMAS.filter((k) => items.some((p) => p.data.temas.includes(k)));
         history.replaceState(null, '', tema ? `#tema=${tema}` : location.pathname);
       }));
       const fromHash = new URLSearchParams(location.hash.slice(1)).get('tema') ?? '';
-      if (fromHash && buttons.some((b) => b.dataset.tema === fromHash)) apply(fromHash);
+      if (fromHash && buttons.some((b) => b.dataset.tema === fromHash)) { apply(fromHash); nav.open = true; }
     }
   </script>
 </Base>

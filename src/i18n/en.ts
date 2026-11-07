@@ -78,6 +78,7 @@ export const en: Dict = {
     all: 'See all articles',
     minRead: 'min read',
     temasTitle: 'Topics',
+    filtros: 'Filters',
     todos: 'All',
     temas: { ansiedad: 'Anxiety', autoexigencia: 'Self-demand', autoestima: 'Self-esteem', relaciones: 'Relationships', limites: 'Boundaries', culpa: 'Guilt', emociones: 'Emotions' },
   },

@@ -255,8 +255,14 @@ a { color: inherit; }
 .resource .actions { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; margin-top: 2.4rem; }
 
 /* Blog: fila de temas (filtro) y temas de cada artículo */
-.temas { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem 1.4rem; margin: -0.4rem 0 2.6rem; }
-.temas .caps { margin-right: 0.4rem; }
+.temas { margin: -0.4rem 0 2.6rem; }
+.temas summary { display: inline-flex; align-items: baseline; list-style: none; cursor: pointer; padding-bottom: 0.3rem; border-bottom: 1px solid var(--color-ink); }
+.temas summary::-webkit-details-marker { display: none; }
+.temas summary .caps { color: var(--color-ink); }
+.temas summary .sel { color: var(--color-sea); white-space: pre; }
+.temas summary:hover .caps { color: var(--color-sea); }
+.temas summary:focus-visible { outline: 2px solid var(--color-sea); outline-offset: 4px; }
+.temas nav { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem 1.4rem; padding-top: 1.2rem; }
 .temas button { background: none; border: 0; padding: 0 0 0.3rem; cursor: pointer; font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; color: var(--color-ink-soft); border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
 .temas button:hover { color: var(--color-ink); }
 .temas button[aria-pressed="true"] { color: var(--color-ink); border-bottom-color: var(--color-ink); }

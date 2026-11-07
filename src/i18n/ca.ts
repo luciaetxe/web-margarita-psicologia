@@ -78,6 +78,7 @@ export const ca: Dict = {
     all: 'Veure tots els articles',
     minRead: 'min de lectura',
     temasTitle: 'Temes',
+    filtros: 'Filtres',
     todos: 'Tots',
     temas: { ansiedad: 'Ansietat', autoexigencia: 'Autoexigència', autoestima: 'Autoestima', relaciones: 'Relacions', limites: 'Límits', culpa: 'Culpa', emociones: 'Emocions' },
   },
