@@ -256,8 +256,10 @@ a { color: inherit; }
 
 /* Blog: fila de temas (filtro) y temas de cada artículo */
 .temas { margin: -0.4rem 0 2.6rem; }
-.temas summary { display: inline-flex; align-items: baseline; list-style: none; cursor: pointer; padding-bottom: 0.3rem; border-bottom: 1px solid var(--color-ink); }
+.temas summary { display: inline-flex; align-items: center; gap: 0.5rem; list-style: none; cursor: pointer; padding-bottom: 0.3rem; border-bottom: 1px solid var(--color-ink); }
 .temas summary::-webkit-details-marker { display: none; }
+.temas summary .ico { flex: none; color: var(--color-ink); transition: color 0.2s; }
+.temas summary:hover .ico { color: var(--color-sea); }
 .temas summary .caps { color: var(--color-ink); }
 .temas summary .sel { color: var(--color-sea); white-space: pre; }
 .temas summary:hover .caps { color: var(--color-sea); }

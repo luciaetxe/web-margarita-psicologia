@@ -17,7 +17,7 @@ const temas = TEMAS.filter((k) => items.some((p) => p.data.temas.includes(k)));
     <h1 class="title">{t.blog.title}</h1>
     {temas.length > 1 && (
       <details class="temas" id="temas">
-        <summary><span class="caps">{t.blog.filtros}</span><span class="caps sel" id="tema-sel"></span></summary>
+        <summary><svg class="ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h18M6.5 12h11M10 18h4"/></svg><span class="caps">{t.blog.filtros}</span><span class="caps sel" id="tema-sel"></span></summary>
         <nav aria-label={t.blog.temasTitle}>
           <button type="button" data-tema="" aria-pressed="true">{t.blog.todos}</button>
           {temas.map((k) => <button type="button" data-tema={k} aria-pressed="false">{t.blog.temas[k]}</button>)}
