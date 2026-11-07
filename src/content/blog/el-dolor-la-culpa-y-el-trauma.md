@@ -5,6 +5,7 @@ summary:
   ca: La diferència entre dolor i patiment, l'armadura que portes des de la infància i per què el trauma no és el que et va passar, sinó viure-ho en solitud.
   en: The difference between pain and suffering, the armour you have worn since childhood, and why trauma is not what happened to you but living through it alone.
 seoTitle: "Dolor, culpa y trauma: la diferencia entre dolor y sufrimiento"
+temas: [culpa, emociones]
 lang: es
 date: 2026-11-07
 order: 3

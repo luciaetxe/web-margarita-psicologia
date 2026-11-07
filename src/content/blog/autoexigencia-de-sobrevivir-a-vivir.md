@@ -5,6 +5,7 @@ summary:
   ca: L'autoexigència no és un tret amb què es neix. És una estratègia d'adaptació que vam aprendre, i que podem anar desfent.
   en: Self-demand isn't a trait you're born with. It's an adaptation strategy we learned, and one we can gradually undo.
 seoTitle: "Autoexigencia: por qué te exiges tanto y cómo dejar de hacerlo"
+temas: [autoexigencia, ansiedad]
 lang: es
 date: 2026-09-17
 updated: 2026-10-06

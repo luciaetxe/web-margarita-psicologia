@@ -5,6 +5,7 @@ summary:
   ca: Quantes vegades t'has fet petita per encaixar. D'on surt la por a perdre l'altre i la necessitat d'aprovació, i què canvia quan el reconeixement ve de tu.
   en: How many times have you made yourself small to fit in. Where the fear of losing the other and the need for approval come from, and what changes when recognition comes from you.
 seoTitle: "Adaptarse para agradar: miedo al abandono y necesidad de aprobación"
+temas: [relaciones, autoestima]
 lang: es
 date: 2026-11-07
 order: 2

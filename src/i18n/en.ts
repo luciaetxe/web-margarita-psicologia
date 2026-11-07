@@ -77,6 +77,9 @@ export const en: Dict = {
     read: 'Read the article',
     all: 'See all articles',
     minRead: 'min read',
+    temasTitle: 'Topics',
+    todos: 'All',
+    temas: { ansiedad: 'Anxiety', autoexigencia: 'Self-demand', autoestima: 'Self-esteem', relaciones: 'Relationships', limites: 'Boundaries', culpa: 'Guilt', emociones: 'Emotions' },
   },
   notfound: {
     title: "This page doesn't exist",

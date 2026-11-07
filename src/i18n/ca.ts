@@ -77,6 +77,9 @@ export const ca: Dict = {
     read: "Llegir l'article",
     all: 'Veure tots els articles',
     minRead: 'min de lectura',
+    temasTitle: 'Temes',
+    todos: 'Tots',
+    temas: { ansiedad: 'Ansietat', autoexigencia: 'Autoexigència', autoestima: 'Autoestima', relaciones: 'Relacions', limites: 'Límits', culpa: 'Culpa', emociones: 'Emocions' },
   },
   notfound: {
     title: 'Aquesta pàgina no existeix',

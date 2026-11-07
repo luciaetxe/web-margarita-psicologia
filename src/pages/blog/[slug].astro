@@ -58,6 +58,9 @@ const jsonLd = [
     <p class="lede">{description}</p>
     <Content />
     <p class="byline">— Margarita Margenat</p>
+    {d.temas.length > 0 && (
+      <p class="temas-post"><span class="caps">{t.blog.temasTitle}</span>{d.temas.map((k) => <a href={`${home}blog/#tema=${k}`}>{t.blog.temas[k]}</a>)}</p>
+    )}
     <div class="actions">
       <a href={waLink(t.wa.msg)} target="_blank" rel="noopener" class="btn btn-primary">{t.hero.cta}</a>
       <a href={`${home}blog/`} class="link">{t.blog.all}</a>

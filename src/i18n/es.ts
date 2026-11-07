@@ -76,6 +76,9 @@ export const es = {
     read: 'Leer el artículo',
     all: 'Ver todos los artículos',
     minRead: 'min de lectura',
+    temasTitle: 'Temas',
+    todos: 'Todos',
+    temas: { ansiedad: 'Ansiedad', autoexigencia: 'Autoexigencia', autoestima: 'Autoestima', relaciones: 'Relaciones', limites: 'Límites', culpa: 'Culpa', emociones: 'Emociones' },
   },
   notfound: {
     title: 'Esta página no existe',

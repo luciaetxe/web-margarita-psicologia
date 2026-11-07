@@ -5,6 +5,7 @@ summary:
   ca: Per por al conflicte, a l'abandonament o al rebuig, moltes persones satisfan la necessitat de l'altre i obliden la seva. També al llit.
   en: Out of fear of conflict, abandonment or rejection, many people meet the other person's needs and forget their own. In bed, too.
 seoTitle: "Me cuesta decir que no: por qué pasa y cómo poner límites"
+temas: [relaciones, limites]
 lang: es
 date: 2026-09-24
 updated: 2026-10-06

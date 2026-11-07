@@ -5,6 +5,7 @@ summary:
   ca: Quan tornes a ensopegar amb el de sempre, la culpa arriba com un càstig. Però el càstig no és l'única manera d'aprendre. Què necessites ara mateix.
   en: When you trip over the same stone again, guilt arrives like a punishment. But punishment is not the only way to learn. What you need right now.
 seoTitle: "Tropezar con la misma piedra: por qué te culpas y qué hacer"
+temas: [culpa, autoestima]
 lang: es
 date: 2026-11-07
 order: 1

@@ -20,6 +20,9 @@ const recursos = defineCollection({
   }),
 });
 
+// Temas del blog: claves fijas; el nombre en cada idioma está en src/i18n/*.ts (blog.temas). Añadir un tema = añadirlo aquí y en los tres diccionarios.
+export const TEMAS = ['ansiedad', 'autoexigencia', 'autoestima', 'relaciones', 'limites', 'culpa', 'emociones'] as const;
+
 // Cada artículo del blog es un archivo Markdown en src/content/blog/<slug>.md
 const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
@@ -31,6 +34,7 @@ const blog = defineCollection({
     updated: z.coerce.date().optional(), // última revisión del texto (lastmod del sitemap)
     seoTitle: z.string().optional(),     // <title> con la búsqueda real; el h1 sigue siendo title
     order: z.number().default(0),        // desempate a igual fecha: 1, 2, 3…
+    temas: z.array(z.enum(TEMAS)).default([]), // temas del filtro de /blog/ (nombres en i18n: blog.temas)
   }),
 });
 
